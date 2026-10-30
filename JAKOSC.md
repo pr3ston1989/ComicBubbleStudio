@@ -1,0 +1,651 @@
+# Warsztat doszlifowywania Bubble Studio 2.4
+
+## Nowości 2.5.2 — mniej nadmiarowych wykryć (2026-10-30)
+
+Wynik na wszystkich **292 stronach / 1793 oczekiwanych przystankach: 96,98%**.
+Niezaokrąglony wynik to 96,97755885038801%; cel 97% pozostaje nieosiągnięty.
+Na identycznych 292 stronach poprzednia wersja ma 96,88%, obecna 96,98%.
+F1 wykrywania: 95,56%; akceptacja obrysów: 96,24%; kolejność: 99,17%.
+166/292 stron (56,8%) jest całkowicie bez uwag. To ocena agenta na zachowanym
+korpusie, nie niezależna gwarancja jakości ani dokładność transkrypcji OCR.
+
+Usunięto 11 fałszywych wykryć: napisy na przedmiotach, zapowiedź redakcyjną,
+reklamowe podpisy i odgłos mechaniczny poza dymkiem. Wymagane są mocne OCR
+oraz dwie zgodne, osobne oceny obrazu. Chronione są fikcyjne profile postaci,
+pojedyncze symboliczne słowa i wszystkie prawdziwe dymki/podpisy narracyjne.
+Nie zmieniono geometrii ani kolejności zachowanych kwestii. Brak pogorszeń
+na każdej z 292 stron. Ręcznie zatwierdzone strony i możliwość cofnięcia
+korekty kontekstu pozostają chronione.
+
+Sześć nowych stron wybrano przed przewidywaniami, po zamrożeniu reguł filtra.
+Wszystkie doliczono, także strony z błędami: wynik tej małej próby to 98,30%.
+Znaleziono dwa pominięte podpisy miejsca/czasu i jedną maskę obejmującą tło.
+Kolejność wszystkich 184 par nowej próby jest poprawna, także w 4komie.
+Próba jest zbyt mała, by uznać ją za statystyczne potwierdzenie uniwersalności.
+Eksperyment zmniejszania masek tekstów bez dymków odrzucono; nie jest częścią
+wydania. Dodatkowa wylosowana szóstka nie była analizowana ani doliczana.
+
+Zaliczono 454 testy programu; cztery testy API pełnego serwera poza zakresem.
+Pełne przebiegi GPU oraz zgodność pakietów i instalatora opisuje raport.
+Główną funkcją jest przygotowanie dymków do Nokturna; eksport OCR pozostaje
+dodatkiem domyślnie wyłączonym. Niepełny ogonek jest akceptowany wyłącznie
+przy poprawnym korpusie, tekście i pozostałym obrysie, na wszystkich stronach.
+Raport: `PRACA/quality-2.5.2/PODSUMOWANIE.html`.
+
+## Nowości 2.5.1 — kolejność, korpusy i aktualne kryterium ogonków (2026-10-30)
+
+Wynik na wszystkich **286 stronach / 1752 oczekiwanych przystankach: 96,85%**.
+Cel 97% pozostaje nieosiągnięty. Przy tej samej próbie i aktualnym kryterium
+poprzednia wersja uzyskuje 96,52%: wpływ kodu to +0,32 punktu procentowego.
+F1 wykrywania: 95,22%; poprawne korpusy i tekst: 96,22%; kolejność: 99,15%.
+163/286 stron jest całkowicie bez uwag. To ocena agenta na zachowanym korpusie,
+nie gwarancja wyniku na nieznanym komiksie ani dokładność transkrypcji OCR.
+
+Zgodnie z prośbą użytkownika niepełny ogonek/łącznik myśli nie dyskwalifikuje
+dymka, jeśli korpus, słowa i reszta obrysu są poprawne. Oceniono ponownie 125
+odrzuconych obrysów: 59 miało jedynie brak łącznika. Sama zmiana kryterium
+przesuwa dawny punkt odniesienia z 95,34% do 96,52%; nie jest poprawą kodu.
+Przy dawnej surowej ocenie obrysów kod daje 95,34% → 95,68%.
+
+Poprawki usuwają 24 nadmiarowe wykrycia, naprawiają 13 błędnych par kolejności
+i dwa błędne korpusy. Nie odnotowano pogorszenia na żadnej z 286 stron według
+obu kryteriów. Model obrazu dodatkowo ocenia każdą proponowaną zamianę
+prostokąta na fizyczny dymek. Ryzykowny eksperyment szerokiego przedłużania
+ogonków odrzucono w całości. Dymki zatwierdzone ręcznie pozostają chronione.
+
+Sześć nowych stron zawiera zachodni komiks, mangę i 4komę; włączono je w całości.
+Na całych 286 stronach odtworzono nowe etapy po zachowanych wykryciach.
+Oddzielnie sprawdzono 16 pełnych przebiegów kontrolnych bieżącej wersji.
+Wcześniejszy zestaw 60 stron służył także odrzuceniu eksperymentu; nie jest już
+świeżą niezależną próbą końcowej wersji. Zaliczono 431 testów programu.
+
+Główną funkcją pozostaje przygotowanie dymków do Nokturna. PDF i eksport tekstu
+są dodatkami; eksport domyślnie wyłączony. Zmieniono wersję silnika/checkpointów
+na 2.5.1. Raport z oryginałami, obrysami i oceną każdej strony:
+`PRACA/quality-2.5.1/PODSUMOWANIE.html`.
+
+## Nowości 2.5.0 — walidacja, PDF i opcjonalny tekst (2026-10-29)
+
+Główną funkcją pozostaje przygotowanie dymków do Nokturna.
+Silnik 2.4.3 i jego checkpointy pozostają bez zmian. Dodatek eksportu jest
+domyślnie wyłączony i nie zmienia obrysów, kolejności ani pakietów dymków.
+
+Próba: **60 zupełnie nowych stron, 41 archiwów, 30 LTR i 30 RTL**;
+30 stron z nieocenianych wcześniej tytułów. Dobór zamrożono przed analizą.
+Wszystkie przeszły pełny przebieg GPU i pełną ocenę wizualną; bez dostrajania
+silnika do tej próby. Wynik nowych 60: **95,67%** (F1 92,05%, obrysy 95,76%,
+kolejność 99,33%). Braki 10, nadmiar 47, złe obrysy 14, błędne pary 8/1199.
+**35/60 stron** jest całkowicie bez uwag. Reklam i trudnych stron nie wykluczano.
+
+Wszystkie **280 stron / 1716 oczekiwanych kwestii: 95,32%** —
+F1 94,49%, obrysy 92,51%, kolejność 99,06%. 131/280 stron bez uwag.
+Wcześniejsze 220 wyników i wzorców zachowano identycznie; różnica wobec
+95,23% wynika z rozszerzenia próby. To ocena agenta, bez eksperckich masek
+pikselowych i bez pomiaru poprawności transkrypcji OCR.
+
+PDF (skan, tekst lub strona mieszana) jest przetwarzany do CBZ z pakietem dla
+Nokturna. Dodatkowy eksport: HTML + TXT, TXT lub Markdown, z numerami stron,
+nazwami plików i kolejnością z aktualnego pakietu. Osobny przycisk „Tekst z
+gotowych pakietów…” działa bez wczytywania modeli dymków. Podczas importu PDF
+eksport łączy pasującą warstwę tekstową z OCR; istniejący CBZ eksportuje przez OCR.
+
+Zaliczono **401 testów programu** (4 testy API pełnego serwera poza zakresem).
+Rzeczywisty test GPU czterostronicowego PDF potwierdził, że włączenie eksportu
+na gotowym komiksie zachowuje identyczne bajty pakietu, geometrię i kolejność.
+Test obejmuje Unicode, skan, warstwę mieszaną, obrót i przycięcie. Syntetyczne
+strony testu funkcji nie wchodzą do procentu oceny komiksów.
+Raport: `PRACA/quality-2.5.0/PODSUMOWANIE.html`.
+
+## Nowości 2.4.3 — myśli, wycieki i pierwszy człon dymka (2026-10-29)
+
+Wynik na wszystkich 220 ocenionych stronach: **95,23%**;
+wersja 2.4.2 na tym samym zestawie: 95,11%.
+Na stałych wcześniejszych 214 stronach: 95,01% →
+95,13%. To wizualna ocena próby przez agenta,
+bez pomiaru transkrypcji OCR i bez gwarancji wyniku na nieznanym komiksie.
+
+Dodano ostrożne odtwarzanie kółek myśli, naprawę dużego wycieku maski przy
+zachowaniu słów oraz kolejność od pierwszego rzeczywistego członu dymka.
+Naprawiono trzy odrzucone obrysy; błędne pary kolejności: 58 → 52.
+Brak zaobserwowanych pogorszeń na każdej z 220 stron, 209 wyników bez zmian.
+Sześć nowych stron włączono w całości do oceny; wykorzystano je w rozwoju.
+Nowe etapy uruchomiono wszędzie; 15 pełnych przebiegów kontrolnych odtwarza
+zatwierdzone wyniki. To nie jest 220 świeżych pełnych przebiegów GPU.
+Zaliczono 386 testów programu. Raport: `PRACA/quality-2.4.3/PODSUMOWANIE.html`.
+
+## Nowości 2.4.2 — 4koma, dymki połączone i końcówki (2026-10-29)
+
+Wynik na wszystkich 214 ocenionych stronach: **95,01%**,
+wcześniej 93,55% na tym samym zbiorze. Wykrywanie F1
+95,04%, obrysy 91,27%, kolejność
+98,89%. Brak zaobserwowanych pogorszeń na każdej stronie.
+To wizualna ocena próby przez agenta, bez pomiaru transkrypcji OCR i bez gwarancji
+wyniku na nieznanych tytułach. Wszystkie 1333 oczekiwane kwestie uwzględniono.
+
+Poprawiono czytanie całych pasków 4koma z tytułami, kolejność sąsiednich dymków,
+łączenie rzeczywistych członów dymka oraz kontynuację ogonków z obrazu. Katalogi
+i wywiady mają osobną, ostrożną kontrolę obrazu i napisów. Nie łączy się samych
+prostokątów tekstu na podstawie odległości. Ręcznie zatwierdzone strony są chronione.
+214 stron przeliczono nowymi etapami; 12 stron Azumanga dodano do zestawu i
+wykorzystano w rozwoju. 12 pełnych przebiegów kontrolnych odtwarza zatwierdzone
+wyniki. To nie jest 214 świeżych pełnych przebiegów GPU ani niezależny holdout.
+365 testów programu przeszły. Raport: `PRACA/quality-2.4.2/PODSUMOWANIE.html`.
+
+## Nowości 2.4.1 — pełniejsze obrysy (2026-10-29)
+
+Nowy końcowy etap uzupełnia rzeczywiste końcówki jasnych i czarnych dymków.
+Odrzuca połączenia z rysunkiem, wieloma kreskami i sąsiednim tekstem. Zachowuje
+liczbę kwestii, OCR, kierunek i kolejność; nie zmienia ręcznie zatwierdzonych stron.
+
+Na wszystkich 202 ocenionych stronach: wykrywanie F1 **93,61%**,
+geometrie **88,99%**, kolejność **98,56%**,
+wskaźnik łączny **93,64%** (wcześniej 93,19%
+na tych samych 202 stronach). Naprawiono 15 odrzuconych geometrii; nie wykryto
+pogorszeń. Wynik jest oceną wizualną próby, nie gwarancją ani pomiarem transkrypcji OCR.
+Zachowano 198 wcześniejszych stron i dodano cztery losowe. Nowy etap przeliczono
+wszędzie, pełną analizę od nowa na sześciu kontrolach i czterech nowych stronach.
+300 testów przeszło; raport: `PRACA/quality-2.4.1/PODSUMOWANIE.html`.
+
+## Nowości 2.4.0
+
+Profil **Dokładny** z włączonym odzyskiwaniem myśli i kontrolą OCR analizuje
+teraz kontekst całej strony lokalnym modelem Qwen3-VL-4B. Odróżnia galerie
+okładek i reklamy, lepiej buduje listy opisów postaci oraz odzyskuje akapity
+streszczenia. Dodatkowa skala OCR obejmuje pełne wiersze dużych skanów.
+Pola kart postaci pozostają osobnymi przystankami, a całe karty czytają się
+w kolejności odpowiadającej układowi strony i LTR/RTL.
+
+Propozycje modelu ograniczają reguły OCR i geometrii. Pojedyncza klasyfikacja
+wycinka nie usuwa istniejącego konturu. Etykieta „ilustracja” lub „strona
+autorów” również nie uprawnia do usunięcia całej listy. Każdą zmianę analizy
+można przywrócić w edytorze przyciskiem „Przywróć wykrycia sprzed analizy
+strony”, również z Cofnij/Ponów. Strony wcześniej zatwierdzone pozostają
+chronione. Wyniki automatu nadal wymagają kontroli.
+
+Na pełnych **198 stronach i 1216 przystankach** odzyskano 42 kwestie: 38 pól
+i akapitów na pięciu stronach opisowych i cztery akapity streszczenia.
+Usunięto 244 nadmiary oraz 20 odwróceń kolejności. Poprawiło się 27 stron;
+171 pozostałych wyników zachowano dokładnie. Nie wykryto pogorszenia żadnej
+strony w mierzonych kryteriach. Reguły nie zawierają nazw tytułów ani
+współrzędnych przykładów.
+
+| Miara, identyczne 198 stron | 2.3.6 | 2.4.0 |
+| --- | ---: | ---: |
+| Wykrywanie — F1 | 83,40% | 93,59% |
+| Akceptowane geometrie prawdziwych regionów | 86,94% | 87,76% |
+| Poprawne pary kolejności dopasowanych kwestii | 97,97% | 98,55% |
+| Wskaźnik łączny | 89,23% | 93,19% |
+| Strony bez uwag we wszystkich kryteriach | 55/198 | 71/198 (35,86%) |
+
+Braki: 98 → 56; nadmiary: 347 → 103; odwrócone pary: 83 → 63.
+Wzrost akceptacji geometrii wynika z nowych prostokątów tekstu i przebudowy
+pól opisowych. Istniejące ogonki dymków nie zostały naprawione w tej iteracji.
+142 geometrie nadal odrzucone. Wskaźnik łączny jest średnią geometryczną
+trzech miar, a nie odsetkiem bezbłędnych stron.
+
+Pomiar obejmuje wszystkie dotychczasowe 182 strony oraz 16 nowych losowych
+stron (osiem nowych serii mangi i osiem niewykorzystanych stron komiksów).
+Pełne modele przeliczyły wszystkie 198 stron końcowym kodem. Nowy przebieg
+semantyczny rozpoczął się z pustym cache i odtworzył ocenione wyniki.
+Wszystkie wcześniejsze listy czytania zachowano. Błędną wcześniejszą ocenę
+Sleepy Princess wycofano dla obu wersji: rzekomy ogonek był mankietem ubrania.
+Nie zaliczono tej korekty jako poprawy algorytmu.
+
+To ocena wizualna agenta, bez niezależnego eksperta i masek pikselowych.
+Nie zmierzono transkrypcji OCR znak po znaku. Dymki złożone porządkuje się
+według pierwszego członu, bez mierzenia wewnętrznego przeplatania głosów.
+Próba nie reprezentuje całej biblioteki. Szczegóły, przykłady i wszystkie
+strony: `PRACA/quality-2.4.0/PODSUMOWANIE.html`.
+
+Nowy model pobiera się przy pierwszym przetwarzaniu w profilu Dokładny:
+około 9 GB. Nie wymaga konta ani API. Obrazy pozostają na komputerze.
+Wagi mają przypiętą wersję i sumy SHA-256. Etapy zwalniają pamięć GPU
+kolejno; dla pełnej analizy kontekstu przyjmujemy 16 GB VRAM i zalecamy
+32 GB RAM. Sprawdzony model przekracza 12 GB zajętej pamięci GPU w
+największych zapytaniach, więc tej funkcji nie deklarujemy dla kart 10 GB.
+Profil Szybszy zachowuje
+dotychczasową analizę bez dodatkowego modelu kontekstu.
+
+
+## Nowości 2.3.6
+
+Poprawiono współpracę kontroli obrysów z odzyskiwaniem myśli. Kontury
+nakładające się na inne dymki są teraz sprawdzane przed szukaniem brakującego
+tekstu. Odrzucona maska nie może już blokować kwestii poza jej końcowym obszarem.
+Co najmniej trzy niezależne prostokąty tekstu, ułożone wyraźnym schodkiem
+w jednym kadrze, czytają się od góry. Kolumny o wspólnej wysokości zachowują
+LTR/RTL; mieszane grupy z dymkami zachowują regułę krótkiej odpowiedzi przy
+dłuższej wypowiedzi. Reguły nie zawierają nazw tytułów ani współrzędnych stron.
+
+Na ocenionej próbie odzyskano trzy myśli na jednej stronie Genikasuri.
+Pozostałe 181 wyników zachowano dokładnie, podobnie jak wszystkie wcześniejsze
+geometrie, kotwice i linie OCR. To poprawka wspólnej kolejności etapów, ale
+rzeczywistą korzyść potwierdzono tutaj na jednym przypadku; nie jest to dowód
+uniwersalności. Pozostają na tej stronie scalenie dolnej myśli i stary błąd
+kolejności dolnych wypowiedzi.
+
+Pomiar obejmuje **182/182 strony i 1131 oczekiwanych przystanków**. Zachowano
+wszystkie wcześniejsze 170 definicji; dodano 12 losowych stron, w tym sześć
+nowych serii mangi. Pełne modele GPU przeliczyły wszystkie strony końcowym
+kodem. 236 testów programu przeszło; cztery testy API pełnego serwera są poza
+zakresem samodzielnego narzędzia. Raport przechodzi kontrolę Playwright.
+
+| Miara, ten sam zestaw 182 stron | 2.3.5 | 2.3.6 |
+| --- | ---: | ---: |
+| Wykrywanie — F1 | 82,28% | 82,42% |
+| Akceptowane geometrie prawdziwych regionów | 87,78% | 87,81% |
+| Poprawnie uporządkowane pary dopasowanych kwestii | 97,88% | 97,89% |
+| Wskaźnik łączny | 89,08% | 89,15% |
+| Strony bez uwag we wszystkich kryteriach | 49/182 | 49/182 (26,92%) |
+
+Wzrost akceptacji geometrii wynika z nowych prostokątów tekstu — istniejące
+kontury nie zostały naprawione w tej iteracji. Wzrost miary kolejności wynika
+z dodania poprawnych par; wcześniejsze 81 odwróceń pozostają.
+Braki: 100 → 97, nadmiary: 344; odrzucone geometrie:
+126. Wszystkie te błędy pozostają w ocenie.
+
+To szacunek na tej próbie, z wizualnych opisów agenta, bez niezależnej oceny
+eksperckiej i masek pikselowych. Miara kolejności obejmuje obecne dopasowania;
+braki obniżają F1. Dymki złożone oceniamy według początku, bez przeplatania
+wewnętrznych członów. Nie mierzono transkrypcji OCR znak po znaku. Prostokąty
+ukośnego tekstu przy sąsiednich blokach nadal wymagają kontroli. Wynik łączny
+nie oznacza udziału bezbłędnych stron ani skuteczności całej biblioteki.
+
+Szczegóły, wszystkie strony, wzorce i procenty obu wersji:
+`PRACA/quality-2.3.6/PODSUMOWANIE.html`.
+
+
+## Pomiar całego zestawu od 2.3.5 — 28 października 2026
+
+Oceniono wizualnie wszystkie 170 unikalnych stron dotąd przeanalizowanych,
+łącznie 1059 przystanków. Wzorzec zawiera kompletne listy, również puste dla
+reklam i stron bez kwestii. 32 nowe strony to 20 losowych z kolejnych tytułów
+oraz 12 kontroli końcowych stron sześciu komiksów. Próba celowo zawiera trudne
+przypadki i nie jest reprezentatywną próbą całej biblioteki. Nie jest to też
+niezależna referencja ekspercka. Niejednoznaczne interpretacje zapisano per strona.
+
+Wynik 2.3.5: F1 wykrywania 82,23%, wizualna akceptowalność obrysów 87,05%,
+kolejność 97,72%, wskaźnik łączny 88,77%. Na tej samej próbie 2.3.4 osiąga
+odpowiednio 81,75%, 87,05%, 97,72%, 88,59%. Przyrost łączny: 0,18 punktu
+procentowego. Strony bez uwag we wszystkich kryteriach: 46→47/170 (27,65%).
+Nie porównywać tych wartości bezpośrednio ze starszymi ocenami z 19 stron.
+
+Wykrywanie: 965 dopasowanych / 1059 oczekiwanych; 94 braki, 323 nadmiary.
+Precyzja 74,92%, czułość 91,12%. F1=2TP/(2TP+FP+FN). Dopasowanie jest
+jeden-do-jednego i wymaga wszystkich punktów złożonego dymka. Wielka maska
+obejmująca kilka tekstów nie zalicza ich jako kilku prawidłowych wykryć.
+
+Obrysy: 840/965 wizualnie zaakceptowanych geometrii dopasowanych prawdziwych
+regionów. Werdykt obejmuje korpus, istotne ogonki, zalewanie rysunku i scalanie.
+Nie jest to IoU ani dokładność pikselowa. Każda ocena jest związana z hashem
+faktycznej geometrii; nowy obrys wymaga nowej oceny. Nieocenione dopasowane
+obrysy blokują wyliczenie wyniku łącznego. Fałszywe regiony obniżają F1.
+
+Kolejność: 3391/3470 poprawnych par wśród dopasowanych kwestii (79 odwróceń).
+LTR 1414/1465=96,52%, RTL 1977/2005=98,60%. Brakujące kwestie są karane przez
+F1, a kolejność nie jest oceną kompletności. Zły kierunek lub wadliwa numeracja
+odrzuca wszystkie pary strony. Dymek złożony oceniamy według początku;
+przeplatanie jego członów przez inne głosy nie jest mierzone tym wskaźnikiem.
+
+Łączny wskaźnik = pierwiastek trzeciego stopnia z iloczynu F1, akceptacji
+obrysów i kolejności. Równe wagi są jawną konwencją raportowania, nie
+prawdopodobieństwem bezbłędnego działania. Zawsze podawać komponenty,
+liczby błędów, udział stron bez uwag i pokrycie oceny, obok jednej liczby.
+Nie mierzono poprawności transkrypcji OCR znak po znaku.
+
+Każda następna iteracja ma zachować dotychczasowe strony i definicje, dodać
+nowe kontrole, ocenić kompletne listy i nowe geometrie oraz przeliczyć obie
+porównywane wersje na tym samym rozszerzonym wzorcu. Zmianę definicji lub
+poprawkę błędnej adnotacji trzeba jawnie zapisać; nie wolno usuwać trudnych
+stron, podmieniać prawdy wynikiem automatu ani liczyć niezmienności jako sukcesu.
+Raport `quality-history.json` zapisuje hashe definicji, liczby i różnicę w pp.
+
+```powershell
+python -m tools.bubble_studio.quality_metrics --reference tests/full_page_reading.json --contours tests/contour_review.json --results PRACA/quality-2.3.5/candidate --output PRACA/quality-2.3.5/release-metrics.json
+```
+
+Filtr 2.3.5: reklama wydarzenia wymaga braku wykrytych kadrów, ogłoszenia
+crossoveru, wielu dat i tygodni oraz przestrzennie powiązanego READ NOW/FOR FREE.
+Kredyty wymagają pary Translation:/Lettering: z nazwiskami, zgodnego OCR,
+małego prostokąta i położenia poza większością powierzchni kadru. To ograniczony
+format, potwierdzony na jednej reklamie i jednej stronie kredytów. 168 wyników
+zachowano dokładnie. Mozaika Sabriny (123 fałszywe regiony) i nowe galerie
+pozostają jawnymi błędami; powtórzenia tytułów dają jedynie ostrzeżenie.
+
+Filtr zapisuje pełny poprzedni wynik, kotwice, OCR i ocenę; edytor przywraca
+je jednym przyciskiem z Cofnij/Ponów. Szerszy tryb include-free-text omija filtr.
+Gate porównuje zachowaną migawkę z niezależnym baseline, a listę 14 dozwolonych
+usunięć zapisano oddzielnie od deklaracji kandydata. 170 świeżych obliczeń GPU
+ma zweryfikowane hashe kodu i obrazu. 208 testów programu przeszło, w tym
+rzeczywisty przycisk przywracania w oknach 1250×900 i 1024×768.
+
+Raport: `PRACA/quality-2.3.5/PODSUMOWANIE.html`.
+
+
+## Uzupełnienie 2.3.4 — niezależne kolumny tekstu, 28 października 2026
+
+138 stron przeliczono pełnymi modelami GPU końcowym kodem; 20 stron jest
+nowych: 10 z pięciu kolejnych serii mangi oraz 10 niewykorzystanych stron
+pięciu komiksów zachodnich. Próbę zamrożono przed opracowaniem reguły.
+Baseline to 2.3.3: wcześniejsze 118 wyników końcowych i świeże obliczenia
+20 nowych stron na zamrożonych źródłach 2.3.3. Pochodzenie starych wyników
+(GPU i przeliczenie układu) zachowano jawnie. Nowe wyniki nie korzystają
+z odtwarzania układu ani z pamięci wcześniejszych geometrii.
+
+Zmieniono dokładnie dwie strony, obie manga: Kagurabachi s.3 i WITCHRIV s.18.
+Wspólny szeroki prostokąt obejmował dwie odrębne kolumny myśli. OCR potwierdza
+co najmniej dwie linie na kolumnę, szeroki odstęp i zachowanie każdej linii.
+Podział dotyczy tylko tekstu bez konturu dymka; nie zmienia modeli, masek,
+przypisań do kadru ani reguł kolejności. Niepewne litery, most między kolumnami,
+pojedyncze linie, SFX i ułożenie jedno pod drugim blokują podział. Kierunek
+LTR/RTL sprawdzono w testach; dwa rzeczywiste poprawione przykłady są RTL.
+Pozostałe 136 wyników zachowano dokładnie, w tym wszystkie 20 nowych stron.
+
+`regression_gate` dopuszcza tylko dwa ręcznie obejrzane podziały z zapisanymi
+prostokątami i mapowaniem identyfikatorów. Chroni każdą inną geometrię oraz
+metadane; niezależnie wymaga zachowania pozycji wszystkich linii OCR baseline.
+Nie ufa samemu komunikatowi kandydata o udanym podziale. Testy obejmują
+ucięcie słów mimo zmienionej polityki, niepewne OCR, brak strony/mapowania,
+zduplikowane mapowanie i zmianę chronionego obiektu.
+
+Pełna referencja ma 19 stron i 113 przystanków. Wszystkie wcześniejsze
+13 definicji zachowano; dodano Kagurabachi i pięć nowych stron kontrolnych,
+w tym cztery z opisem treści i negatywny przykład reklamy Sabriny. Ręczne
+opisy agenta są jawne i korygowalne; nie stanowią niezależnej oceny eksperckiej.
+Porównanie 2.3.3 z 2.3.4 na tej samej rozszerzonej referencji: 102→104
+odnalezione, 11→9 brakujących, 7→9 kompletnych stron. Bez zmiany pozostają
+142 dodatkowe regiony i 8 odwróconych par. 135 fałszywych regionów pochodzi
+z dwóch reklam (123 Sabrina, 12 Deadman). Większość braków karty postaci
+Pop Kill to złączone przystanki, a nie brak liter we wspólnym obszarze.
+Żadna opisana strona nie pogorszyła obecności, dodatkowych przystanków,
+odwróceń ani wskazanych punktów obrysu. Tych wyników nie należy porównywać
+bezpośrednio z metrykami starszej, węższej próby 13 stron.
+
+172 testy programu przeszły; cztery testy API pełnego serwera wyłączono.
+Playwright sprawdza 138 obrazów, zapis oceny, eksport, nawigację, głębokie
+odnośniki, odświeżanie, telefon i komputer. Dystrybucja przechodzi osiem
+kontroli ZIP/EXE, aktualizacji, zachowania danych i odrzucenia uszkodzonej
+paczki. Nadal nie wykonano instalacji na drugim czystym komputerze.
+Raport: `PRACA/quality-2.3.4/PODSUMOWANIE.html`.
+
+
+## Uzupełnienie 2.3.3 — pełne listy czytania, 28 października 2026
+
+Próba ma 118 stron i 800 regionów. Dodano 20 nowych stron: 10 stron z 5
+kolejnych serii mangi i 10 stron z 5 komiksów zachodnich. Regułę obrysu
+opracowano na poprzednich 98 stronach. Nowa kontrola pełnych stron obejmuje
+73 przystanki na 13 jawnie opisanych stronach, w tym 4 z nowej próby.
+Są to ręczne opisy agenta na podstawie oryginałów, a nie niezależna referencja
+ekspercka. Wcześniejsze częściowe kotwice pozostają dodatkowym testem.
+
+Listy zawierają wszystkie przyjęte wypowiedzi/narrację, także samą interpunkcję.
+Połączone lobami dymki to jeden przystanek z kilkoma punktami. Szyldy, efekty
+poza dymkami i reklamy są wyłączone; niejednoznaczne wybory opisano w danych.
+Dopasowanie jest jeden-do-jednego i nie korzysta z oczekiwanej kolejności.
+Jeden wielki obrys nie może zaliczyć kilku osobnych wypowiedzi. Strona reklamy
+ma referencję pustą, więc jej fałszywe regiony są normalnie liczone jako błędy.
+
+Na tych 13 stronach: 72/73 przystanki odnalezione, 1 brakujący i 16 dodatkowych,
+w tym 12 na jednej reklamie. Liczba odwróconych par spadła z 16 do 7 (LTR 8→0,
+RTL 8→7). 6/13 stron jest kompletnych w zakresie obecności, braku dodatkowych
+przystanków i kolejności. Liczba ta nie ocenia pełnej wierności obrysów.
+Żadna z opisanych stron nie pogorszyła tych miar. Wskazane punkty nadmiarowego
+obrysu: 2 błędy przed poprawką, 0 po. To celowo dobrana próba z trudnymi
+przypadkami, nie estymacja skuteczności w całej bibliotece.
+
+Zmiany kolejności są ogólne: różne wysokości tekstu we wspólnym kadrze,
+nieobramowany górny dialog przed dolną siatką oraz ostrożniejsze rozpoznawanie
+dwurzędowej siatki jako kolumn. Dla zagnieżdżonych obrysów lub kotwic zostaje
+wcześniejsze, bardziej zachowawcze sortowanie. Ręczny tryb kolumnowy i
+dotychczasowe testy 4-koma pozostają. Wszystkie 15 stron ze zmienioną kolejnością
+obejrzano osobno: 11 poprawia dialog, 4 porządkują istniejące fałszywe regiony
+i nie są zaliczone jako poprawa rozpoznania wypowiedzi. Cztery z 11 stron są nowe.
+
+Obrys tekstu poza dymkiem poprawiono w dwóch kolejnych, różnych tytułach:
+narracja przy postaciach i wypowiedź nad samochodem. Oba przypadki zachowują
+wszystkie 8/3 linii OCR. Pozostałe 798 geometrii zachowano dokładnie; liczba
+przystanków nie zmieniła się. 101 całych stron ma identyczny wynik.
+Porównanie wyników dopuszcza wyłącznie konkretne, obejrzane geometrie i
+permutacje, zachowując pewność, źródło i powiązania z fizycznymi kadrami.
+
+Pochodzenie obliczeń jest rozdzielone jawnie. Pełne modele GPU przeliczyły
+118 stron. Zapisano dokładne kotwice tekstu; odtworzenie wcześniejszego układu
+dało identyczny wynik na 118/118 stron. Końcowe zabezpieczenie nakładania
+przeliczono jako sam układ. Następnie 42 strony przeliczono ponownie GPU
+końcowym kodem: wszystkie zmienione strony, wszystkie 20 nowych stron,
+poprzednie kotwice i odrzucone przypadki. Każde pole wynikowej geometrii oraz
+kotwice były identyczne z powtórzeniem układu. Pliki `raw-inference-proof.json`,
+`fresh-gpu-proof.json` i `layout_replay` w wynikach zachowują te rozróżnienia;
+wynik z pamięci nie jest opisywany jako nowa inferencja GPU.
+
+157 testów przeszło; 4 testy API pełnego serwera są poza zakresem programu.
+Pełne listy i ocena: `tests/full_page_reading.json` oraz moduł
+`tools.bubble_studio.reading_benchmark`. Szybkie powtórzenie samego układu:
+`tools.bubble_studio.reading_replay` (wymaga zapisanych kotwic i nieedytowanej
+pełnej strony). Zmieniona definicja referencji blokuje porównanie ocen.
+
+Pozostają m.in. układ prawego wysokiego kadru w Aztec, odwrócenie w Stop!,
+pominięta myśl WITCHRIV oraz zegary, szyldy, reklamy i zduplikowane obszary.
+Nie rozszerzono automatycznie reguł, aby ukryć te błędy. Materiał jest głównie
+anglojęzyczny; webtoony i wszystkie języki nie mają potwierdzonej skuteczności.
+
+## Uzupełnienie 2.3.2 — 28 października 2026
+
+Do porównania dodano 41 nowych stron: 20 stron z 10 kolejnych serii mangi
+oraz 21 stron z 11 komiksów zachodnich. Wraz z poprzednią próbą daje to
+98 stron i 651 regionów. Regułę odzyskiwania ogonka zamrożono przed przeglądem
+nowej próby. Kontrola nowych stron objęła plansze podglądowe, a cztery strony
+z narracją RTL, połączonymi dymkami, kolorowymi i czarnymi balonami sprawdzono
+w większym powiększeniu oraz dodano do ręcznych kotwic kolejności.
+
+Nowy wariant szukania zamkniętego wnętrza rozdziela cienkie, białe przejścia
+w rastrze od właściwego papieru dymka. Stosujemy go tylko jako ograniczone
+rozszerzenie istniejącego konturu: zgodne tło przy dwóch tolerancjach, brak
+wycieku do brzegu, prawie pełne pokrycie korpusu, długi i wąski przyrost
+3–20% oraz potwierdzenie, że stara granica cięcia nie ma oparcia w obrazie.
+Wynik jest sumą starej maski i tego rozszerzenia. Pięć punktów oznaczonych
+na oryginale sprawdza objęcie ogonka i wykluczenie pobliskiego tła; rasteryzacja
+obu wyników osobno chroni korpus. Kolejność pozostaje oparta na tekście.
+
+W 2000AD potwierdzono 32 wpisy AppleDouble z nagłówkiem metadanych macOS,
+udające pliki JPG. Filtr pomija `__MACOSX` i `._*` w CBZ/CBR oraz folderach.
+Porównanie indeksów wszystkich 102 archiwów zachowało kolejność i rozmiary
+2440 prawdziwych stron. Wszystkie 32 prawdziwe obrazy w zmienionym archiwum
+przeszły dodatkową kontrolę odczytu. Niczego nie usuwamy z oryginalnych plików.
+
+Nowe przykłady i obserwacje są w `tests/reading_examples.json`,
+`tests/contour_examples.json` oraz `tests/known_visual_issues.json`.
+45 kotwic na 8 stronach sprawdza kompletność tych wypowiedzi i ich kolejność.
+Przykład Hatori zachowuje dodatkowy, błędny przystanek na szyldzie — liczba
+ta jest jawna w raporcie, nie ukrywamy jej jako poprawnej detekcji.
+132 testy przeszły; 4 testy API pełnego serwera pozostają poza zakresem
+samodzielnego programu. Dokładny wynik porównania GPU jest w raporcie
+`PRACA/quality-2.3.2/regression.json`.
+
+Porównanie końcowe przeszło: jedna zaakceptowana korekta ogonka, 650 innych
+regionów i 97 całych stron identycznych. Wszystkie 41 nowych stron zachowało
+wynik bazowy. Ręczne punkty wskazują trzy brakujące miejsca ogonka w bazie
+i brak tych ubytków po poprawce. Oba punkty tła pozostały poza konturem.
+W raporcie można teraz linkować do konkretnej strony przez jej SHA-256;
+nawigacja i odświeżenie zachowują wskazaną stronę.
+
+Nie mamy pełnych referencji obrysów dla całej biblioteki. Większa próba
+obejmuje różne style i oba kierunki, ale głównie tekst angielski. Nie dowodzi
+uniwersalnego OCR wszystkich języków; webtoony pozostają poza tym wydaniem.
+Nowo zauważone błędy obrysu postaci/samochodu, zegara, szyldów i reklam
+pozostawiono jako jawne przypadki do kolejnych, osobno ocenianych poprawek.
+
+## Uzupełnienie 2.3.1 — 28 października 2026
+
+Wąska korekta tekstu na tle rysunku wymaga łącznie: wysokiej pewności etykiety
+tekstu poza dymkiem, nieregularnego kształtu, silnej niezgodności tła poza
+literami i przestrzennego potwierdzenia zachowania wszystkich linii OCR.
+Nie stosujemy samej jednorodności koloru, ponieważ psułoby to prawdziwe,
+półprzezroczyste i kolorowe dymki. Mniejszy region zachowuje treść, identyfikator
+i kotwicę kolejności; stary kontur pozostaje w diagnostyce.
+
+Próba obejmuje dotychczasowe 49 stron oraz 8 nowych stron z 4 innych serii
+(seed 20261031). Każda ma wynik z wersji 2.3.0 i nowej wersji. Jedyna dopuszczona
+zmiana dotyczy potwierdzonego błędu obrysu myśli w „Hey! Devil Girl!”. Wszystkie
+inne regiony, ich kolejność, kadry, geometria oraz pewność są chronione dokładnym
+porównaniem. Nowych stron nie użyto do wybierania reguły. Wynik tej kontroli
+jest zapisany w PRACA/quality-2.3.1/regression.json.
+
+Wynik końcowy: 57 stron, 358 regionów; 56 stron i 357 regionów bez zmian.
+Jedna zaakceptowana korekta zmniejsza prostokąt obejmujący rysunek do 52,3%
+poprzedniej powierzchni, zachowując wszystkie 6 linii OCR i kolejność.
+Osiem nowych stron pozostało identycznych. Przeszły 122 testy; 4 testy API
+pełnego serwera Nokturn są poza zakresem samodzielnej aplikacji. Playwright
+potwierdził działanie przeglądu wszystkich 57 stron, nawigacji, eksportu,
+zapisu ocen i układu na dużym oraz małym ekranie. Na 4 opisanych stronach
+zachowano wszystkie 16 kotwic wypowiedzi bez odwrócenia kolejności.
+To kontrola regresji na tej próbie, nie dowód bezbłędności całej biblioteki.
+Oględziny nowej próby ujawniły też istniejący fałszywy obrys drzwi w Red Cat
+Ramen (056-bf2f031a0804); ta wersja go nie zmienia. Pozostają problemy
+z niektórymi ogonkami, obrysami w Salamander i materiałami katalogowymi.
+
+Przykład uruchomienia blokady publikacji:
+
+```text
+python -m tools.bubble_studio.regression_gate --baseline PRACA\baza --candidate PRACA\nowa --policy tests\regression_policy_2_3_1.json --output PRACA\regression.json
+```
+
+Niepowodzenie porównania kończy polecenie błędem. Reguły dopuszczają tylko
+konkretne, obejrzane korekty; nie wolno rozszerzać ich automatycznie po każdej
+niezgodności. Brak OCR, inny obraz, zmienione przypisanie do kadru, kolejność
+lub obcięta linia tekstu blokują wydanie. To nie zastępuje niezależnej referencji
+masek ani nie dowodzi braku regresji na wszystkich możliwych stylach.
+
+Poniżej zachowano opis rozwoju i wyników wersji 2.3.0.
+
+## Cel i metoda
+
+Pracujemy w pętli: losowanie → zamrożenie próbki i wersji kodu → prawdziwe modele
+GPU → porównanie oryginału z wynikiem → zapis błędów → poprawka → regresja →
+nowe, wcześniej nieoglądane tytuły. Zwiększenie liczby obrysów nie oznacza poprawy.
+Nie tworzymy referencji z wyniku tego samego automatu.
+
+Laboratorium losuje książki osobno dla komiksów i mangi. Kierunek wynika z
+konwencji folderu; nie jest rozpoznaniem języka. Seed, nazwa tomu, strona,
+oryginalny wpis archiwum i SHA-256 pozwalają wrócić do tego samego przypadku.
+Całe tytuły zostają odłożone jako holdout. `--exclude-manifest` wyklucza też
+inne rozdziały już użytej serii mangi. Nieczytelne archiwa/obrazy trafiają do
+listy błędów. Uszkodzonej strony nie zaliczamy jako strony bez wypowiedzi.
+
+Raport pokazuje oryginał i obrysy obok siebie. Zawiera oceny: obrys/ogonek,
+pominięta kwestia, fałszywy region/SFX, kolejność, podział/połączenie. Uwagi
+zapisują się w przeglądarce; eksport JSON zachowuje je poza nią.
+
+## Co sprawdzać na każdej stronie
+
+1. Kompletność: małe wypowiedzi, myśli poza dymkami, narracja, sama interpunkcja,
+   czarne balony, tekst na rysunku i granicach kadrów.
+2. Obrys: tusz, wklęsłości, długie ogonki, wyspy poza balonem, ucięte litery,
+   przypadkowo objęta twarz/ubranie/tło. Bez dopasowywania sztucznych elips.
+3. Kolejność: kadry, LTR/RTL, ukośne kadry, brak ramek, 4-koma, rozkładówka.
+   Fizycznie połączony balon może być jednym przystankiem; ustal to samo
+   w predykcji i referencji.
+4. Klasyfikacja: dialog i myśl kontra SFX, nazwa postaci, szyld, tytuł,
+   okładka lub reklama. OCR potwierdza litery, nie rozumienie fabuły.
+5. Użytkowanie: powiększenie nie ucina słów; korekta, cofanie, zapis,
+   przerwanie i wznowienie nie gubią danych; oryginał ma ten sam SHA-256.
+
+## Zmiany z 27 października 2026
+
+- Poprawiony współczynnik H/W w obliczaniu przerw. Poprzednio przekazywano W/H.
+- Puste kadry dalej ograniczają kolejność; dwie ukośnie położone kwestie nie
+  tworzą automatycznie pionowych pasków. Wysoki kadr nie pochłania całego
+  kolejnego rzędu. Jawny profil `columns` pozostaje dostępny dla 4-koma.
+- Kolejność i przypisanie do kadru opierają się na położeniu tekstu zamiast
+  zasięgu ogonka. Kontur służy wyświetlaniu.
+- Niezależny, kafelkowany przebieg OCR odzyskuje tekst, którego RT-DETR nie
+  zaproponował. Odzyskiwanie może działać również bez wykrytej ramki kadru.
+- Nowe regiony bez obramowania pozostają tekstem. Blokada oznak katalogu/reklamy
+  ogranicza dodatkowe propozycje OCR, ale nie jest uniwersalnym klasyfikatorem.
+- Małe znane efekty, np. CHRP/POSE, nie stają się odzyskanym dialogiem. Efekt
+  błędnie wykryty jako balon można pominąć tylko po niepowodzeniu kontroli obrysu;
+  prawdziwy balon z samym „SNORT” pozostaje.
+- Większe wycinki SAM dają miejsce długim ogonkom. Maska słabo związana
+  z krawędziami obrazu nie jest publikowana jako pewny obrys.
+- Kontury kolidujące z inną wypowiedzią ustępują obszarom tekstu; odrzucone
+  wielokąty pozostają w diagnostyce. Cały kadr z tekstem i podejrzane duże maski
+  wokół nazw własnych są ograniczane do tekstu. To świadome zabezpieczenia,
+  nie automatyczne naprawienie każdego takiego konturu.
+- Ocena pakietów mierzy dodatkowo odwrócone pary kolejności i zgodność kierunku.
+
+## Dowody i granice próby
+
+Pierwsza próbka: seed 20261027, 24 strony / 12 tytułów, w tym 8 stron początkowo
+odłożonych. Po pierwszych dwóch iteracjach także te strony ujawniły problemy
+i posłużyły do kolejnej poprawki. Nie są już nietkniętym testem końcowym.
+Druga próbka: seed 20261029, 17 poprawnie odczytanych stron / 9 nowych tomów;
+jedna inna strona archiwum 2000AD była nieczytelna i jest w dzienniku błędów.
+Ten przebieg obejmował 41 stron. Ujawnił jeszcze przeplatanie górnego i środkowego
+kadru w Godzilli przy nakładających się prostokątach detektora. Doprecyzowano
+wyrównanie początku rzędu względem krótszego kadru i dodano test tego przypadku.
+Ostatnia próbka, seed 20261030, dodaje 8 stron z 4 nowych serii mangi. Końcowy
+przebieg obejmuje **49 stron z 25 tomów**: 41 użytych podczas doszlifowywania
+i 8 odłożonych do tej ostatniej kontroli. Pliki i wyniki są w PRACA/quality-20261027,
+w folderach sample-49 i release-final. Nie przypisujemy całej tej próbie statusu
+nietkniętego benchmarku.
+Pierwszy sampler zachował jeden poprawny obraz z częściowo nieczytelnego tomu;
+obecny sampler zatwierdza dopiero cały udany wybór stron tomu.
+
+Na czterech konkretnych stronach zdefiniowano 16 kotwic wypowiedzi po oglądzie
+stron (`tests/reading_examples.json`). Pozwalają wykazać poprawę kolejności
+i odzyskanie pominiętej myśli, lecz nie zastępują anotacji obrysów. Skrypt
+`scripts/check_reading_examples.py` porównuje te przykłady z dowolnym przebiegiem.
+
+Testy obejmują geometrię, realny mały RT-DETR z losowymi wagami na CPU, format
+pakietów, ochronę oryginałów i zatwierdzonych korekt, edytor Tk, układ panelu,
+odzyskiwanie OCR i zabezpieczenia obrysów. Cztery testy API serwera Nokturn
+wyłączono z próby samodzielnego Studio, ponieważ dystrybucja nie zawiera serwera.
+Playwright kontroluje raport, wszystkie obrazy, nawigację, klawiaturę,
+zapis ocen, eksport JSON, powiększenie i układ komputer/telefon.
+
+Próba wybranych kotwic przed poprawkami: jedna brakująca kwestia i dwie
+odwrócone pary kolejności. Po poprawkach wszystkie 16 kotwic jest obecnych
+w zamierzonej kolejności. To cztery przykłady regresji; nie procent skuteczności
+na wszystkich 49 stronach. Zestaw testów programu: 107 testów, z czterema
+odrębnymi testami API serwera wyłączonymi z tej dystrybucji.
+
+Okna Tk uruchomiono i sprawdzono rzeczywistą geometrię elementów. Próba
+przechwycenia natywnego okna przez computer-use nie uzyskała zatwierdzenia
+w czasie oczekiwania; nie zaliczamy tego jako pełnej wizualnej kontroli okien.
+Nie wykonano instalacji na drugim, czystym komputerze ani testu każdej karty GPU.
+
+## Powtarzanie i mierzenie poprawy
+
+W panelu wybierz „Losuj i testuj strony…” i folder biblioteki. Każde uruchomienie
+tworzy nową próbkę. W celu porównania wersji używaj **tego samego sample.json**:
+
+```text
+python -m tools.bubble_studio.quality_lab sample --source D:\Komiksy --output PRACA\probka --seed 42
+python -m tools.bubble_studio.quality_lab run --images PRACA\probka --output PRACA\wersja-a --split development --recover-dialogue
+python -m tools.bubble_studio.quality_lab run --images PRACA\probka --output PRACA\wersja-b --split development --recover-dialogue
+python -m tools.bubble_studio.quality_lab run --images PRACA\probka --output PRACA\kontrola --split holdout --recover-dialogue
+```
+
+W dystrybucji Python jest w tools/bubble_studio/.runtime/venv/Scripts/python.exe.
+Najpierw uruchom START, aby go przygotować. Nowy wynik wymaga nowego folderu;
+wznowienie sprawdza hash obrazu, kodu wnioskowania i ustawienia.
+
+Do pomiaru masek popraw wszystkie regiony wybranych stron w edytorze i dopiero
+wtedy zatwierdź. Zachowaj automat i referencję jako osobne pakiety. `evaluate`
+mierzy precision/recall przy IoU 0,5, IoU dopasowanych masek, boundary F z tolerancją
+3 px, inwersje kolejności oraz tekstowe regiony referencji. Kolejność oceniamy
+tylko na dopasowanych regionach i czytamy razem z przeoczeniami.
+
+## Dalsze doszlifowywanie
+
+Rejestr błędów trzeba rozszerzać o nowe style i języki, a poprawki kontrolować
+na nowych tytułach. Pozostają trudne: otwarte balony na marginesie, długie
+ogonki, ciasno stykające się dymki, bardzo ozdobne litery, szyldy oraz intencja
+krótkich tekstów. Nie deklarujemy procentowej skuteczności ani perfekcji.
+OCR odzyskiwania jest przeznaczony dla alfabetu łacińskiego; nie jest pełnym
+profilem dla japońskiego tekstu pionowego.
+
+Modele nie uczą się samoczynnie z ocen ani nie zmieniają własnego kodu w tle.
+Po zebraniu dobrych referencji można porównać inne modele lub dostroić segmenter;
+taką zmianę trzeba ponownie ocenić na odłożonych tytułach. Zatwierdzone pakiety
+użytkownika pozostają chronione przed automatycznym przeliczeniem.

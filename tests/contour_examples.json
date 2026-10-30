@@ -1,0 +1,12 @@
+{
+  "note": "Points manually marked from original artwork, not generated from candidate contours. This checks tail reach and excludes nearby background; it is not a full reference mask.",
+  "pages": [
+    {
+      "sha_prefix": "3411f3cc4452",
+      "name": "Long YAAAH tail on halftone background",
+      "region_id": "b1",
+      "inside": [[800,317],[860,296],[920,275]],
+      "outside": [[800,285],[800,350]]
+    }
+  ]
+}

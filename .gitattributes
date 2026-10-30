@@ -1,0 +1,5 @@
+# Preserve the exact bytes of the verified Windows release sources.
+* -text
+*.ico binary
+*.png binary
+*.pdf binary

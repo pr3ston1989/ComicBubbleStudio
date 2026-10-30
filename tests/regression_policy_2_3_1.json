@@ -1,0 +1,9 @@
+{
+  "note": "All results are frozen except this visually confirmed artwork mask. Changes outside the listed geometry fields block promotion.",
+  "changes": [{
+    "sha_prefix": "d774adedfb10", "region_id": "b7", "expected_type": "text",
+    "allowed_fields": ["x", "y", "w", "h", "type", "polygon", "polygons"],
+    "max_bbox_area_ratio": 0.65,
+    "reason": "Detected free thought was outlined as a character's face and shirt. Preserve all OCR lines and original reading order."
+  }]
+}

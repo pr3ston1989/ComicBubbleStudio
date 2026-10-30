@@ -1,0 +1,17 @@
+{
+  "baseline": "2.3.1",
+  "changes": [
+    {
+      "sha_prefix": "3411f3cc4452",
+      "region_id": "b1",
+      "allowed_fields": ["x", "y", "w", "h", "polygon", "polygons"],
+      "expected_type": "bubble",
+      "shape": "contour_extension",
+      "max_bbox_area_ratio": 1.8,
+      "min_mask_preserved": 0.995,
+      "min_mask_growth": 0.03,
+      "max_mask_growth": 0.20,
+      "reason": "Restore the visibly truncated long tail of YAAAH while preserving the existing balloon body, all text and reading order."
+    }
+  ]
+}

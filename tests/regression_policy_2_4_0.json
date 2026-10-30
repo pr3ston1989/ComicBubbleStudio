@@ -1,0 +1,220 @@
+{
+  "context_changes": [
+    {
+      "sha_prefix": "378e30a57a66",
+      "image_sha256": "e7247e90100ee39e8a180925a44be95f9515cf42d6defa522180ad550874c6ec",
+      "baseline_result_sha256": "c10bb0fe5516969e315b99ff3cba6fe02f8ef5d21aba37a8a5f59ec4bf5dd550",
+      "approved_result_sha256": "bbb58656e20de95e36c9fb903dd28505ec6419f8594d1b0c6c1c1d1bd3cd022b",
+      "visual_review": "quality-2.4.0/candidate-review.json#378e30a57a66",
+      "reason": "Visually reviewed omission crops: scene signs/logos, mechanical effects, or creator/publisher credits. Real balloon/caption contours protected. Existing story geometry and relative order retained."
+    },
+    {
+      "sha_prefix": "8abdb539b166",
+      "image_sha256": "fa7a093bbfe507292bf89016c154df1aa568859fda3664b0049483f97bb1c172",
+      "baseline_result_sha256": "aa55ad981c6ca6101faf76d78d9b6a1a0f03c3e924cda2767087109662e1f82b",
+      "approved_result_sha256": "06487f6a55ff8999c4f002047bfff27dd702ab97196bf4a7b579f8932462b14a",
+      "visual_review": "quality-2.4.0/candidate-review.json#8abdb539b166",
+      "reason": "Visually confirmed cover/publisher promotion or cover collection. Tiny reproduced cover lettering is outside the established story-reading scope."
+    },
+    {
+      "sha_prefix": "c8b7b0c85404",
+      "image_sha256": "1389f1c3ca7362c90223f9a099c2a6bd6032adfe058b0e159c08b6881a6a83a5",
+      "baseline_result_sha256": "e45cd5bb18b4c4d6ab0d02f6e3891659dea4ca90c0b39052130ac470bfa3244b",
+      "approved_result_sha256": "82cd9f5e8571e517a2ca79e9c0117a63cd1c7bdb2af8572ecfc87363628b66f7",
+      "visual_review": "quality-2.4.0/candidate-review.json#c8b7b0c85404",
+      "reason": "Visually reviewed omission crops: scene signs/logos, mechanical effects, or creator/publisher credits. Real balloon/caption contours protected. Existing story geometry and relative order retained."
+    },
+    {
+      "sha_prefix": "e4b760110992",
+      "image_sha256": "6c09ef1e6c98b3a6e1f0533416d8bc60ea0bc46486ffd1fb285b7c71317d0cf7",
+      "baseline_result_sha256": "b3021dafa0a3e0574de83789c7a6fc06820e19c5407c89878984b12c381c5a1d",
+      "approved_result_sha256": "d6701768e6058eaaa0d637e0a790dd6aa291721fc5efc58a172105c38c1c1acc",
+      "visual_review": "quality-2.4.0/candidate-review.json#e4b760110992",
+      "reason": "Visually reviewed omission crops: scene signs/logos, mechanical effects, or creator/publisher credits. Real balloon/caption contours protected. Existing story geometry and relative order retained."
+    },
+    {
+      "sha_prefix": "71bf7e63ca63",
+      "image_sha256": "58c7404be0c196d5b4aa8f931137c6783cdbf65e8823c0768ede7a3ca53d3586",
+      "baseline_result_sha256": "a51fde4ce16369d2238face61fe8d47b2f10f388d6e2e981ad588cd1e67732c8",
+      "approved_result_sha256": "56e52293c4b8d11b93a4169c314b0eac2e8ba329a68dcef3cf912921374744b6",
+      "visual_review": "quality-2.4.0/candidate-review.json#71bf7e63ca63",
+      "reason": "Visually reviewed whole profile: separate title/attribute fields and biography paragraphs, full words inside text column, no clothing labels. Whole upper card before lower card."
+    },
+    {
+      "sha_prefix": "1b06c0e0d88f",
+      "image_sha256": "a50d21d88c4168656ea0eadf290af5c38f2532ea6a0e21458ce7719e4bc00eb1",
+      "baseline_result_sha256": "a4263535f253bab2ae3bd5086029df601c0d4f1eb4d307b9cb072f684ddada4d",
+      "approved_result_sha256": "9aac26d4c38a4f29bbbd49386d9fff64237f12337c544c943025f341288a561f",
+      "visual_review": "quality-2.4.0/candidate-review.json#1b06c0e0d88f",
+      "reason": "Visually reviewed whole profile: separate title/attribute fields and biography paragraphs, full words inside text column, no clothing labels. Whole upper card before lower card."
+    },
+    {
+      "sha_prefix": "bb916ffd0c70",
+      "image_sha256": "70e64af53bcc6c4f6701ec872f4afc55c499c53c8e024eaabde755cfbe0e3b14",
+      "baseline_result_sha256": "64dad96ec84bbc4ad643e7b14698f8572da4d6a6a18b4dec4e77627a5f2ca4f6",
+      "approved_result_sha256": "bf58e884a45bb4b6293318b03911145c40565189b0b916e830cb1d247192c557",
+      "visual_review": "quality-2.4.0/candidate-review.json#bb916ffd0c70",
+      "reason": "Visually reviewed omission crops: scene signs/logos, mechanical effects, or creator/publisher credits. Real balloon/caption contours protected. Existing story geometry and relative order retained."
+    },
+    {
+      "sha_prefix": "6a9a931eb21b",
+      "image_sha256": "537f92b6aa76d9a3a8084ee31b911bf2c9de922ebb15c08a7211aa2e65832ecb",
+      "baseline_result_sha256": "88b62ed523812a7aa46022fcff42214a645a65c2d6bc2cdffde4a1fd2d92a42f",
+      "approved_result_sha256": "73923381d51367e1510d08cf0f4dd58a1c5c0d2f6fadb450c917ce09f4b6509f",
+      "visual_review": "quality-2.4.0/candidate-review.json#6a9a931eb21b",
+      "reason": "Visually reviewed omission crops: scene signs/logos, mechanical effects, or creator/publisher credits. Real balloon/caption contours protected. Existing story geometry and relative order retained."
+    },
+    {
+      "sha_prefix": "2aff19023b73",
+      "image_sha256": "feb7470d881b3665aa8de0c9ca9e0e254950478ca0a68ac01f7a51227f45510d",
+      "baseline_result_sha256": "9994ea6395cf36351b6ab105b01cf385e484b14174c6852686049b6a18ec29b4",
+      "approved_result_sha256": "8f27bd2bddc7cfa92cbd9bb4ae70a9ccee111076c64aa78adea6880d77265044",
+      "visual_review": "quality-2.4.0/candidate-review.json#2aff19023b73",
+      "reason": "Visually reviewed whole profile: separate title/attribute fields and biography paragraphs, full words inside text column, no clothing labels. Whole upper card before lower card."
+    },
+    {
+      "sha_prefix": "7d62f53226b0",
+      "image_sha256": "d0dbc4935ebb4a70a35f365efcba99b742c019be771d3b7cc0a34ffdf6966936",
+      "baseline_result_sha256": "7abc1057817f3802e2013a0c41e5784d0fe9ab480ed5c4673eb0495437f1429b",
+      "approved_result_sha256": "bc59699f754f7423866369340b7d928233de9a43e71101b09dfffdd452f5519c",
+      "visual_review": "quality-2.4.0/candidate-review.json#7d62f53226b0",
+      "reason": "Visually reviewed omission crops: scene signs/logos, mechanical effects, or creator/publisher credits. Real balloon/caption contours protected. Existing story geometry and relative order retained."
+    },
+    {
+      "sha_prefix": "a21b4c27dbdd",
+      "image_sha256": "29f965fa5742a30ef5dc2e04bcb911e2cfe57d22e5f0ea58e51bf06c7ee6ae2d",
+      "baseline_result_sha256": "372354369eaff63735a7a5a349cc87e0bcb379e3875fd4bdfc241481e0ec34d3",
+      "approved_result_sha256": "2d51d8a0440cddc2adcc9e9ab01542e7aa421308269e4fd66d679377a2cdd4d8",
+      "visual_review": "quality-2.4.0/candidate-review.json#a21b4c27dbdd",
+      "reason": "Visually confirmed cover/publisher promotion or cover collection. Tiny reproduced cover lettering is outside the established story-reading scope."
+    },
+    {
+      "sha_prefix": "e22faa66d97e",
+      "image_sha256": "3dd10ddd3d65ff0e9f69c3621b32e0adaca76414c294c2ae965ddcda389d72a9",
+      "baseline_result_sha256": "b95fd54e23d69db316bf0a8c23cd3da9117f790baf3369e8fbb27948524e3dc7",
+      "approved_result_sha256": "d21e3b3597486a3c201b849d4d9a6193f7181a9b6a87af6856116d1aa4151e2b",
+      "visual_review": "quality-2.4.0/candidate-review.json#e22faa66d97e",
+      "reason": "Visually reviewed whole profile: separate title/attribute fields and biography paragraphs, full words inside text column, no clothing labels. Whole upper card before lower card."
+    },
+    {
+      "sha_prefix": "90f4a702f34f",
+      "image_sha256": "9eacc88c2e5767221e9b0782e8ec0383e50ed9c529c024fc4eb4eb2c424a9a8d",
+      "baseline_result_sha256": "645781a6045f69ca19b698add691eb930926848a5cb663089a77a2e08a6164c7",
+      "approved_result_sha256": "e87be2d8fef31e515a69dcb6d2c6932eee21c00c3dc47a7558a33e83c472c669",
+      "visual_review": "quality-2.4.0/candidate-review.json#90f4a702f34f",
+      "reason": "Visually reviewed whole profile: separate title/attribute fields and biography paragraphs, full words inside text column, no clothing labels. Whole upper card before lower card."
+    },
+    {
+      "sha_prefix": "0fd8183fd139",
+      "image_sha256": "0a902eb9ccd649dfe8647b19a6141e6a8615ebc0e7c5eeeec1d8de9ba0c152b2",
+      "baseline_result_sha256": "fb1f94deb87ca9cd3fdf5207016e9f82d43666a21ea17861f0d705be05345b8d",
+      "approved_result_sha256": "7057a4970d6ae3c48e3a823e0c1cfc8e4e9c44defd0c8c3eaffca74e348d3c61",
+      "visual_review": "quality-2.4.0/candidate-review.json#0fd8183fd139",
+      "reason": "Visually confirmed cover/publisher promotion or cover collection. Tiny reproduced cover lettering is outside the established story-reading scope."
+    },
+    {
+      "sha_prefix": "7d7b510c63ea",
+      "image_sha256": "493678e7b9f6cf7ed5a5d1ac454168c0f1f3f0e7b5d32f7e07f294ebbc7feff2",
+      "baseline_result_sha256": "0386c290024bcc7170f4be03795551f8072c07ea2e4557a038156f4067472269",
+      "approved_result_sha256": "1abe755c3bc9e75c7f557046e0e6613e491e1f84808bd933b59b6a4e946e9cde",
+      "visual_review": "quality-2.4.0/candidate-review.json#7d7b510c63ea",
+      "reason": "Visually confirmed cover/publisher promotion or cover collection. Tiny reproduced cover lettering is outside the established story-reading scope."
+    },
+    {
+      "sha_prefix": "b6c501e0b380",
+      "image_sha256": "e3ce3d7bee5ff2c75c0783e98027a7949760e548df1d05156d0a4d7b806f781c",
+      "baseline_result_sha256": "e45a574b36c7fbadd94b343e47ee00564def3e3723c468cb9211fa70ccbc5e4a",
+      "approved_result_sha256": "ba194e3d8156d1fdea73d73ded6c96d9d035041ac6db8f72cb5c9135fceb0b9e",
+      "visual_review": "quality-2.4.0/candidate-review.json#b6c501e0b380",
+      "reason": "Visually confirmed cover/publisher promotion or cover collection. Tiny reproduced cover lettering is outside the established story-reading scope."
+    },
+    {
+      "sha_prefix": "dcbac6232fbb",
+      "image_sha256": "7d300183e65a27374c5153384fa9b6362382ecc3055175472a4c8fe3344e2d0a",
+      "baseline_result_sha256": "5549fe57803da6b5e22ef0428d608b36cf62b021cd78c3b8322f5b46984338d2",
+      "approved_result_sha256": "d0fe9f49036ac66a38c76cfec8ebbcf61597e038519f5ea30de5b0b3bddb7b5b",
+      "visual_review": "quality-2.4.0/candidate-review.json#dcbac6232fbb",
+      "reason": "Visually confirmed cover/publisher promotion or cover collection. Tiny reproduced cover lettering is outside the established story-reading scope."
+    },
+    {
+      "sha_prefix": "f584a354233c",
+      "image_sha256": "fcd001fb6831ef61695b7eb2c965da8173f4e3d998b53cf938bb77168b6ec892",
+      "baseline_result_sha256": "9109966b813f2955a36a6f43ba06e6f1407e5ef1a6da98665d1bc84ac89feb1e",
+      "approved_result_sha256": "fa6d6d6cd62871e45f949b3a47d589b7b11006ac20f3237643dba1d1452f91a3",
+      "visual_review": "quality-2.4.0/candidate-review.json#f584a354233c",
+      "reason": "Visually confirmed cover/publisher promotion or cover collection. Tiny reproduced cover lettering is outside the established story-reading scope."
+    },
+    {
+      "sha_prefix": "3fea7323cc5f",
+      "image_sha256": "6f18f677c7a4d267908f055e5605a7829a707f167afce526e7efb429528f7795",
+      "baseline_result_sha256": "355d26cc9ce796d410e5e701e18ede3072ff8345f111d95eca825b4f7f18574f",
+      "approved_result_sha256": "a3b32cd7448ea6ae0b3eb3be8ee67279d9cc9b8137183b560b032b4ebfdfb5da",
+      "visual_review": "quality-2.4.0/candidate-review.json#3fea7323cc5f",
+      "reason": "Visually reviewed omission crops: scene signs/logos, mechanical effects, or creator/publisher credits. Real balloon/caption contours protected. Existing story geometry and relative order retained."
+    },
+    {
+      "sha_prefix": "02a3cf053331",
+      "image_sha256": "e3ff1ccee0e202c80cdc5fa87827824486edd21e55f9978cafa79d0e15311a7e",
+      "baseline_result_sha256": "a51ad06d5ae8c7db85eb7282a88d3c57f9b36d8566fe1cec375b377ce1976ba9",
+      "approved_result_sha256": "a51fde4ce16369d2238face61fe8d47b2f10f388d6e2e981ad588cd1e67732c8",
+      "visual_review": "quality-2.4.0/candidate-review.json#02a3cf053331",
+      "reason": "Visually confirmed cover/publisher promotion or cover collection. Tiny reproduced cover lettering is outside the established story-reading scope."
+    },
+    {
+      "sha_prefix": "9981351325f1",
+      "image_sha256": "c4a7461c71a1010cd613029aac9b6f44d5d314d1fefa83c6b46a13d6f8c2987e",
+      "baseline_result_sha256": "e6ac12cd0b7a534dd02d2794666a1c6e662ab3b67c2873b0117734d82d9b81cc",
+      "approved_result_sha256": "a4263535f253bab2ae3bd5086029df601c0d4f1eb4d307b9cb072f684ddada4d",
+      "visual_review": "quality-2.4.0/candidate-review.json#9981351325f1",
+      "reason": "Visually confirmed cover/publisher promotion or cover collection. Tiny reproduced cover lettering is outside the established story-reading scope."
+    },
+    {
+      "sha_prefix": "b45452ea4715",
+      "image_sha256": "0fdc23ecb0ef8bce2c423fb2a855c3b592ab860baca460f7b6c6e35f58ba5d5a",
+      "baseline_result_sha256": "bdecc3577929f19c6ea990cb9243be598ba432ac22f38f1f8e68420f36e36a20",
+      "approved_result_sha256": "ff12d7d7b4746bfd86e12b134444caf8a896f496198f11b34251f4c333c0c7f1",
+      "visual_review": "quality-2.4.0/candidate-review.json#b45452ea4715",
+      "reason": "Visually reviewed omission crops: scene signs/logos, mechanical effects, or creator/publisher credits. Real balloon/caption contours protected. Existing story geometry and relative order retained."
+    },
+    {
+      "sha_prefix": "5d719fff4ef8",
+      "image_sha256": "56aad4bd35a16adfa3bca23bf251f2d8b6382b820fb1530af72f2990b0675ac5",
+      "baseline_result_sha256": "feabfc91d9637f9b452c09b291cd7566c46f625ad6754695590ac69bb7bda3be",
+      "approved_result_sha256": "69f751903e0c746c8f81693821df99c91eee3432720825c121ddc798307a030c",
+      "visual_review": "quality-2.4.0/candidate-review.json#5d719fff4ef8",
+      "reason": "Visually reviewed omission crops: scene signs/logos, mechanical effects, or creator/publisher credits. Real balloon/caption contours protected. Existing story geometry and relative order retained."
+    },
+    {
+      "sha_prefix": "67ca72b9dfcd",
+      "image_sha256": "5665f85ce3eb302f577669cb0ae73e12abb0d48c76e83566a09f685a28e24a37",
+      "baseline_result_sha256": "598b11fc875ea182aa994bbda4f05148bdbfdfe7ff6306d62466b6232ed2ad2e",
+      "approved_result_sha256": "6852f2345c4e5d74dd6b1425f5c087c5a1e883f81255356f8b3b749d65ea975f",
+      "visual_review": "quality-2.4.0/candidate-review.json#67ca72b9dfcd",
+      "reason": "Visually reviewed omission crops: scene signs/logos, mechanical effects, or creator/publisher credits. Real balloon/caption contours protected. Existing story geometry and relative order retained."
+    },
+    {
+      "sha_prefix": "f64dca6b1262",
+      "image_sha256": "c40147d656d57d69d61e97ff1d5e522d5fa529cb9d5ab8a1722a86ebb54ca7a0",
+      "baseline_result_sha256": "ff8153207c77e632f5e3c291df2feedf279f34cbe189a41c880013e31b585d09",
+      "approved_result_sha256": "48f53cc8b955d3002498ce850c63ab7b74318dc221532bac8dca183292626758",
+      "visual_review": "quality-2.4.0/candidate-review.json#f64dca6b1262",
+      "reason": "Visually reviewed four left recap paragraphs. All story lines included, legal footer and right creator column excluded from additions. Two pre-existing editorial false positives remain visible."
+    },
+    {
+      "sha_prefix": "640f5dfea825",
+      "image_sha256": "30a6f19f119d30b2d41348b4a1fbdc0b3beb262d004544b639df7149cd757989",
+      "baseline_result_sha256": "d954848f47b8b945510d07d548a8ce9cd8ceb4293e51fd222419c57830d1019a",
+      "approved_result_sha256": "3e1bb7e62c71ba6b12adefe306b8e450d95982023bc41a5ca99695e92e227390",
+      "visual_review": "quality-2.4.0/candidate-review.json#640f5dfea825",
+      "reason": "Visually reviewed omission crops: scene signs/logos, mechanical effects, or creator/publisher credits. Real balloon/caption contours protected. Existing story geometry and relative order retained."
+    },
+    {
+      "sha_prefix": "529f60a49155",
+      "image_sha256": "4a6c4a65bd82a85cc3a8ad91f893615e36fe0657e5e178d3f10512f8728403c4",
+      "baseline_result_sha256": "835dec5c825aef49c5b4c9b54311c4e17983afdcb9905f3022569d87cf86f1a1",
+      "approved_result_sha256": "75659dcec9cc0ef7996ab880476db47362bdb864617f9f6a5b242926466bd935",
+      "visual_review": "quality-2.4.0/candidate-review.json#529f60a49155",
+      "reason": "Visually reviewed omission crops: scene signs/logos, mechanical effects, or creator/publisher credits. Real balloon/caption contours protected. Existing story geometry and relative order retained."
+    }
+  ]
+}

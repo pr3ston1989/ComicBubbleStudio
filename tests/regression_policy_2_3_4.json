@@ -1,0 +1,92 @@
+{
+  "baseline_version": "2.3.3",
+  "candidate_version": "2.3.4",
+  "changes": [],
+  "reading_order_changes": [],
+  "text_split_changes": [
+    {
+      "sha_prefix": "fa3b0550011c",
+      "reason": "Dwie odrębne kolumny narracji w Kagurabachi, s.3: How long przed Since they brought me here.",
+      "preserved_regions": {
+        "b1": "b1",
+        "b3": "b4",
+        "b4": "b5",
+        "b5": "b6",
+        "b6": "b7"
+      },
+      "splits": [
+        {
+          "old_region": "b2",
+          "new_regions": [
+            {
+              "x": 0.33035714285714285,
+              "y": 0.5554585152838428,
+              "w": 0.08928571428571429,
+              "h": 0.06462882096069869,
+              "confidence": 0.76171875,
+              "type": "text",
+              "source": "external",
+              "order": 2,
+              "id": "b2",
+              "panel_id": "p4"
+            },
+            {
+              "x": 0.13010204081632654,
+              "y": 0.5868995633187772,
+              "w": 0.15943877551020408,
+              "h": 0.05152838427947598,
+              "confidence": 0.76171875,
+              "type": "text",
+              "source": "external",
+              "order": 3,
+              "id": "b3",
+              "panel_id": "p4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sha_prefix": "74e0e058a91d",
+      "reason": "WITCHRIV, s.18: prawa myśl But I cannot see or hear anything przed lewą I am surrounded by bubbles.",
+      "preserved_regions": {
+        "b1": "b1",
+        "b2": "b2",
+        "b3": "b3",
+        "b4": "b4"
+      },
+      "splits": [
+        {
+          "old_region": "b5",
+          "new_regions": [
+            {
+              "x": 0.44315068493150683,
+              "y": 0.7980952380952381,
+              "w": 0.19383561643835617,
+              "h": 0.06523809523809523,
+              "confidence": 0.4453125,
+              "type": "text",
+              "source": "external",
+              "order": 5,
+              "id": "b5",
+              "panel_id": "p6"
+            },
+            {
+              "x": 0.09041095890410959,
+              "y": 0.8076190476190476,
+              "w": 0.2534246575342466,
+              "h": 0.08857142857142856,
+              "confidence": 0.4453125,
+              "type": "text",
+              "source": "external",
+              "order": 6,
+              "id": "b6",
+              "panel_id": "p6"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "review_scope": "Two visually inspected pages. No generic exception for any other output change."
+}

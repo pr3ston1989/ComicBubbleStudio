@@ -1,0 +1,14 @@
+{
+  "kind": "visual-reading-anchor-examples-v1",
+  "note": "Kotwice wybranych wypowiedzi ocenione wizualnie przez agenta. To test regresji kolejności, nie referencyjne maski ani benchmark całej biblioteki.",
+  "pages": [
+    {"sha_prefix":"9e5f9ab5b28d","name":"Supernatural Sam, s.15","points":[[0.80,0.07],[0.38,0.42]]},
+    {"sha_prefix":"d69a310643f3","name":"Magical Girl Dandelion, s.16","points":[[0.80,0.16],[0.88,0.55],[0.84,0.68],[0.65,0.65],[0.13,0.82]]},
+    {"sha_prefix":"33234ff8d8f9","name":"Haunted Peak, s.13","points":[[0.59,0.10],[0.41,0.24],[0.85,0.51],[0.17,0.59]]},
+    {"sha_prefix":"c40e3d9d352d","name":"Haunted Peak, s.17","points":[[0.84,0.35],[0.53,0.41],[0.20,0.40],[0.77,0.61],[0.22,0.86]]},
+    {"sha_prefix":"959f815ae951","name":"Fly Me to the Moon, s.9 — połączone dymki i interpunkcja","points":[[0.79,0.16],[0.23,0.19],[0.78,0.40],[0.73,0.56],[0.26,0.58],[0.84,0.74],[0.70,0.75],[0.41,0.79],[0.16,0.86]]},
+    {"sha_prefix":"e4b760110992","name":"Hatori i Furuta, s.14 — narracja RTL; dodatkowy szyld pozostaje błędem","points":[[0.82,0.39],[0.53,0.57],[0.34,0.37],[0.13,0.56],[0.87,0.80],[0.25,0.80]]},
+    {"sha_prefix":"1911ad2cc260","name":"Avengelyne, s.12 — fioletowe dymki i narracja LTR","points":[[0.18,0.05],[0.10,0.37],[0.64,0.35],[0.34,0.59],[0.70,0.67],[0.79,0.75]]},
+    {"sha_prefix":"0d2a09edf280","name":"Midnight X-Men, s.27 — czarne dymki LTR","points":[[0.21,0.05],[0.50,0.08],[0.65,0.05],[0.85,0.20],[0.29,0.30],[0.40,0.32],[0.81,0.30],[0.65,0.48]]}
+  ]
+}

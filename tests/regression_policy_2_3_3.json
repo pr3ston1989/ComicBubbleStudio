@@ -1,0 +1,364 @@
+{
+  "baseline": "2.3.2",
+  "changes": [
+    {
+      "sha_prefix": "cadfdf97a990",
+      "region_id": "b1",
+      "allowed_fields": [
+        "x",
+        "y",
+        "w",
+        "h",
+        "type",
+        "polygon",
+        "polygons"
+      ],
+      "expected_type": "text",
+      "max_bbox_area_ratio": 0.5,
+      "reason": "Narration in blank page-edge background was outlined around figures; retain all 8 OCR lines and reading order."
+    },
+    {
+      "sha_prefix": "6f2ceed303c4",
+      "region_id": "b3",
+      "allowed_fields": [
+        "x",
+        "y",
+        "w",
+        "h",
+        "type",
+        "polygon",
+        "polygons"
+      ],
+      "expected_type": "text",
+      "max_bbox_area_ratio": 0.4,
+      "reason": "Free utterance THAT'S ALL I NEEDED TO KNOW was outlined around a car; retain all 3 OCR lines and reading order."
+    }
+  ],
+  "reading_order_changes": [
+    {
+      "sha_prefix": "1f6d6374d69d",
+      "old_region_sequence": [
+        "b1",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b2",
+        "b7"
+      ],
+      "old_panel_sequence": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "review_type": "neutral",
+      "reason": "Existing catalog false detections are reordered; no story dialogue is present and classification remains wrong."
+    },
+    {
+      "sha_prefix": "adff500676ab",
+      "old_region_sequence": [
+        "b1",
+        "b4",
+        "b2",
+        "b3",
+        "b5"
+      ],
+      "old_panel_sequence": [],
+      "review_type": "improved",
+      "reason": "Finish the top WHEN YOU / FINALLY SLEEP balloon before the lower I WILL MAKE / GOOD MORNING sequence."
+    },
+    {
+      "sha_prefix": "3411f3cc4452",
+      "old_region_sequence": [
+        "b1",
+        "b2",
+        "b3",
+        "b5",
+        "b4",
+        "b6"
+      ],
+      "old_panel_sequence": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "review_type": "improved",
+      "reason": "Read right-side IIIH before left-side NEH/AH in the same manga panel."
+    },
+    {
+      "sha_prefix": "5e20c4ed9c00",
+      "old_region_sequence": [
+        "b1",
+        "b2",
+        "b6",
+        "b3",
+        "b4",
+        "b5",
+        "b7",
+        "b8",
+        "b9"
+      ],
+      "old_panel_sequence": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "review_type": "improved",
+      "reason": "Finish the top-panel JACEN explanation before the following tall left panel."
+    },
+    {
+      "sha_prefix": "d1832563e4c0",
+      "old_region_sequence": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b8",
+        "b7",
+        "b9"
+      ],
+      "old_panel_sequence": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "review_type": "improved",
+      "reason": "The interrupted HOW utterance precedes the narrator quoting and completing it."
+    },
+    {
+      "sha_prefix": "cd4a8114e01f",
+      "old_region_sequence": [
+        "b2",
+        "b1",
+        "b3",
+        "b4",
+        "b5"
+      ],
+      "old_panel_sequence": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "review_type": "improved",
+      "reason": "CONCORDIA at upper right precedes KNIGHTS OF LIGHT at upper left in RTL."
+    },
+    {
+      "sha_prefix": "8fe52db7b7ab",
+      "old_region_sequence": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b8",
+        "b7",
+        "b9",
+        "b10",
+        "b11",
+        "b12",
+        "b13"
+      ],
+      "old_panel_sequence": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6"
+      ],
+      "review_type": "neutral",
+      "reason": "Relative order of URK and HA HA changes; genuine dialogue order is unchanged and the effect-classification issue remains."
+    },
+    {
+      "sha_prefix": "c8b7b0c85404",
+      "old_region_sequence": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b10",
+        "b9",
+        "b11"
+      ],
+      "old_panel_sequence": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6",
+        "p7",
+        "p8"
+      ],
+      "review_type": "neutral",
+      "reason": "WHEW and GRIP reorder within the panel; existing effect/label false positives remain."
+    },
+    {
+      "sha_prefix": "e4b760110992",
+      "old_region_sequence": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b6",
+        "b5",
+        "b7"
+      ],
+      "old_panel_sequence": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "review_type": "neutral",
+      "reason": "Movie-poster narration moves before the existing CINEMA CLUB false stop. True narration order is unchanged."
+    },
+    {
+      "sha_prefix": "d27b74088c45",
+      "old_region_sequence": [
+        "b1",
+        "b4",
+        "b2",
+        "b3",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9",
+        "b11",
+        "b10",
+        "b12",
+        "b13",
+        "b14",
+        "b15"
+      ],
+      "old_panel_sequence": [
+        "p1",
+        "p2"
+      ],
+      "review_type": "improved",
+      "reason": "Right-side manga dialogue precedes its left-side reply in the first and third horizontal panels. Effects and footnotes remain."
+    },
+    {
+      "sha_prefix": "295c5a811147",
+      "old_region_sequence": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b8",
+        "b7",
+        "b9",
+        "b10",
+        "b11"
+      ],
+      "old_panel_sequence": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "review_type": "improved",
+      "reason": "The YOU HAVE FEELINGS question precedes the NO, OF COURSE NOT answer."
+    },
+    {
+      "sha_prefix": "bb916ffd0c70",
+      "old_region_sequence": [
+        "b1",
+        "b3",
+        "b2",
+        "b4",
+        "b5",
+        "b6"
+      ],
+      "old_panel_sequence": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "review_type": "improved",
+      "reason": "SORRY I AM LATE on the right precedes the longer explanation to its left. Study-hall sign false positive remains."
+    },
+    {
+      "sha_prefix": "6a9a931eb21b",
+      "old_region_sequence": [
+        "b1",
+        "b2",
+        "b3",
+        "b5",
+        "b4",
+        "b6",
+        "b7",
+        "b8",
+        "b9"
+      ],
+      "old_panel_sequence": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "review_type": "improved",
+      "reason": "Read NHO at the right of the upper-left manga panel before HUH at its left."
+    },
+    {
+      "sha_prefix": "714181deab5c",
+      "old_region_sequence": [
+        "b1",
+        "b3",
+        "b2",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8"
+      ],
+      "old_panel_sequence": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "review_type": "improved",
+      "reason": "Top-right thought, central TAP TAP balloon and left thought follow RTL within one panel."
+    },
+    {
+      "sha_prefix": "1900fd7ebe23",
+      "old_region_sequence": [
+        "b7",
+        "b1",
+        "b8",
+        "b2",
+        "b3",
+        "b5",
+        "b9",
+        "b4",
+        "b6",
+        "b10"
+      ],
+      "old_panel_sequence": [
+        "p1",
+        "p3",
+        "p5",
+        "p2",
+        "p4",
+        "p6"
+      ],
+      "review_type": "improved",
+      "reason": "Finish the unframed top conversation, then read each horizontal row of the lower 3-column grid. Existing logo false detection remains."
+    }
+  ]
+}

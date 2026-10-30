@@ -1,0 +1,207 @@
+{
+  "version": "2.4.0",
+  "note": "Visual observations from user-provided pages. These are a backlog, not full ground-truth masks or a measured error rate. Never delete text automatically to make this list shorter.",
+  "issues": [
+    {
+      "sha_prefix": "cadfdf97a990",
+      "kind": "artwork-mask",
+      "description": "Dealing with Mikadono Sisters, p.6: narration at upper left gets a contour following figures and the panel.",
+      "status": "resolved",
+      "resolved_in": "2.3.3"
+    },
+    {
+      "sha_prefix": "b67b452ede74",
+      "kind": "possible-missed-free-text",
+      "description": "Dealing with Mikadono Sisters, p.17: curved WELCOME BACK at lower right needs explicit free-text review.",
+      "status": "open"
+    },
+    {
+      "sha_prefix": "5a8f75802cb4",
+      "kind": "artwork-mask",
+      "description": "Animal Signal, p.8: scattered narration around the full-height figure is covered by a panel-sized contour.",
+      "status": "open"
+    },
+    {
+      "sha_prefix": "c8b7b0c85404",
+      "kind": "effect-or-sign",
+      "description": "ROAD-STAR, p.4: PRESS/GRIP effects or labels are included among speech stops.",
+      "status": "open"
+    },
+    {
+      "sha_prefix": "e4b760110992",
+      "kind": "sign-as-speech",
+      "description": "Hatori and Furuta, p.14: CINEMA CLUB TWODOORS is an extra speech stop. The actual narration anchors retain order.",
+      "status": "open"
+    },
+    {
+      "sha_prefix": "6f2ceed303c4",
+      "kind": "artwork-mask",
+      "description": "Aztec Turning of Heaven, p.18: THAT'S ALL I NEEDED TO KNOW! contour includes the car.",
+      "status": "resolved",
+      "resolved_in": "2.3.3"
+    },
+    {
+      "sha_prefix": "465cb60fc073",
+      "kind": "object-as-balloon",
+      "description": "Stop! I'm Falling For You, p.7: clock in top panel is outlined as a speech balloon.",
+      "status": "open"
+    },
+    {
+      "sha_prefix": "7533c0a6f566",
+      "kind": "advertisement",
+      "description": "12 false stops on this scheduled-event advertisement removed reversibly. Other advertising formats remain open.",
+      "status": "resolved",
+      "resolved_in": "2.3.5"
+    },
+    {
+      "sha_prefix": "71bf7e63ca63",
+      "kind": "missed-narrative-prose",
+      "description": "Kingdom of Earth, p.26: appendix page has readable prose but no speech balloons. Decide separately whether this mode should read appendices. Included as readable story-world prose in full 170-page reference; all missed fields are now penalized.",
+      "status": "open"
+    },
+    {
+      "sha_prefix": "1b06c0e0d88f",
+      "kind": "missed-narrative-prose",
+      "description": "Pop Kill Big Candy, p.30: character biography is outside current balloon detection. Keep separate from story-dialogue recovery. Included as readable story-world prose in full 170-page reference; all missed fields are now penalized.",
+      "status": "open"
+    },
+    {
+      "sha_prefix": "286cb5e450d1",
+      "kind": "artwork-mask",
+      "description": "Salamander: bottom-left contour includes surrounding art and THUD.",
+      "status": "open"
+    },
+    {
+      "sha_prefix": "bf2f031a0804",
+      "kind": "object-as-balloon",
+      "description": "Red Cat Ramen: top-right door around SLIDE is outlined as a balloon.",
+      "status": "open"
+    },
+    {
+      "sha_prefix": "6f2ceed303c4",
+      "kind": "reading-order",
+      "status": "open",
+      "description": "Aztec, p.18: incomplete detected panel structure still interleaves the tall right frame with left frames."
+    },
+    {
+      "sha_prefix": "465cb60fc073",
+      "kind": "reading-order",
+      "status": "open",
+      "description": "Stop!, p.7: one reference reading-order inversion remains in the third frame."
+    },
+    {
+      "sha_prefix": "74e0e058a91d",
+      "kind": "missed-thought",
+      "status": "resolved",
+      "description": "WITCHRIV, p.18: two lower thoughts were merged into one text rectangle. Separate OCR columns restore both reading stops.",
+      "resolved_in": "2.3.4"
+    },
+    {
+      "sha_prefix": "bb916ffd0c70",
+      "kind": "sign-as-speech",
+      "status": "open",
+      "description": "Noro-Noro Puku-Puku, p.6: STUDY HALL is an extra speech stop."
+    },
+    {
+      "sha_prefix": "1900fd7ebe23",
+      "kind": "artwork-as-text",
+      "status": "open",
+      "description": "Avengelyne, p.20: a top ornament creates a false text region, although real dialogue order is corrected."
+    },
+    {
+      "sha_prefix": "9819d506a736",
+      "kind": "duplicate-merged-region",
+      "status": "open",
+      "description": "Sabrina: connected balloon and its inner text overlap as duplicate stops. The new layout safeguard preserves the earlier order."
+    },
+    {
+      "sha_prefix": "fa3b0550011c",
+      "kind": "merged-thoughts",
+      "status": "resolved",
+      "resolved_in": "2.3.4",
+      "description": "Kagurabachi, p.3: How long and Since they brought me here are now separate stops. Lower narration still has overlapping rectangles."
+    },
+    {
+      "sha_prefix": "ab7daff8de6b",
+      "kind": "small-asides-and-credits",
+      "status": "open",
+      "description": "Paired credits removed in 2.3.5. HEY HEY and See chapter 7 still lack separate stops; upper speech follows the window. Remaining story errors stay open."
+    },
+    {
+      "sha_prefix": "e22faa66d97e",
+      "kind": "appendix-grouping",
+      "status": "open",
+      "description": "Pop Kill, p.32: character profile fields and biography paragraphs are largely merged into one tall text region. The full reading reference intentionally lists each field/paragraph separately."
+    },
+    {
+      "sha_prefix": "0fd8183fd139",
+      "kind": "promotional-collage-as-story",
+      "status": "open",
+      "description": "Sabrina, p.2: promotional cover mosaic produces 123 false reading stops. The complete-page reference expects none."
+    },
+    {
+      "sha_prefix": "499fc610440c",
+      "kind": "artwork-as-text",
+      "status": "open",
+      "description": "Midnight X-Men, p.16: real dialogue order is correct, but an additional region outlines artwork in the bottom-left frame."
+    },
+    {
+      "sha_prefix": "ab7daff8de6b",
+      "kind": "paired-editorial-credits",
+      "status": "resolved",
+      "resolved_in": "2.3.5",
+      "description": "Two false Translation/Lettering reading stops removed reversibly."
+    },
+    {
+      "sha_prefix": "261c0cf9c404",
+      "kind": "split-connected-balloons",
+      "status": "open",
+      "description": "Several connected balloons are split; lower text and connecting tails are incomplete. See manual review."
+    },
+    {
+      "sha_prefix": "00156027309c",
+      "kind": "missed-free-thoughts",
+      "status": "open",
+      "description": "Three prose blocks in the oblique middle frame are missed; lower two thoughts are merged."
+    },
+    {
+      "sha_prefix": "b6c501e0b380",
+      "kind": "cover-gallery",
+      "status": "open",
+      "description": "24 false regions on a cover gallery; strict event-ad filter deliberately does not suppress it."
+    },
+    {
+      "sha_prefix": "499fc610440c",
+      "kind": "clipped-tails",
+      "status": "open",
+      "description": "Seven real speech geometries fail strict visual inspection of visible tail endpoints."
+    },
+    {
+      "sha_prefix": "00156027309c",
+      "kind": "recovery-after-conflicts",
+      "description": "Three middle thoughts are recovered after rejecting overlapping masks; staircase order prevents two new inversions. Lower merged thought, fallback spiky outline and earlier lower-panel order inversion remain.",
+      "status": "partial",
+      "improved_in": "2.3.6"
+    },
+    {
+      "sha_prefix": "f64dca6b1262",
+      "kind": "missed-recap",
+      "description": "Four recap paragraphs recovered as separate reading stops; two earlier editorial false detections still remain.",
+      "status": "resolved",
+      "resolved_in": "2.4.0"
+    },
+    {
+      "sha_prefix": "a01611ba8bea",
+      "kind": "missing-long-tail",
+      "description": "Earlier verdict was wrong: the alleged lower-right tail is a clothing cuff. Actual closed balloon and upper-right tail were already covered. Corrected equally for both compared versions, not an algorithm gain.",
+      "status": "withdrawn-annotation",
+      "corrected_in": "2.4.0"
+    },
+    {
+      "kind": "page-context",
+      "status": "partial",
+      "improved_in": "2.4.0",
+      "description": "42 additional story stops, 244 fewer extras and 20 fewer inversions on 198-page corpus. Existing thin-tail errors remain. Context crop classification cannot delete individual contours."
+    }
+  ]
+}
