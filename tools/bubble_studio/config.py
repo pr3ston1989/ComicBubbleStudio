@@ -3,9 +3,9 @@
 import json
 from pathlib import Path
 
-VERSION = 'bubble-studio-2.5.2'
+VERSION = 'bubble-studio-2.5.3'
 # Refinement changes require a fresh analysis of unverified checkpoints.
-ENGINE_VERSION = 'bubble-studio-2.5.2'
+ENGINE_VERSION = 'bubble-studio-2.5.3'
 CHOICES = {'direction': {'ltr', 'rtl'}, 'layout': {'auto', 'rows', 'columns', 'single'},
            'quality': {'precise', 'fast'}}
 BOOLS = {'skip', 'include_free_text'}

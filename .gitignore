@@ -19,3 +19,6 @@ test_results/
 *.cbz
 *.cbr
 *.nokturn-bubbles.zip
+
+/.updates/
+/DYSTRYBUCJA/

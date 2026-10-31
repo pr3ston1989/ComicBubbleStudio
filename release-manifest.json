@@ -1,6 +1,6 @@
 {
   "format": "nokturn-bubble-studio-release-v1",
-  "version": "2.5.2",
+  "version": "2.5.3",
   "files": [
     {
       "path": "assets/bubble-studio.ico",
@@ -32,7 +32,7 @@
     },
     {
       "path": "JAKOSC.md",
-      "sha256": "2f98b876ef371ddc7c888d9f1c613b07bc2a2f386187ad95e64e8aa7028514b2"
+      "sha256": "9c50b2aa4ae3b96fb9ced569a66594cff8edaad4c03b03eb08efcc8f1dc7aa36"
     },
     {
       "path": "PRZETWORZ.bat",
@@ -40,11 +40,11 @@
     },
     {
       "path": "README.md",
-      "sha256": "a553cac4cb2d1e9b547b5a50da2800f0fec02711aecd15a30f44144b0f23e002"
+      "sha256": "673ca216ee8a277e815a481c55039684414fa3a8a85ad4fbe99a4f938787ce4e"
     },
     {
       "path": "RESEARCH.md",
-      "sha256": "a33052b1aa89542b7ce68ff07b32a7a1d7f331be4fe7dfee7c5bbd98072c7952"
+      "sha256": "2c445075df6215f5cb6f4c756018edce49f6704437b708e788f849f632c2043a"
     },
     {
       "path": "scripts/build_release.py",
@@ -211,6 +211,10 @@
       "sha256": "ed55915db0751d3716c27be37f3f9c33310e3c4dffa1fb81abfadcd6d65437fc"
     },
     {
+      "path": "tests/test_panel_background253.py",
+      "sha256": "348a44ad6b30d27c63d1918f81648d7db69ead8a372800a4cd959337aa1a331d"
+    },
+    {
       "path": "tests/test_pdf_input.py",
       "sha256": "cc424d935f69cb9d1261172883aa52b26fc440a36183d9a84cd652767ae0aa42"
     },
@@ -249,6 +253,10 @@
     {
       "path": "tests/test_review_filter_ui.py",
       "sha256": "6e13a18326b202125f7a51a282aba62027735c62e78aa7f4dc0f08b839e07e7f"
+    },
+    {
+      "path": "tests/test_short_text253.py",
+      "sha256": "f04420ac274650037e221917d0093e8b798d96b9157fa5e720fc8cb8157b39c7"
     },
     {
       "path": "tests/test_staggered_text.py",
@@ -316,7 +324,7 @@
     },
     {
       "path": "tools/bubble_studio/config.py",
-      "sha256": "7dc53cc00ed8f840454204a4a128c40750205b5235df5979dacf23ea81e03337"
+      "sha256": "44b52b0c6e30715ae47a1f579f02d84f0f0b81b1a34999abeddcdffc99add690"
     },
     {
       "path": "tools/bubble_studio/content_filter.py",
@@ -371,6 +379,10 @@
       "sha256": "8eae2bc39bf2d2f60abb33ed569c028cb7732f76bbef57336e6c08c3ac94c209"
     },
     {
+      "path": "tools/bubble_studio/finish253.py",
+      "sha256": "af5e5464a272d853998b2f09dc38ef3522593cdfda5136179330c9e8e73798f2"
+    },
+    {
       "path": "tools/bubble_studio/geometry.py",
       "sha256": "435169137261f118e3aef0187138cb914ce9c0472c34c6973d5f0a5174ba83e8"
     },
@@ -388,7 +400,7 @@
     },
     {
       "path": "tools/bubble_studio/models.py",
-      "sha256": "0850d89c10e72208a57dea5bc8069f1c4844c43c2bef00294eedf82eee02cfdb"
+      "sha256": "50379c42ea9e53745db9dfdc9dffb3d20ef7c21c64e988d7643cef5f3a021d44"
     },
     {
       "path": "tools/bubble_studio/native_body.py",
@@ -409,6 +421,10 @@
     {
       "path": "tools/bubble_studio/page_finish.py",
       "sha256": "b4ed5f67f77fc32a6ad692c0844359a793b2623088c453f2b527afa2b5866728"
+    },
+    {
+      "path": "tools/bubble_studio/panel_background.py",
+      "sha256": "25cfa991f735b2afeb355719c47892bc55d2faf824fab6bf950eaaf1fa2ada79"
     },
     {
       "path": "tools/bubble_studio/panel_gutters.py",
@@ -440,7 +456,7 @@
     },
     {
       "path": "tools/bubble_studio/quality_lab.py",
-      "sha256": "e399a3fd2fcd12e3cd32e5e32b14c56d4d24649f5baddc375ecd7db83f760b4b"
+      "sha256": "a8e52eb739c2fd2fa8601f8aa90463c1a4cc92aaf5f777ee0461a17eaa872cdd"
     },
     {
       "path": "tools/bubble_studio/quality_metrics.py",
@@ -456,7 +472,7 @@
     },
     {
       "path": "tools/bubble_studio/README.md",
-      "sha256": "a553cac4cb2d1e9b547b5a50da2800f0fec02711aecd15a30f44144b0f23e002"
+      "sha256": "673ca216ee8a277e815a481c55039684414fa3a8a85ad4fbe99a4f938787ce4e"
     },
     {
       "path": "tools/bubble_studio/refinement.py",
@@ -485,6 +501,10 @@
     {
       "path": "tools/bubble_studio/segmentation.py",
       "sha256": "02d18b0b8f01f0fdf1b6c58a33c36e2734550cb137b7c7897a8ba00c87279815"
+    },
+    {
+      "path": "tools/bubble_studio/short_text.py",
+      "sha256": "c8c7c13257665fc4e9043dcbc95767a0b319500aac7cd8045db4938a6080c047"
     },
     {
       "path": "tools/bubble_studio/SPRAWDZ.bat",

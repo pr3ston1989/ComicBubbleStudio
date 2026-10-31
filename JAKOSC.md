@@ -1,5 +1,34 @@
 # Warsztat doszlifowywania Bubble Studio 2.4
 
+## Nowości 2.5.3 — krótkie podpisy i obszary myśli (2026-11-01)
+
+Wynik na wszystkich **298 stronach / 1834 oczekiwanych przystankach: 97,05%**.
+Cel 98% pozostaje nieosiągnięty. Na identycznych 298 stronach poprzednia
+wersja ma 96,97%. Na dotychczasowych 292 stronach:
+96,98% → 97,05%. Rozszerzenie próby jest oddzielone od wpływu kodu.
+F1 wykrywania: 95,61%; obrysy: 96,40%;
+kolejność par: 99,16%. 173/298 stron jest całkowicie bez uwag.
+To ocena agenta, nie niezależny pomiar ekspercki ani dokładność transkrypcji OCR.
+
+Na wcześniejszych 292 stronach odzyskano pięć pominiętych krótkich podpisów/
+objaśnień i poprawiono jedną maskę obejmującą tło zamiast samej myśli. Każde
+dodanie wymaga niezależnego OCR, dwóch kontroli treści oraz potwierdzenia
+miejsca przez cały dotychczasowy prefiks i sufiks kolejności. Dwie odpowiedzi
+modelu nie mogą same ustalić kolejności. Wariant błędnie wstawiający nazwę
+postaci został odrzucony. Paski 4koma pozostają chronione.
+
+Sześć nowych stron wybrano przed przewidywaniami, a wzorzec zapisano po
+obejrzeniu samych oryginałów. Reguły były zamrożone przed próbą. Wszystkie
+strony doliczono, w tym niemy fragment opowieści; wynik tej szóstki: 96,87%.
+Nie dopasowano kodu do nowych błędów ujawnionych w tej próbie.
+Brak pogorszeń na każdej z 298 stron. Zaliczono 492 testy programu.
+Raport opisuje także pełne kontrole GPU i zgodność pakietów z czytnikiem.
+
+Krótki ogonek nie dyskwalifikuje dymka przy poprawnym korpusie i tekście.
+Główną funkcją jest przygotowanie dymków do Nokturna; PDF i eksport OCR są
+dodatkami, eksport domyślnie wyłączony. Raport:
+`PRACA/quality-2.5.3/PODSUMOWANIE.html`.
+
 ## Nowości 2.5.2 — mniej nadmiarowych wykryć (2026-10-30)
 
 Wynik na wszystkich **292 stronach / 1793 oczekiwanych przystankach: 96,98%**.

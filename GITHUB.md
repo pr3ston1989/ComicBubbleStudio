@@ -1,13 +1,13 @@
 # ComicBubbleStudio — Nokturn Bubble Studio
 
 Samodzielne repozytorium narzędzia do przygotowania obrysów dymków i kolejności
-czytania dla Nokturna. Bieżące wydanie: **2.5.2**.
+czytania dla Nokturna. Bieżące wydanie: **2.5.3**.
 
 ## Pobieranie
 
-- [Instalator Windows x64](https://github.com/pr3ston1989/ComicBubbleStudio/releases/download/v2.5.2/Nokturn-Bubble-Studio-2.5.2-Setup.exe)
-- [Paczka ZIP Windows x64](https://github.com/pr3ston1989/ComicBubbleStudio/releases/download/v2.5.2/Nokturn-Bubble-Studio-2.5.2-windows-x64.zip)
-- [Wydanie i sumy SHA-256](https://github.com/pr3ston1989/ComicBubbleStudio/releases/tag/v2.5.2)
+- [Instalator Windows x64](https://github.com/pr3ston1989/ComicBubbleStudio/releases/download/v2.5.3/Nokturn-Bubble-Studio-2.5.3-Setup.exe)
+- [Paczka ZIP Windows x64](https://github.com/pr3ston1989/ComicBubbleStudio/releases/download/v2.5.3/Nokturn-Bubble-Studio-2.5.3-windows-x64.zip)
+- [Wydanie i sumy SHA-256](https://github.com/pr3ston1989/ComicBubbleStudio/releases/tag/v2.5.3)
 
 Paczki zawierają program uruchamiający i instalujący zależności. Środowisko
 Python i przypięte wagi modeli są pobierane podczas konfiguracji. Wagi modeli,
@@ -16,26 +16,30 @@ Instrukcje sprzętowe i obsługa: [README.md](README.md).
 
 ## Sprawdzona jakość
 
-Na zachowanych 292 stronach / 1793 oczekiwanych przystankach: **96,98%** łącznie.
-F1 wykrywania 95,56%; akceptacja obrysów 96,24%; poprawność par kolejności 99,17%.
-Przy identycznym zestawie i kryterium poprzednia wersja ma 96,88%.
-To ocena agenta na lokalnym korpusie, nie niezależny pomiar ekspercki ani
-gwarancja jakości każdego komiksu. 166/292 stron jest całkowicie bez uwag.
-Cel 97% nie został osiągnięty: niezaokrąglony wynik 96,97755885038801%.
+Wersja 2.5.3: **97,05% na 298 stronach / 1834 przystankach**.
+F1 wykrywania 95,61%; obrysy 96,40%;
+kolejność par 99,16%. Na identycznych 298 stronach poprzednia
+wersja uzyskuje 96,97%. Na zachowanych 292 stronach poprawa
+wynosi 96,98% → 97,05%: odzyskano pięć kwestii
+i naprawiono jeden obszar myśli. Cel 98% pozostaje nieosiągnięty.
 
-Niepełny ogonek jest dopuszczalny przy poprawnym korpusie i tekście. Kryterium
-jest jednakowe dla wszystkich stron i obu porównywanych wersji. Średnia
-geometryczna obejmuje F1 wykrywania, wizualną akceptację obrysów i poprawność
-par kolejności. Nie mierzy dokładności transkrypcji OCR ani przeplatania głosów
-wewnątrz połączonych fizycznie dymków. Sześć nowych stron dało 98,30%; taka mała
-próba nie jest statystycznym potwierdzeniem uniwersalności.
+To ocena agenta, nie niezależny pomiar ekspercki ani gwarancja dla każdego
+komiksu. 173/298 stron jest całkowicie bez uwag. Metryka jest średnią
+geometryczną F1, akceptacji obrysów i poprawności par kolejności; nie mierzy
+dokładności OCR ani przeplatania głosów wewnątrz połączonych dymków.
+Niepełne ogonki są dopuszczalne wyłącznie przy poprawnym korpusie i tekście.
 
-Zaliczono 454 testy programu i 15 pełnych kontroli GPU; poprawne odpowiedzi
-modelu kontekstu wykorzystywano ponownie z pamięci. Wszystkie 292 wyniki
-zwalidowano dla czytnika Nokturna, wykonano zapis/odczyt 12 rzeczywistych stron
-oraz osiem kontroli dystrybucji. Szczegóły agregatów:
-[docs/quality-2.5.2.json](docs/quality-2.5.2.json).
-Pełne raporty z obrazami pozostają lokalne u właściciela korpusu.
+Sześć nowych stron miało kompletny wzorzec zapisany z oryginałów przed
+przewidywaniami. Reguły były zamrożone; wynik tej próby: 96,87%.
+Wszystkie strony pozostają w mianowniku. Taka mała próba nie stanowi
+statystycznego potwierdzenia uniwersalności. Nowe błędy nie zostały usunięte
+przez dopasowywanie kodu do tej szóstki. Brak pogorszenia na każdej z 298 stron.
+
+Zaliczono 492 testy programu, 13 pełnych kontroli GPU, walidację 298 wyników
+czytnika, zapis/odczyt pakietu 12 rzeczywistych stron i osiem kontroli
+dystrybucji. Kontrole GPU korzystały ponownie z poprawnych zapisanych
+odpowiedzi modelu kontekstu. [Agregaty i ograniczenia](docs/quality-2.5.3.json).
+Pełne raporty z oryginałami komiksów pozostają lokalne.
 
 ## Testy i budowanie
 
