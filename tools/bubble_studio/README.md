@@ -1,4 +1,82 @@
-# Nokturn Bubble Studio 2.9.0
+# Nokturn Bubble Studio 2.10.0
+
+## Nowości 2.10.0 — kolejność cienkich kadrów i duża próba 100 stron (2026-11-01)
+
+**97,75% na wszystkich 462 stronach / 2846 przystankach.**
+Na identycznym zestawie wersja 2.9.0: **97,72%**.
+Zysk z kodu: 0,021 punktu procentowego. Na wcześniejszych 362:
+97,76% → 97,79%. Drobne poprawki dają już niewielkie zyski.
+
+Nowy etap rozpoznaje także bardzo cienkie jasne przerwy między kadrami,
+gdy wspiera je ciągła ciemna ramka i stabilność przy dwóch progach jasności.
+Wymaga pełnego przypisania tekstów, co najmniej trzech grup oraz konfliktu
+z dotychczasowym przypisaniem do kadru. Nie przecina tekstu, nie zmienia
+obrysów ani końcówek ogonków i zachowuje kolejność wewnątrz grup. Chroni
+ręczne poprawki, strony zweryfikowane i rozpoznane paski 4koma. Oryginał
+wyniku można odtworzyć. Nie ma wyjątków nazw tytułów, stron czy współrzędnych.
+Usunięto siedem błędnych par kolejności na jednej wcześniejszej stronie;
+na pozostałych 461 wyniki pozostały identyczne. Każda strona bez regresji.
+
+**100 nowych losowych stron: 97,52%.**
+Kod zamrożono przed losowaniem. Seed 2026110110; 36 stron ze wszystkich
+11 dostępnych komiksów zachodnich, 56 z 28 losowo wybranych archiwów mang
+oraz 8 z Azumangi. Łącznie 40 archiwów. Wszystkie wpisy były dopuszczone,
+w tym okładki, reklamy i strony puste. Żadnej trudnej strony nie usunięto.
+Nowość sprawdzono według SHA i par archiwum/wpis wobec dotychczasowych 362.
+To nowe strony znanych tytułów, a nie test generalizacji na nowych seriach.
+
+| Miara — 100 nowych stron | Wynik |
+|---|---:|
+| Wykrywanie F1 | 95,45% |
+| Akceptacja dopasowanych obrysów | 98,85% |
+| Poprawne pary kolejności | 98,30% |
+| Trafienia / wzorcowe fizyczne przystanki | 524 / 547 |
+| Nadmiarowe / pominięte przystanki w F1 | 27 / 23 |
+| Odrzucone obrysy / błędne pary kolejności | 6 / 31 |
+| Strony bez uwag, łącznie ze stronami bez kwestii | 55/100 |
+| Strony z treścią bez uwag | 41/84 (48,81%) |
+
+Dodatkowa kontrola punktów tekstu wykazała 21 całkowicie nieobjętych kwestii
+oraz dwa połączone dymki rozbite na części, mimo zachowania wszystkich
+punktów tekstu. Pokryto 619/641 punktów; nie jest to pomiar dokładności OCR
+ani pokrycia każdego słowa. Pozostały krótkie reakcje bez obrysu, etykiety
+postaci, nagłówki, fałszywe oczy/twarze, napisy na przedmiotach, SFX i maski
+podążające za rysunkiem. W 4koma wykryto także zbyt wczesne odczytanie tytułu
+lewego paska: siedem błędnych par mimo zachowanej kolejności dialogów prawego.
+Na nowych 100 stronach poprawka nie zmieniła żadnego wyniku.
+
+Pierwotny wzorzec partii po dziesięć stron zapisano z oryginałów przed ich
+wykrywaniem; żadnych nakładek detektora nie oglądano podczas anotowania.
+Audyt natywnych oryginałów skorygował grupowanie na ośmiu stronach, jeden
+błąd przypisania kolejności do kadru i jeden punkt postawiony obok liter.
+Wszystkie teksty zachowano. Oryginalny wzorzec557, korekty, obrazy dowodowe
+i pomiar pierwotny **97,14%** pozostają zachowane.
+Wspólny wzorzec547 stosuje się do obu wersji; zmiana wzorca nie jest zyskiem
+z kodu. Wyników samego detektora nie poprawiano ręcznie.
+
+Opisowy przedział po 3000 losowaniach całych archiwów tej próby:
+96,59%–98,24%. Opisuje wyłącznie zmienność obecnej
+biblioteki; nie uwzględnia błędów ocen ani brakujących stylów i języków.
+Szczególnie potrzebne są inne 4koma, pionowy japoński, webtoony, europejski
+BD i gorsze skany. Aktualna próba to głównie wydania i tłumaczenia angielskie.
+
+Wszystkie 462: F1 **96,61%**, obrysy **97,49%**,
+kolejność **99,16%**; TP2748, FP95, FN98, 69 odrzuconych
+obrysów i 93 błędne pary / 11027. Bez uwag 292/462 (63,20%). Średnia
+geometryczna tych trzech miar jest oceną agenta, nie niezależnym audytem,
+dokładnością transkrypcji OCR ani procentem idealnych stron. Połączone
+korpusy są jednym przystankiem; miara nie ocenia pełnego wewnętrznego
+przeplotu kwestii. Drobny brak ogonka pozostaje dopuszczalny.
+
+**610 testów Studio**, 100 pełnych analiz GPU, trzy kontrole pełnego
+aktualnego silnika, walidacja wszystkich 462 stron, zapis/odczyt ośmiu stron
+paczki i osiem kontroli instalatora. 114 wcześniejszych plików Python
+zachowano bajtowo; dodano tylko nowy etap, testy, wywołanie i wersję silnika.
+Studio nadal przygotowuje dane dymków; powiększanie i animacje realizuje
+Nokturn. Źródeł Nokturna nie zmieniano. OCR/PDF pozostaje dodatkiem.
+
+Raport prywatny: PRACA/quality-2.10.0/PODSUMOWANIE.html.
+Modele, komiksy, nagrania i podglądy nie trafiają do publicznej paczki.
 
 ## Nowości 2.9.0 — mniej fałszywych dymków i uczciwa nowa próba (2026-11-01)
 
