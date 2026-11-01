@@ -10,3 +10,5 @@ segmentation-models-pytorch==0.5.0
 rapidocr-onnxruntime==1.4.4
 onnxruntime==1.23.2
 pypdfium2==5.14.0
+accelerate==1.15.0
+bitsandbytes==0.50.2

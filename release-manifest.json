@@ -1,6 +1,6 @@
 {
   "format": "nokturn-bubble-studio-release-v1",
-  "version": "2.5.3",
+  "version": "2.6.0",
   "files": [
     {
       "path": "assets/bubble-studio.ico",
@@ -19,6 +19,10 @@
       "sha256": "b688774d10cb56f9f512c00881de53535c6cd79b6b22bf7d066098387d14f2d7"
     },
     {
+      "path": "assets/scene-model.json",
+      "sha256": "20a87541cfa0eaef80c6f90744b31b6150cf15976b52fb1594c58ab3887cea0b"
+    },
+    {
       "path": "DIAGNOSTYKA.bat",
       "sha256": "99df620df2d8f461dd28cb4b202c46751ad5f86bb91814f98c9ec7df32e8984b"
     },
@@ -32,7 +36,7 @@
     },
     {
       "path": "JAKOSC.md",
-      "sha256": "9c50b2aa4ae3b96fb9ced569a66594cff8edaad4c03b03eb08efcc8f1dc7aa36"
+      "sha256": "75e1cd76df83dadde708f0e8ab5564cb07dbe5f27509d1db4178cc09dd2133d2"
     },
     {
       "path": "PRZETWORZ.bat",
@@ -40,11 +44,11 @@
     },
     {
       "path": "README.md",
-      "sha256": "673ca216ee8a277e815a481c55039684414fa3a8a85ad4fbe99a4f938787ce4e"
+      "sha256": "6920c66198d3066198dbf6157d19520a82f52a8cf6900df5a807516e0c26307b"
     },
     {
       "path": "RESEARCH.md",
-      "sha256": "2c445075df6215f5cb6f4c756018edce49f6704437b708e788f849f632c2043a"
+      "sha256": "88ff1b634cd3144e281a9364bf578ddefe6d06b0ca3b0f44c25757a0cd32cbea"
     },
     {
       "path": "scripts/build_release.py",
@@ -255,6 +259,10 @@
       "sha256": "6e13a18326b202125f7a51a282aba62027735c62e78aa7f4dc0f08b839e07e7f"
     },
     {
+      "path": "tests/test_scene260.py",
+      "sha256": "8689eaa3acc583d601b23197ba2fe58460013291699b531f2a6c4f942ba19e8d"
+    },
+    {
       "path": "tests/test_short_text253.py",
       "sha256": "f04420ac274650037e221917d0093e8b798d96b9157fa5e720fc8cb8157b39c7"
     },
@@ -320,11 +328,11 @@
     },
     {
       "path": "tools/bubble_studio/compound_guard.py",
-      "sha256": "5a1e7c3f1f63bf7c85d9e2cc258716ea0436cb3c0024060d11f5c9651a6c1de4"
+      "sha256": "29f4af4d24227442e3748bb06ca3b243417e475af6302d21ff71478683b766d8"
     },
     {
       "path": "tools/bubble_studio/config.py",
-      "sha256": "44b52b0c6e30715ae47a1f579f02d84f0f0b81b1a34999abeddcdffc99add690"
+      "sha256": "333219cdf0d3e23aa80c9a0d6d8ee64471769bc40b7bd20242deed28f7dd9c56"
     },
     {
       "path": "tools/bubble_studio/content_filter.py",
@@ -383,6 +391,10 @@
       "sha256": "af5e5464a272d853998b2f09dc38ef3522593cdfda5136179330c9e8e73798f2"
     },
     {
+      "path": "tools/bubble_studio/finish260.py",
+      "sha256": "59df6b17692b237d3ce1f19263ba4e80cb8290bac28f88a9daecb441f5babe97"
+    },
+    {
       "path": "tools/bubble_studio/geometry.py",
       "sha256": "435169137261f118e3aef0187138cb914ce9c0472c34c6973d5f0a5174ba83e8"
     },
@@ -400,7 +412,7 @@
     },
     {
       "path": "tools/bubble_studio/models.py",
-      "sha256": "50379c42ea9e53745db9dfdc9dffb3d20ef7c21c64e988d7643cef5f3a021d44"
+      "sha256": "b539f56fdad3ed3d057b38f7f843878d065c829c06716eadb592396936ac102f"
     },
     {
       "path": "tools/bubble_studio/native_body.py",
@@ -408,7 +420,11 @@
     },
     {
       "path": "tools/bubble_studio/native_enclosures.py",
-      "sha256": "f97bd5ea9d1ccc215c83936d161809b053350a895073f31a826e67af6403670c"
+      "sha256": "6d80630013bc95357b066d7c6052edd3ff1d727088ecf65fee97c8b873857c82"
+    },
+    {
+      "path": "tools/bubble_studio/native_margin.py",
+      "sha256": "938edb02c5e3412fa79467aeed7ac4abb231a527689c4f62ac7aa080981fc9d3"
     },
     {
       "path": "tools/bubble_studio/nonstory_mask.py",
@@ -456,7 +472,7 @@
     },
     {
       "path": "tools/bubble_studio/quality_lab.py",
-      "sha256": "a8e52eb739c2fd2fa8601f8aa90463c1a4cc92aaf5f777ee0461a17eaa872cdd"
+      "sha256": "800038785f78c982d4aa46acad48913a14f1a720e4277a8d3a1a89e8aacd01fb"
     },
     {
       "path": "tools/bubble_studio/quality_metrics.py",
@@ -472,7 +488,7 @@
     },
     {
       "path": "tools/bubble_studio/README.md",
-      "sha256": "673ca216ee8a277e815a481c55039684414fa3a8a85ad4fbe99a4f938787ce4e"
+      "sha256": "6920c66198d3066198dbf6157d19520a82f52a8cf6900df5a807516e0c26307b"
     },
     {
       "path": "tools/bubble_studio/refinement.py",
@@ -484,11 +500,15 @@
     },
     {
       "path": "tools/bubble_studio/requirements.txt",
-      "sha256": "b3220c259daf7271a44374a397b44da5aa7a2dcf8f161de2cda390b611ba4854"
+      "sha256": "af90d8886ed3c00c5bdf2b44849918e505f66ba1dca5a5e0b09e5c75031e8668"
     },
     {
       "path": "tools/bubble_studio/RESEARCH.md",
-      "sha256": "b3bdbefb4ff019f0e989405047ea6388727f84c9752443996abce5b42c9395c5"
+      "sha256": "53de2f2080b990cd92787a831f70d923a108bf3d3eb5e9f8ffdb92fdb72d435d"
+    },
+    {
+      "path": "tools/bubble_studio/retail_promotion.py",
+      "sha256": "d05ceec9a073361d14147d6c82a8dd0fb09b5a0ac279d22206dff95fe2e61ad3"
     },
     {
       "path": "tools/bubble_studio/review.py",
@@ -497,6 +517,18 @@
     {
       "path": "tools/bubble_studio/runner.py",
       "sha256": "362c62c5b28f007fffd99b35ad5e2952591dc6e3c0f03be153dbb293d77891f6"
+    },
+    {
+      "path": "tools/bubble_studio/scene_gutters.py",
+      "sha256": "ba81f5ac9a3ed682a4665fcd9757289fc08fdf31d3784dc45a9259b4c78a2d81"
+    },
+    {
+      "path": "tools/bubble_studio/scene_model.py",
+      "sha256": "d578951b8a22f49311a88a6a14ca6835e699a615f67d45c0a07edd2eadf2b1c6"
+    },
+    {
+      "path": "tools/bubble_studio/scene_objects.py",
+      "sha256": "8a8588e9bde0ae39b0ca175510095be6c6c9daac2eb20ea8683b913233654a2a"
     },
     {
       "path": "tools/bubble_studio/segmentation.py",

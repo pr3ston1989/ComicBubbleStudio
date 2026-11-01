@@ -1,5 +1,75 @@
 # Bubble Studio 2 — research i decyzje (2026-10-03)
 
+## Nowości 2.6.0 — analiza scen i mniej fałszywych przystanków (2026-11-01)
+
+**97,41% na wszystkich 310 stronach / 1917 oczekiwanych przystankach.**
+Poprzednia wersja na tych samych stronach: **96,96%**.
+Na dawnych 298 stronach: 97,05% → 97,51%. Cel 98–99% pozostaje nieosiągnięty.
+
+| Miara — te same 310 stron | 2.5.3 | 2.6.0 |
+|---|---:|---:|
+| Wykrywanie F1 | 95,51% | 96,74% |
+| Zaakceptowane wizualnie obrysy | 96,22% | 96,22% |
+| Poprawne pary kolejności dopasowanych kwestii | 99,18% | 99,29% |
+| Fałszywe przystanki | 109 | 61 |
+| Pominięte kwestie | 65 | 64 |
+| Błędne pary kolejności | 60 | 52 |
+| Odrzucone obrysy dopasowanych kwestii | 70 | 70 |
+| Strony całkowicie bez uwag | 177/310 | 198/310 |
+
+Qwen3-VL-8B w zapisie NF4 sprawdza podejrzane obiekty w kontekście całej
+strony oraz zbliżenia. Usunięcie wymaga dwóch ocen braku treści opowieści
+i rzeczywistego dymka. Etap nie usuwa efektów dźwiękowych: wariant mylący
+małe dymki z efektami został odrzucony. Odrzucono też szersze usuwanie
+kolorowych tablic, które pomyliło podpis miejsca z szyldem. Nie ma wyjątków
+dla nazw komiksów ani numerów stron.
+
+Kolorowe odstępy między kadrami pomagają kolejności; tekst przekraczający
+granicę wymaga potwierdzenia przypisania do sceny. Paski 4koma są chronione.
+Pusty brzeg kadru można odciąć przy szukaniu fizycznie połączonego dymka,
+z zachowaniem tekstu i wcześniejszych obrysów. Błąd etapu wycofuje jego
+zmiany; ręcznie zatwierdzone strony są chronione.
+
+Dwanaście nowych stron (4 komiksy, 4 manga, 4 strony Azumangi) wybrano przed
+wynikami. Treść i kolejność wzorca zapisano przed przewidywaniami. Po kontroli
+wszystkich 88 punktów na samych oryginałach poprawiono jedną współrzędną UMM,
+bez zmiany kwestii, kolejności i kryteriów; pierwotny wzorzec i rejestr zachowano.
+Wynik nowej dwunastki: **95,10%**.
+Wszystkie strony pozostają w mianowniku; nie dostrojono kodu do nowych błędów.
+
+Brak regresji na każdej z 310 stron. **525 testów**, sześć pełnych kontroli GPU
+końcowej aplikacji, walidacja 310 dokumentów i ponowny odczyt pakietu 12 stron.
+Wcześniejsze detektory zachowano: na 298 stronach przeliczono nowy etap,
+12 nowych przeszło pełne modele GPU. Kontrole końcowej aplikacji odtworzyły
+oczekiwane wyniki, również przy świeżych odpowiedziach nowego modelu.
+
+To średnia geometryczna F1, akceptacji obrysów i zgodności par kolejności,
+a nie odsetek idealnych stron. Ocena wizualna pochodzi od agenta, nie od
+niezależnych ekspertów; nie mierzy transkrypcji OCR. Drobne braki ogonka są
+dozwolone przy poprawnym korpusie i tekście. Największe rezerwy pozostają
+w błędnych obrysach i pominiętych wypowiedziach poza dymkami.
+
+Pierwsza dokładna analiza pobiera dodatkowo około **17,5 GB** danych modelu
+i zapisuje około **6,4 GB** wag do dalszego lokalnego używania. Własne pliki
+źródłowe usuwa po weryfikacji mniejszego zapisu. Sprawdzono świeżą analizę
+bez Internetu i bez źródłowych wag. Obrazy pozostają na komputerze.
+Zalecane 16 GB VRAM, 32 GB RAM i 60 GB wolnego SSD na pierwszą konfigurację,
+plus miejsce na komiksy. Główną funkcją jest przygotowanie dymków do Nokturna;
+eksport OCR pozostaje dodatkiem, domyślnie wyłączonym.
+
+Raport z obrazami i wykazem wszystkich stron:
+PRACA/quality-2.6.0/PODSUMOWANIE.html.
+
+
+### Źródła modelu 8B
+
+- [Oficjalny Qwen3-VL-8B, Apache 2.0](https://huggingface.co/Qwen/Qwen3-VL-8B-Instruct).
+- [Obsługa Windows i CUDA w bitsandbytes](https://huggingface.co/docs/bitsandbytes/main/en/installation).
+- Przypięte dane i SHA-256: assets/scene-model.json, rewizja 0c351dd01ed87e9c1b53cbc748cba10e6187ff3b.
+- Transformers 4.57.6, bitsandbytes 0.50.2, Accelerate 1.15.0; bez wykonywania kodu repozytorium modelu.
+- Na identycznych 298 stronach i przy tych samych zabezpieczeniach audyt 8B usunął 33 fałszywe przystanki bez regresji. Wariant 4B nadal pomijał trzy prawidłowe kwestie i został odrzucony.
+- Osiem świeżych odpowiedzi po zapisie i ponownym wczytaniu NF4 zgadzało się dokładnie z modelem przed zapisem. Osobno sprawdzono działanie bez źródłowych wag i bez Internetu.
+
 ## Nowości 2.5.3 — krótkie podpisy i obszary myśli (2026-11-01)
 
 Wynik na wszystkich **298 stronach / 1834 oczekiwanych przystankach: 97,05%**.

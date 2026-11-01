@@ -20,7 +20,7 @@ def frame_box(image, panel):
  if out[2]-out[0]<20 or out[3]-out[1]<20:return pixel_box(panel,image.size)
  return tuple(out)
 
-def enclosure_candidates(image,document):
+def enclosure_candidates(image,document,trim_blank=False):
  if document.get('review',{}).get('verified'):return []
  bubbles=document['result']['bubbles'];analysis=document.get('analysis',{});anchors=analysis.get('reading_anchors',{});evidence={}
  for b in bubbles:
@@ -43,6 +43,9 @@ def enclosure_candidates(image,document):
  result=[];seen=set()
  for roi,clipped in dict.fromkeys(rois):
   if (roi[2]-roi[0])*(roi[3]-roi[1])>8_000_000:continue
+  if trim_blank:
+   from .native_margin import trim_paper_margin
+   roi=trim_paper_margin(image,roi,anchors,bubbles)
   gray=cv2.cvtColor(np.asarray(image.crop(roi)),cv2.COLOR_RGB2GRAY);stages=[]
   for threshold in (220,240):
    _,labels,stats,_=cv2.connectedComponentsWithStats((gray>threshold).astype(np.uint8),8);groups={}

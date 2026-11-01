@@ -62,11 +62,14 @@ def _text_preserved(image,document,region,mask):
     return True
 
 
-def recover_compounds(image,document,checker):
+def recover_compounds(image,document,checker,proposal_factory=None):
     if document.get('review',{}).get('verified'):return document
     original=copy.deepcopy(document);bubbles=document['result']['bubbles']
-    proposals=[(*p,'enclosure') for p in enclosure_candidates(image,document)]
-    proposals += [(*p,'bridge') for p in bridge_candidates(image,document)]
+    if proposal_factory is None:
+        proposals=[(*p,'enclosure') for p in enclosure_candidates(image,document)]
+        proposals += [(*p,'bridge') for p in bridge_candidates(image,document)]
+    else:
+        proposals=[(*p,'enclosure') for p in proposal_factory(image,document)]
     selected=[];used=set()
     for ids,proposal,audit,kind in proposals:
         if used.intersection(ids):continue

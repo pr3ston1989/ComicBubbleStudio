@@ -16,7 +16,7 @@ PANELS = ('ShadowB/Manga109-panel-balloon-text-yolov26-segmentation', '3a860269e
 PANEL_SHA256 = '0b4376e426fa96af3976afa6a2602421dacf2dec96ef87b4a44f5e8d4971cb6f'
 WESTERN = ('Jzahrani/yolov8m_seg-speech-bubble', '3d6da7def774c927d56b03cfc37f982204c138db')
 WESTERN_SHA256 = '200141c44d4153662050531905ec3354d1d6302c28939dbbb019c037250ed610'
-PIPELINE_VERSION = 'bubble-studio-2.5.3'
+PIPELINE_VERSION = 'bubble-studio-2.6.0'
 
 
 def _load_detector(device='cuda'):
@@ -46,6 +46,7 @@ class GPUModels:
         self.western = None
         self.crop_segmenter = None
         self.page_context = None
+        self.scene_context = None
         if not torch.cuda.is_available():
             raise RuntimeError('Brak działającego CUDA. Zaktualizuj sterownik NVIDIA i uruchom DIAGNOSTYKA.bat.')
         props = torch.cuda.get_device_properties(0)
@@ -87,6 +88,9 @@ class GPUModels:
             from .page_context import SemanticPage
             self.page_context=SemanticPage()
             self.provenance['page_context']=self.page_context.provenance
+            from .scene_model import ScenePage
+            self.scene_context=ScenePage()
+            self.provenance['scene_context']=self.scene_context.provenance
 
     def _autocast(self):
         if self.torch.cuda.is_bf16_supported():
@@ -409,4 +413,8 @@ class GPUModels:
             document=refine_final_page(image,document,context)
             from .finish253 import refine_page as refine_readable_text
             document=refine_readable_text(image,document,checker,context)
+            scene=getattr(self,'scene_context',None)
+            if scene is not None:
+                from .finish260 import refine_page as refine_scene_page
+                document=refine_scene_page(image,document,checker,context,scene)
         return document
