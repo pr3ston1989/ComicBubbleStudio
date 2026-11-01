@@ -1,5 +1,66 @@
 # Jakość Nokturn Bubble Studio
 
+## Nowości 2.9.0 — mniej fałszywych dymków i uczciwa nowa próba (2026-11-01)
+
+**97,76% na wszystkich 362 stronach / 2299 fizycznych przystankach.**
+Na identycznych 362 stronach wersja 2.8.0: **97,73%**.
+Zysk z kodu to 0,028 punktu procentowego. Na wcześniejszych 350 stronach:
+97,75% → 97,78%. Jest to mała poprawa, nie osiągnięcie celu 98–99%.
+
+Filtr wymaga równocześnie regularnej dwuwymiarowej siatki co najmniej czterech
+niewielkich okrągłych regionów, różnych symboli z prostych kresek, zbliżonych
+rozmiarów i dwóch pobliskich pewnych odczytów mechanicznego BEEP/BIP/PIP/BIEP
+poza regionami czytania. Usunął cztery przyciski błędnie uznane za dymki.
+Żadna nazwa tytułu, numer strony ani współrzędna konkretnego przykładu nie
+steruje filtrem. To celowo wąski warunek dla tablic przycisków; nie jest
+uniwersalnym rozpoznawaniem scenografii. Zachowuje oryginał do odtworzenia,
+chroni dane ręczne i zweryfikowane, a pozostałe obrysy i ich względną
+kolejność pozostawia identyczne. Na każdej z 362 stron brak regresji
+wykrywania, kolejności i zaakceptowanych obrysów wobec 2.8.0.
+
+**12 nowych losowych stron: 97,28%**, TP93/96, FP3, FN3,
+19 błędnych par kolejności / 383 (95,04% poprawnych).
+Wszystkie 93 dopasowane obrysy zaakceptowane wizualnie; 6/12 stron bez uwag.
+Wzorzec treści, grupowania i kolejności zapisano z oryginałów przed
+przewidywaniami. Kod poprawki zamrożono przed oglądaniem nowych wyników.
+Żadnej strony ani błędu nie usunięto z próby. Wersje dały na niej identyczny
+wynik: nowy filtr nie miał powodu zadziałać. Dwa trudne układy kadrów
+odpowiadają za wszystkie 19 nowych pomyłek kolejności; pozostają do poprawy.
+Pominięto pojedyncze A, goły pytajnik i dymek z wielokropkiem; dodatkowo
+wykryto fragment twarzy, telefonu i fizycznej tabliczki. Próba potwierdza,
+że wynik ogólny nie oznacza bezbłędnego automatu na każdym nowym komiksie.
+
+| Miara — wszystkie 362 strony, wersja 2.9.0 | Wynik |
+|---|---:|
+| Wykrywanie F1 | 96,89% |
+| Akceptacja dopasowanych obrysów | 97,17% |
+| Poprawne pary kolejności dopasowanych przystanków | 99,25% |
+| Nadmiarowe / pominięte przystanki | 68 / 75 |
+| Odrzucone obrysy / błędne pary | 63 / 69 |
+| Strony bez uwag | 236/362 (65,19%) |
+
+Wynik łączny to średnia geometryczna F1, akceptacji obrysów i poprawności
+par kolejności. To ocena agenta, nie niezależny audyt ani dokładność OCR;
+nie oznacza procentu idealnych stron i nie mierzy przeplotu tekstów wewnątrz
+połączonych korpusów. Niepełny ogonek jest akceptowany, gdy tekst i korpus
+są prawidłowe. Języki i style nadal wymagają szerszego badania: szczególnie
+oryginalny pionowy japoński, inne 4koma, webtoony, BD i uszkodzone skany.
+
+Odrzucony eksperyment odzyskiwania krótkiego tekstu przez OCR proponował też
+napisy na przedmiotach i SFX; nie został włączony do silnika. Bezpieczniejsze
+odzyskiwanie krótkich reakcji oraz hierarchia nietypowych kadrów pozostają
+najważniejszymi kierunkami dalszej pracy.
+
+**593 testy Studio**, 12 pełnych analiz nowych stron i trzy pełne kontrole
+aktualnego silnika GPU. Dane paczek sprawdzone dla wszystkich 362 stron,
+osobny zapis/odczyt ośmiu stron i osiem kontroli dystrybucji/instalatora.
+Studio przygotowuje dane dymków, w tym opcjonalne tail_tip. Skala,
+powiększanie i animacja pozostają zadaniem Nokturna; jego źródeł nie zmieniano.
+OCR/PDF nadal jest dodatkiem. Komiksy, nagrania, modele i raporty z ich
+prywatnymi podglądami nie trafiają do publicznej paczki.
+
+Raport lokalny: PRACA/quality-2.9.0/PODSUMOWANIE.html.
+
 ## Nowości 2.8.0 — dane końcówki ogonka i nowa próba (2026-11-01)
 
 **97,75% na wszystkich 350 stronach / 2203 przystankach.**
