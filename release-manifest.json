@@ -1,6 +1,6 @@
 {
   "format": "nokturn-bubble-studio-release-v1",
-  "version": "2.6.0",
+  "version": "2.6.1",
   "files": [
     {
       "path": "assets/bubble-studio.ico",
@@ -36,7 +36,7 @@
     },
     {
       "path": "JAKOSC.md",
-      "sha256": "75e1cd76df83dadde708f0e8ab5564cb07dbe5f27509d1db4178cc09dd2133d2"
+      "sha256": "f89f313cfc42724de2cc32a94de82d9db991e11d42f47d4fa6a75605c3705671"
     },
     {
       "path": "PRZETWORZ.bat",
@@ -44,11 +44,11 @@
     },
     {
       "path": "README.md",
-      "sha256": "6920c66198d3066198dbf6157d19520a82f52a8cf6900df5a807516e0c26307b"
+      "sha256": "cf318db81f4ed46c9761480e7194fb6853fbf6a934435b168a542a470c5cc7fb"
     },
     {
       "path": "RESEARCH.md",
-      "sha256": "88ff1b634cd3144e281a9364bf578ddefe6d06b0ca3b0f44c25757a0cd32cbea"
+      "sha256": "de70f9de5fd8cc233c36eb21b042c10978cf49bd3c79a609cc88edb9ea47fb76"
     },
     {
       "path": "scripts/build_release.py",
@@ -207,6 +207,10 @@
       "sha256": "dc1c692b150d526b401e07773debcb87a863a27daa94adac4949cb34fd3c791a"
     },
     {
+      "path": "tests/test_native_body.py",
+      "sha256": "86443121ea51cc3096e020ea7be64e3101ddd681731aa097811ce744ea1a19c8"
+    },
+    {
       "path": "tests/test_page_context.py",
       "sha256": "39a00ace651e6c29b17309abd750c7e14282bc0fc0227622f6422eb4c7ee6dbc"
     },
@@ -323,6 +327,10 @@
       "sha256": "06c5b6edcbfdbcc5d6c421d9a27710e1a0a62fe97a9fd0560b3f2b1c182310ae"
     },
     {
+      "path": "tools/bubble_studio/closed_body.py",
+      "sha256": "996af7b4d2b82e6a6a6500723783188c1b25d5af98bfe4b6d4bfd9dce01be1b0"
+    },
+    {
       "path": "tools/bubble_studio/color_stroke_guard.py",
       "sha256": "db0837de757a3a218b0646e65a85aa40701a21fe31903d3b006de751fc59789f"
     },
@@ -332,7 +340,7 @@
     },
     {
       "path": "tools/bubble_studio/config.py",
-      "sha256": "333219cdf0d3e23aa80c9a0d6d8ee64471769bc40b7bd20242deed28f7dd9c56"
+      "sha256": "7eb29110b2098fcae6240b2aeb09e0fe1693bb6d80265440f517b37b7e849b52"
     },
     {
       "path": "tools/bubble_studio/content_filter.py",
@@ -412,7 +420,7 @@
     },
     {
       "path": "tools/bubble_studio/models.py",
-      "sha256": "b539f56fdad3ed3d057b38f7f843878d065c829c06716eadb592396936ac102f"
+      "sha256": "f9895d13d451cacd2dd4b0c8b76f69c48c5d82b0c438e2f6fd7ee840e3162b27"
     },
     {
       "path": "tools/bubble_studio/native_body.py",
@@ -488,7 +496,7 @@
     },
     {
       "path": "tools/bubble_studio/README.md",
-      "sha256": "6920c66198d3066198dbf6157d19520a82f52a8cf6900df5a807516e0c26307b"
+      "sha256": "cf318db81f4ed46c9761480e7194fb6853fbf6a934435b168a542a470c5cc7fb"
     },
     {
       "path": "tools/bubble_studio/refinement.py",
@@ -504,7 +512,7 @@
     },
     {
       "path": "tools/bubble_studio/RESEARCH.md",
-      "sha256": "53de2f2080b990cd92787a831f70d923a108bf3d3eb5e9f8ffdb92fdb72d435d"
+      "sha256": "de70f9de5fd8cc233c36eb21b042c10978cf49bd3c79a609cc88edb9ea47fb76"
     },
     {
       "path": "tools/bubble_studio/retail_promotion.py",

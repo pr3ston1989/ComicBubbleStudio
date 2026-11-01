@@ -1,5 +1,57 @@
 # Warsztat doszlifowywania Bubble Studio 2.4
 
+## Nowości 2.6.1 — naprawa korpusu po rozlaniu obrysu (2026-11-01)
+
+**97,51% na wszystkich 316 stronach / 1975 oczekiwanych przystankach.**
+Na identycznych 316 stronach wersja 2.6.0: **97,47%**.
+Na wcześniejszych 310: 97,41% → 97,45%. To mały przyrost; cel 98–99% pozostaje nieosiągnięty.
+
+| Miara — te same 316 stron | 2.6.0 | 2.6.1 |
+|---|---:|---:|
+| Wykrywanie F1 | 96,78% | 96,78% |
+| Zaakceptowane wizualnie obrysy | 96,33% | 96,44% |
+| Poprawne pary kolejności dopasowanych kwestii | 99,32% | 99,32% |
+| Fałszywe przystanki / pominięcia | 61 / 66 | 61 / 66 |
+| Odrzucone obrysy | 70 | 68 |
+| Strony całkowicie bez uwag | 202/316 | 203/316 |
+
+Naprawa szuka zwartego korpusu dymka w oryginalnych pikselach, gdy wcześniejszy
+obrys objął puste tło kadru. Małe przerwy drukowanej linii domyka zależnie od
+rozdzielczości. Wymaga stabilnego obszaru przy dwóch progach jasności,
+potwierdzenia słów przez OCR, zachowania ich położenia i braku kolizji z innymi
+kwestiami. Zmniejszenie wymaga mocnego dowodu rozlania na papier przy brzegach
+kadru. Nie zmienia liczby przystanków, identyfikatorów, kotwic ani kolejności.
+Błąd wycofuje cały nowy etap, a ręcznie zatwierdzone strony są chronione.
+Poprawiono dwa korpusy, w tym jeden w skanie Azumangi; nie dodano wyjątków
+dla tytułów, numerów stron ani oczekiwanych wyników.
+
+Sześć nowych stron: 2 komiksy kolorowe, 2 mangi i 2 strony 4koma. Obrazy
+wylosowano bez odrzucania trudnych stron, a komplet kwestii i kolejność
+zapisano na podstawie oryginałów przed przewidywaniami. Wynik tej małej próby:
+**99,41%**, 56/58 kwestii, bez nadmiarowych przystanków
+i błędów kolejności. Pozostały pominięte głosowe MAAA oraz UGH bez dymków.
+Nowe obrysy były identyczne w obu wersjach; dobry wynik tej szóstki nie jest
+zasługą nowej poprawki ani dowodem takiej skuteczności na dowolnym komiksie.
+Wszystkie strony weszły do wyniku 316.
+
+Brak regresji na każdej z 316 stron. **534 testy** aplikacji i czytnika.
+57 wcześniejszych modułów Python zachowano bajt po bajcie; wcześniejszy tor
+GPU jest niezmieniony, dodano tylko końcowy etap. Sześć nowych stron przeszło
+pełną analizę GPU. Sprawdzono format danych czytnika i zapis/odczyt pakietu.
+Eksperymenty z szerszym łączeniem dymków i odzyskiwaniem krzyków odrzucono
+z powodu błędnych ocen; nie są częścią wydania.
+
+Wynik jest średnią geometryczną F1, akceptacji obrysów i zgodności par
+kolejności, ocenioną przez agenta, a nie niezależnych ekspertów. To nie jest
+dokładność transkrypcji OCR ani procent idealnych stron: bez uwag są
+**203 z 316 stron (64,24%)**. Kryteria zachowano: mały brak ogonka jest
+dozwolony tylko przy poprawnym korpusie i tekście. OCR/PDF pozostają dodatkiem;
+główną funkcją jest przygotowanie dymków dla Nokturna.
+Nie zmieniono modeli, wymagań sprzętowych ani sposobu instalacji.
+
+Raport z przykładami i wykazem wszystkich stron:
+PRACA/quality-2.6.1/PODSUMOWANIE.html.
+
 ## Nowości 2.6.0 — analiza scen i mniej fałszywych przystanków (2026-11-01)
 
 **97,41% na wszystkich 310 stronach / 1917 oczekiwanych przystankach.**

@@ -1,5 +1,57 @@
 # Bubble Studio 2 — research i decyzje (2026-10-03)
 
+## Nowości 2.6.1 — naprawa korpusu po rozlaniu obrysu (2026-11-01)
+
+**97,51% na wszystkich 316 stronach / 1975 oczekiwanych przystankach.**
+Na identycznych 316 stronach wersja 2.6.0: **97,47%**.
+Na wcześniejszych 310: 97,41% → 97,45%. To mały przyrost; cel 98–99% pozostaje nieosiągnięty.
+
+| Miara — te same 316 stron | 2.6.0 | 2.6.1 |
+|---|---:|---:|
+| Wykrywanie F1 | 96,78% | 96,78% |
+| Zaakceptowane wizualnie obrysy | 96,33% | 96,44% |
+| Poprawne pary kolejności dopasowanych kwestii | 99,32% | 99,32% |
+| Fałszywe przystanki / pominięcia | 61 / 66 | 61 / 66 |
+| Odrzucone obrysy | 70 | 68 |
+| Strony całkowicie bez uwag | 202/316 | 203/316 |
+
+Naprawa szuka zwartego korpusu dymka w oryginalnych pikselach, gdy wcześniejszy
+obrys objął puste tło kadru. Małe przerwy drukowanej linii domyka zależnie od
+rozdzielczości. Wymaga stabilnego obszaru przy dwóch progach jasności,
+potwierdzenia słów przez OCR, zachowania ich położenia i braku kolizji z innymi
+kwestiami. Zmniejszenie wymaga mocnego dowodu rozlania na papier przy brzegach
+kadru. Nie zmienia liczby przystanków, identyfikatorów, kotwic ani kolejności.
+Błąd wycofuje cały nowy etap, a ręcznie zatwierdzone strony są chronione.
+Poprawiono dwa korpusy, w tym jeden w skanie Azumangi; nie dodano wyjątków
+dla tytułów, numerów stron ani oczekiwanych wyników.
+
+Sześć nowych stron: 2 komiksy kolorowe, 2 mangi i 2 strony 4koma. Obrazy
+wylosowano bez odrzucania trudnych stron, a komplet kwestii i kolejność
+zapisano na podstawie oryginałów przed przewidywaniami. Wynik tej małej próby:
+**99,41%**, 56/58 kwestii, bez nadmiarowych przystanków
+i błędów kolejności. Pozostały pominięte głosowe MAAA oraz UGH bez dymków.
+Nowe obrysy były identyczne w obu wersjach; dobry wynik tej szóstki nie jest
+zasługą nowej poprawki ani dowodem takiej skuteczności na dowolnym komiksie.
+Wszystkie strony weszły do wyniku 316.
+
+Brak regresji na każdej z 316 stron. **534 testy** aplikacji i czytnika.
+57 wcześniejszych modułów Python zachowano bajt po bajcie; wcześniejszy tor
+GPU jest niezmieniony, dodano tylko końcowy etap. Sześć nowych stron przeszło
+pełną analizę GPU. Sprawdzono format danych czytnika i zapis/odczyt pakietu.
+Eksperymenty z szerszym łączeniem dymków i odzyskiwaniem krzyków odrzucono
+z powodu błędnych ocen; nie są częścią wydania.
+
+Wynik jest średnią geometryczną F1, akceptacji obrysów i zgodności par
+kolejności, ocenioną przez agenta, a nie niezależnych ekspertów. To nie jest
+dokładność transkrypcji OCR ani procent idealnych stron: bez uwag są
+**203 z 316 stron (64,24%)**. Kryteria zachowano: mały brak ogonka jest
+dozwolony tylko przy poprawnym korpusie i tekście. OCR/PDF pozostają dodatkiem;
+główną funkcją jest przygotowanie dymków dla Nokturna.
+Nie zmieniono modeli, wymagań sprzętowych ani sposobu instalacji.
+
+Raport z przykładami i wykazem wszystkich stron:
+PRACA/quality-2.6.1/PODSUMOWANIE.html.
+
 ## Nowości 2.6.0 — analiza scen i mniej fałszywych przystanków (2026-11-01)
 
 **97,41% na wszystkich 310 stronach / 1917 oczekiwanych przystankach.**
@@ -69,6 +121,181 @@ PRACA/quality-2.6.0/PODSUMOWANIE.html.
 - Transformers 4.57.6, bitsandbytes 0.50.2, Accelerate 1.15.0; bez wykonywania kodu repozytorium modelu.
 - Na identycznych 298 stronach i przy tych samych zabezpieczeniach audyt 8B usunął 33 fałszywe przystanki bez regresji. Wariant 4B nadal pomijał trzy prawidłowe kwestie i został odrzucony.
 - Osiem świeżych odpowiedzi po zapisie i ponownym wczytaniu NF4 zgadzało się dokładnie z modelem przed zapisem. Osobno sprawdzono działanie bez źródłowych wag i bez Internetu.
+
+## Nowości 2.5.3 — krótkie podpisy i obszary myśli (2026-11-01)
+
+Wynik na wszystkich **298 stronach / 1834 oczekiwanych przystankach: 97,05%**.
+Cel 98% pozostaje nieosiągnięty. Na identycznych 298 stronach poprzednia
+wersja ma 96,97%. Na dotychczasowych 292 stronach:
+96,98% → 97,05%. Rozszerzenie próby jest oddzielone od wpływu kodu.
+F1 wykrywania: 95,61%; obrysy: 96,40%;
+kolejność par: 99,16%. 173/298 stron jest całkowicie bez uwag.
+To ocena agenta, nie niezależny pomiar ekspercki ani dokładność transkrypcji OCR.
+
+Na wcześniejszych 292 stronach odzyskano pięć pominiętych krótkich podpisów/
+objaśnień i poprawiono jedną maskę obejmującą tło zamiast samej myśli. Każde
+dodanie wymaga niezależnego OCR, dwóch kontroli treści oraz potwierdzenia
+miejsca przez cały dotychczasowy prefiks i sufiks kolejności. Dwie odpowiedzi
+modelu nie mogą same ustalić kolejności. Wariant błędnie wstawiający nazwę
+postaci został odrzucony. Paski 4koma pozostają chronione.
+
+Sześć nowych stron wybrano przed przewidywaniami, a wzorzec zapisano po
+obejrzeniu samych oryginałów. Reguły były zamrożone przed próbą. Wszystkie
+strony doliczono, w tym niemy fragment opowieści; wynik tej szóstki: 96,87%.
+Nie dopasowano kodu do nowych błędów ujawnionych w tej próbie.
+Brak pogorszeń na każdej z 298 stron. Zaliczono 492 testy programu.
+Raport opisuje także pełne kontrole GPU i zgodność pakietów z czytnikiem.
+
+Krótki ogonek nie dyskwalifikuje dymka przy poprawnym korpusie i tekście.
+Główną funkcją jest przygotowanie dymków do Nokturna; PDF i eksport OCR są
+dodatkami, eksport domyślnie wyłączony. Raport:
+`PRACA/quality-2.5.3/PODSUMOWANIE.html`.
+
+## Nowości 2.5.2 — mniej nadmiarowych wykryć (2026-10-30)
+
+Wynik na wszystkich **292 stronach / 1793 oczekiwanych przystankach: 96,98%**.
+Niezaokrąglony wynik to 96,97755885038801%; cel 97% pozostaje nieosiągnięty.
+Na identycznych 292 stronach poprzednia wersja ma 96,88%, obecna 96,98%.
+F1 wykrywania: 95,56%; akceptacja obrysów: 96,24%; kolejność: 99,17%.
+166/292 stron (56,8%) jest całkowicie bez uwag. To ocena agenta na zachowanym
+korpusie, nie niezależna gwarancja jakości ani dokładność transkrypcji OCR.
+
+Usunięto 11 fałszywych wykryć: napisy na przedmiotach, zapowiedź redakcyjną,
+reklamowe podpisy i odgłos mechaniczny poza dymkiem. Wymagane są mocne OCR
+oraz dwie zgodne, osobne oceny obrazu. Chronione są fikcyjne profile postaci,
+pojedyncze symboliczne słowa i wszystkie prawdziwe dymki/podpisy narracyjne.
+Nie zmieniono geometrii ani kolejności zachowanych kwestii. Brak pogorszeń
+na każdej z 292 stron. Ręcznie zatwierdzone strony i możliwość cofnięcia
+korekty kontekstu pozostają chronione.
+
+Sześć nowych stron wybrano przed przewidywaniami, po zamrożeniu reguł filtra.
+Wszystkie doliczono, także strony z błędami: wynik tej małej próby to 98,30%.
+Znaleziono dwa pominięte podpisy miejsca/czasu i jedną maskę obejmującą tło.
+Kolejność wszystkich 184 par nowej próby jest poprawna, także w 4komie.
+Próba jest zbyt mała, by uznać ją za statystyczne potwierdzenie uniwersalności.
+Eksperyment zmniejszania masek tekstów bez dymków odrzucono; nie jest częścią
+wydania. Dodatkowa wylosowana szóstka nie była analizowana ani doliczana.
+
+Zaliczono 454 testy programu; cztery testy API pełnego serwera poza zakresem.
+Pełne przebiegi GPU oraz zgodność pakietów i instalatora opisuje raport.
+Główną funkcją jest przygotowanie dymków do Nokturna; eksport OCR pozostaje
+dodatkiem domyślnie wyłączonym. Niepełny ogonek jest akceptowany wyłącznie
+przy poprawnym korpusie, tekście i pozostałym obrysie, na wszystkich stronach.
+Raport: `PRACA/quality-2.5.2/PODSUMOWANIE.html`.
+
+## Nowości 2.5.1 — kolejność, korpusy i aktualne kryterium ogonków (2026-10-30)
+
+Wynik na wszystkich **286 stronach / 1752 oczekiwanych przystankach: 96,85%**.
+Cel 97% pozostaje nieosiągnięty. Przy tej samej próbie i aktualnym kryterium
+poprzednia wersja uzyskuje 96,52%: wpływ kodu to +0,32 punktu procentowego.
+F1 wykrywania: 95,22%; poprawne korpusy i tekst: 96,22%; kolejność: 99,15%.
+163/286 stron jest całkowicie bez uwag. To ocena agenta na zachowanym korpusie,
+nie gwarancja wyniku na nieznanym komiksie ani dokładność transkrypcji OCR.
+
+Zgodnie z prośbą użytkownika niepełny ogonek/łącznik myśli nie dyskwalifikuje
+dymka, jeśli korpus, słowa i reszta obrysu są poprawne. Oceniono ponownie 125
+odrzuconych obrysów: 59 miało jedynie brak łącznika. Sama zmiana kryterium
+przesuwa dawny punkt odniesienia z 95,34% do 96,52%; nie jest poprawą kodu.
+Przy dawnej surowej ocenie obrysów kod daje 95,34% → 95,68%.
+
+Poprawki usuwają 24 nadmiarowe wykrycia, naprawiają 13 błędnych par kolejności
+i dwa błędne korpusy. Nie odnotowano pogorszenia na żadnej z 286 stron według
+obu kryteriów. Model obrazu dodatkowo ocenia każdą proponowaną zamianę
+prostokąta na fizyczny dymek. Ryzykowny eksperyment szerokiego przedłużania
+ogonków odrzucono w całości. Dymki zatwierdzone ręcznie pozostają chronione.
+
+Sześć nowych stron zawiera zachodni komiks, mangę i 4komę; włączono je w całości.
+Na całych 286 stronach odtworzono nowe etapy po zachowanych wykryciach.
+Oddzielnie sprawdzono 16 pełnych przebiegów kontrolnych bieżącej wersji.
+Wcześniejszy zestaw 60 stron służył także odrzuceniu eksperymentu; nie jest już
+świeżą niezależną próbą końcowej wersji. Zaliczono 431 testów programu.
+
+Główną funkcją pozostaje przygotowanie dymków do Nokturna. PDF i eksport tekstu
+są dodatkami; eksport domyślnie wyłączony. Zmieniono wersję silnika/checkpointów
+na 2.5.1. Raport z oryginałami, obrysami i oceną każdej strony:
+`PRACA/quality-2.5.1/PODSUMOWANIE.html`.
+
+## Nowości 2.5.0 — walidacja, PDF i opcjonalny tekst (2026-10-29)
+
+Główną funkcją pozostaje przygotowanie dymków do Nokturna.
+Silnik 2.4.3 i jego checkpointy pozostają bez zmian. Dodatek eksportu jest
+domyślnie wyłączony i nie zmienia obrysów, kolejności ani pakietów dymków.
+
+Próba: **60 zupełnie nowych stron, 41 archiwów, 30 LTR i 30 RTL**;
+30 stron z nieocenianych wcześniej tytułów. Dobór zamrożono przed analizą.
+Wszystkie przeszły pełny przebieg GPU i pełną ocenę wizualną; bez dostrajania
+silnika do tej próby. Wynik nowych 60: **95,67%** (F1 92,05%, obrysy 95,76%,
+kolejność 99,33%). Braki 10, nadmiar 47, złe obrysy 14, błędne pary 8/1199.
+**35/60 stron** jest całkowicie bez uwag. Reklam i trudnych stron nie wykluczano.
+
+Wszystkie **280 stron / 1716 oczekiwanych kwestii: 95,32%** —
+F1 94,49%, obrysy 92,51%, kolejność 99,06%. 131/280 stron bez uwag.
+Wcześniejsze 220 wyników i wzorców zachowano identycznie; różnica wobec
+95,23% wynika z rozszerzenia próby. To ocena agenta, bez eksperckich masek
+pikselowych i bez pomiaru poprawności transkrypcji OCR.
+
+PDF (skan, tekst lub strona mieszana) jest przetwarzany do CBZ z pakietem dla
+Nokturna. Dodatkowy eksport: HTML + TXT, TXT lub Markdown, z numerami stron,
+nazwami plików i kolejnością z aktualnego pakietu. Osobny przycisk „Tekst z
+gotowych pakietów…” działa bez wczytywania modeli dymków. Podczas importu PDF
+eksport łączy pasującą warstwę tekstową z OCR; istniejący CBZ eksportuje przez OCR.
+
+Zaliczono **401 testów programu** (4 testy API pełnego serwera poza zakresem).
+Rzeczywisty test GPU czterostronicowego PDF potwierdził, że włączenie eksportu
+na gotowym komiksie zachowuje identyczne bajty pakietu, geometrię i kolejność.
+Test obejmuje Unicode, skan, warstwę mieszaną, obrót i przycięcie. Syntetyczne
+strony testu funkcji nie wchodzą do procentu oceny komiksów.
+Raport: `PRACA/quality-2.5.0/PODSUMOWANIE.html`.
+
+## Nowości 2.4.3 — myśli, wycieki i pierwszy człon dymka (2026-10-29)
+
+Wynik na wszystkich 220 ocenionych stronach: **95,23%**;
+wersja 2.4.2 na tym samym zestawie: 95,11%.
+Na stałych wcześniejszych 214 stronach: 95,01% →
+95,13%. To wizualna ocena próby przez agenta,
+bez pomiaru transkrypcji OCR i bez gwarancji wyniku na nieznanym komiksie.
+
+Dodano ostrożne odtwarzanie kółek myśli, naprawę dużego wycieku maski przy
+zachowaniu słów oraz kolejność od pierwszego rzeczywistego członu dymka.
+Naprawiono trzy odrzucone obrysy; błędne pary kolejności: 58 → 52.
+Brak zaobserwowanych pogorszeń na każdej z 220 stron, 209 wyników bez zmian.
+Sześć nowych stron włączono w całości do oceny; wykorzystano je w rozwoju.
+Nowe etapy uruchomiono wszędzie; 15 pełnych przebiegów kontrolnych odtwarza
+zatwierdzone wyniki. To nie jest 220 świeżych pełnych przebiegów GPU.
+Zaliczono 386 testów programu. Raport: `PRACA/quality-2.4.3/PODSUMOWANIE.html`.
+
+## Nowości 2.4.2 — 4koma, dymki połączone i końcówki (2026-10-29)
+
+Wynik na wszystkich 214 ocenionych stronach: **95,01%**,
+wcześniej 93,55% na tym samym zbiorze. Wykrywanie F1
+95,04%, obrysy 91,27%, kolejność
+98,89%. Brak zaobserwowanych pogorszeń na każdej stronie.
+To wizualna ocena próby przez agenta, bez pomiaru transkrypcji OCR i bez gwarancji
+wyniku na nieznanych tytułach. Wszystkie 1333 oczekiwane kwestie uwzględniono.
+
+Poprawiono czytanie całych pasków 4koma z tytułami, kolejność sąsiednich dymków,
+łączenie rzeczywistych członów dymka oraz kontynuację ogonków z obrazu. Katalogi
+i wywiady mają osobną, ostrożną kontrolę obrazu i napisów. Nie łączy się samych
+prostokątów tekstu na podstawie odległości. Ręcznie zatwierdzone strony są chronione.
+214 stron przeliczono nowymi etapami; 12 stron Azumanga dodano do zestawu i
+wykorzystano w rozwoju. 12 pełnych przebiegów kontrolnych odtwarza zatwierdzone
+wyniki. To nie jest 214 świeżych pełnych przebiegów GPU ani niezależny holdout.
+365 testów programu przeszły. Raport: `PRACA/quality-2.4.2/PODSUMOWANIE.html`.
+
+## Nowości 2.4.1 — pełniejsze obrysy (2026-10-29)
+
+Nowy końcowy etap uzupełnia rzeczywiste końcówki jasnych i czarnych dymków.
+Odrzuca połączenia z rysunkiem, wieloma kreskami i sąsiednim tekstem. Zachowuje
+liczbę kwestii, OCR, kierunek i kolejność; nie zmienia ręcznie zatwierdzonych stron.
+
+Na wszystkich 202 ocenionych stronach: wykrywanie F1 **93,61%**,
+geometrie **88,99%**, kolejność **98,56%**,
+wskaźnik łączny **93,64%** (wcześniej 93,19%
+na tych samych 202 stronach). Naprawiono 15 odrzuconych geometrii; nie wykryto
+pogorszeń. Wynik jest oceną wizualną próby, nie gwarancją ani pomiarem transkrypcji OCR.
+Zachowano 198 wcześniejszych stron i dodano cztery losowe. Nowy etap przeliczono
+wszędzie, pełną analizę od nowa na sześciu kontrolach i czterech nowych stronach.
+300 testów przeszło; raport: `PRACA/quality-2.4.1/PODSUMOWANIE.html`.
 
 ## Aktualizacja 2.4.0 — lokalne rozumienie stron (2026-10-28)
 
@@ -297,3 +524,13 @@ Jzahrani GPL-3.0; ShadowB deklaruje MIT dla repo wag, ale dane mają osobne waru
 Ultralytics ma osobną licencję AGPL/enterprise. Przed komercyjną dystrybucją potrzebny
 jest przegląd licencji całego zestawu. „Poziom komercyjny” wyglądu nie oznacza
 automatycznie prawa do komercyjnego wykorzystania modeli lub komiksów.
+
+## Obsługa PDF 2.5.0 — źródła i decyzje
+
+- [PDFium API](https://pypdfium2.readthedocs.io/en/stable/python_api.html),
+  [pypdfium2 5.14.0](https://pypi.org/project/pypdfium2/5.14.0/).
+- Przypięta wersja 5.14.0; renderowanie i mapowanie prostokątów tekstu przez
+  `bitmap.get_posconv(page)`, z obsługą obrotu i przycięcia. Import sekwencyjny.
+- Warstwa tekstowa eksportu nie jest przekazywana do silnika dymków.
+- Deterministyczny CBZ, skróty źródła i checkpointów, atomowe publikowanie.
+- Zachowane oryginały i wersja silnika. Brak zmian wspólnych modułów czytnika.

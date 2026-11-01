@@ -16,7 +16,7 @@ PANELS = ('ShadowB/Manga109-panel-balloon-text-yolov26-segmentation', '3a860269e
 PANEL_SHA256 = '0b4376e426fa96af3976afa6a2602421dacf2dec96ef87b4a44f5e8d4971cb6f'
 WESTERN = ('Jzahrani/yolov8m_seg-speech-bubble', '3d6da7def774c927d56b03cfc37f982204c138db')
 WESTERN_SHA256 = '200141c44d4153662050531905ec3354d1d6302c28939dbbb019c037250ed610'
-PIPELINE_VERSION = 'bubble-studio-2.6.0'
+PIPELINE_VERSION = 'bubble-studio-2.6.1'
 
 
 def _load_detector(device='cuda'):
@@ -417,4 +417,6 @@ class GPUModels:
             if scene is not None:
                 from .finish260 import refine_page as refine_scene_page
                 document=refine_scene_page(image,document,checker,context,scene)
+            from .closed_body import refine as refine_closed_body
+            document=refine_closed_body(image,document,checker)
         return document
