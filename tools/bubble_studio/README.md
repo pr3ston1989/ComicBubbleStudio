@@ -1,4 +1,41 @@
-# Nokturn Bubble Studio 2.10.0
+# Nokturn Bubble Studio 2.10.1
+
+## Nowości 2.10.1 — nagłówki 4koma przy swoich historyjkach
+
+**97,79% na wszystkich 470 stronach / 2950 przystankach**;
+wersja 2.10.0 na identycznym zestawie: **97,77%**.
+Zysk z kodu: 0.020 punktu procentowego. Na wcześniejszych 462: 97,75% → 97,77%.
+
+- Naprawiono wtrącanie nagłówka kolejnej historyjki między nagłówek i dialogi
+  poprzedniej: 7 błędnych par kolejności mniej na jednej wcześniejszej stronie.
+  Pozostałe 469 stron bez zmian; brak zmierzonej regresji na każdej stronie.
+- Wymagane wcześniejsze potwierdzenie 4koma przez model, kompletne 2–3 kolumny
+  po cztery kadry, pojedyncze istniejące nagłówki i jednoznaczne przypisanie tekstu.
+  Przesuwane są wyłącznie nagłówki. Zachowano wzajemną kolejność dialogów,
+  wszystkie obrysy, teksty i dane końcówek ogonków. Bez dodatkowych wywołań modeli.
+- Nowa mała próba: 6 losowych stron Azumangi + 2 Midnight X-Men; **98,49%**,
+  **5/8 stron bez uwag**, zero nakładania ze starymi 462. Znane tytuły;
+  ukierunkowana kontrola, nie dowód uniwersalności. Nowy etap nie zmienił tych 8 wyników.
+- Kod zamrożony przed losowaniem. Oryginalny wzorzec 103 przystanków zachowano;
+  audyt surowych oryginałów skorygował 3 fizyczne grupowania do 104 przystanków,
+  bez usuwania ani przesuwania punktów tekstu. Obie wersje mają wspólny wzorzec.
+  Korekty wzorca nie są zyskiem algorytmu.
+- F1 wszystkich stron **96,62%**, kolejność **99,23%**,
+  obrysy **97,54%**. Błędne pary 97 → 90 z 11685.
+  **298/470 stron bez uwag**. Wskaźnik łączny nie oznacza procentu idealnych stron
+  ani dokładności OCR; to ocena agenta, nie niezależny audyt ekspercki.
+- Pozostaje kolejność pojedynczej historyjki obok dużej ilustracji — nowa próba
+  zachowała taki błąd. Nie dostrajano kodu po obejrzeniu wyników nowej próby.
+  Krótkie kwestie i napisy na przedmiotach nadal oceniane według starych kryteriów.
+- 637 różnych testów: 636 w pełnym przebiegu + test okna Tk zaliczony osobno;
+  4 testy zewnętrznego API pominięte. 3 pełne kontrole bieżącego silnika GPU,
+  8 pełnych nowych analiz GPU, walidacja 470 dokumentów, 8 stron zapisu/odczytu
+  paczki i 8 kontroli instalatora. 116 wcześniejszych plików Python bez zmian.
+
+Zakres: dane Bubble Studio. Animacje i powiększanie pozostają w Nokturnie.
+Webtoony oraz długie pionowe paski poza zakresem na życzenie użytkownika;
+stronicowe 4koma pozostaje w zakresie. Prywatne komiksy, nagrania, wzorce
+z obrazami i modele nie są publikowane.
 
 ## Nowości 2.10.0 — kolejność cienkich kadrów i duża próba 100 stron (2026-11-01)
 
