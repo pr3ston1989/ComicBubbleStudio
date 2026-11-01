@@ -1,4 +1,70 @@
-# Nokturn Bubble Studio 2.6.1
+# Nokturn Bubble Studio 2.7.0
+
+## Nowości 2.7.0 — kolejność kadrów i zachowanie tekstu (2026-11-01)
+
+**97,75% na wszystkich 334 stronach / 2112 fizycznych przystankach.**
+Na dokładnie tych samych stronach i identycznym wzorcu wersja 2.6.1:
+**97,58%**. Przyrost z kodu to
+0.170 punktu procentowego.
+Cel 98–99% nadal nie został osiągnięty.
+
+| Miara — te same 334 strony | 2.6.1 | 2.7.0 |
+|---|---:|---:|
+| Wykrywanie F1 | 96,71% | 96,87% |
+| Zaakceptowane wizualnie obrysy | 96,72% | 96,96% |
+| Poprawne pary kolejności dopasowanych kwestii | 99,33% | 99,42% |
+| Nadmiarowe przystanki / pominięcia fizycznych przystanków | 67 / 72 | 62 / 70 |
+| Błędne pary kolejności | 57 | 49 |
+| Odrzucone obrysy | 67 | 62 |
+| Strony bez uwag | 214/334 | 216/334 |
+
+Najwyższy priorytet: komfort automatycznej lektury. Stabilne ramki drukowanych
+kadrów korygują kolejność, kiedy detektor omyłkowo rozbił jeden wysoki/skośny
+kadr na części. Wszystkie teksty muszą mieć potwierdzone przypisanie do kadru;
+wewnętrzna kolejność pozostaje zachowana, a tryby 4koma i ręcznie zatwierdzone
+strony są chronione. Na zachowanym korpusie usunięto osiem błędnych par.
+
+Drugi etap wykorzystuje graf oryginalnych pikseli i wszystkie odrębne bloki
+tekstu, zamiast samej wspólnej ramki tekstu. Naprawia korpusy, ogranicza
+zniekształcone maski myśli bez obwiedni i łączy części tylko przy potwierdzeniu
+wspólnego papieru. Kontrola lokalnych fragmentów chroni przed dodaniem
+rysunku postaci. Każde dotychczasowe słowo musi zostać zachowane; łączenie
+nie przeskakuje innej wypowiedzi. Nie ma wyjątków dla tytułów i numerów stron.
+Błąd wycofuje nowy etap. Wcześniejsze etapy rozpoznawania zachowano.
+Nie zmieniono modeli GPU; SciPy jest teraz jawną, przypiętą zależnością.
+
+**555 testów** aplikacji/czytnika, brak regresji na każdej z 334 stron.
+Cztery kontrole końcowej aplikacji pełnym GPU oraz 18 dodatkowych stron.
+Pierwsze 14 służyło końcowej regresji etapu kolejności; kolejne cztery strony
+z nagrań miały zamrożone źródła i wzorzec treści przed przewidywaniami.
+Wyniki na nowych stronach są identyczne w obu wersjach, więc ich dobre
+rezultaty nie są przyrostem z nowej poprawki. Nowa klasyczna plansza ujawniła
+pięć błędnych par kolejności; nowa współczesna — pominięty nagłówek MANHATTAN.
+Wszystkie błędy pozostały w mianowniku.
+
+Zachowano oryginalne wzorce i udokumentowano korekty fizycznego grupowania:
+jeden ciągły korpus w starych 316 oraz trzy pary połączonych korpusów
+w ostatnich czterech. Nie usunięto tekstów ani punktów. Obie wersje porównano
+według identycznego poprawionego wzorca; poprawa etykiet nie jest zasługą kodu.
+Dla nowych czterech zachowano także pomiar pierwotnych 56 przystanków.
+
+**216/334 (64,67%) stron jest bez uwag.**
+Wynik łączny jest średnią geometryczną F1, akceptacji obrysów i zgodności par
+kolejności, ocenioną przez agenta, a nie niezależnych ekspertów. Nie jest
+dokładnością OCR ani procentem idealnych stron. Małe braki ogonków nadal
+akceptujemy przy poprawnym korpusie i tekście. Dodatkowa diagnostyka odróżnia
+teksty faktycznie nieobjęte od rozbitych/połączonych przystanków; pokrycie
+punktów tekstu (97,89%) nie zastępuje wyniku łącznego.
+
+Analiza obu nagrań Google: narracja również jest powiększana; prostokąt
+z fragmentem rysunku bywa czytelny; cienkie połączenie nie zawsze oznacza
+jeden krok lektury. Brak jawnej współrzędnej końca ogonka w naszym pakiecie.
+Czytnik Nokturn już rozwija wycinek z pierwotnego prostokąta; film nie dowodzi
+stałego zakotwiczenia w końcu ogonka. Nie zmieniano czytnika w tej iteracji.
+
+Lokalne raporty: PRACA/quality-2.7.0/PODSUMOWANIE.html oraz ANALIZA_NAGRAN.html.
+Prywatne nagrania, komiksy i modele nie są publikowane. Eksport OCR/PDF
+pozostaje opcjonalny; główną funkcją jest przygotowanie dymków dla Nokturna.
 
 ## Nowości 2.6.1 — naprawa korpusu po rozlaniu obrysu (2026-11-01)
 
@@ -294,7 +360,7 @@ Oryginalne strony pozostają niezmienione. Webtoony pomijamy.
 ## Uruchomienie i instalacja
 
 - **Na tym komputerze:** START.bat albo skrót „Nokturn Bubble Studio”.
-- **Instalator EXE:** Nokturn-Bubble-Studio-2.6.1-Setup.exe zawiera całą małą
+- **Instalator EXE:** Nokturn-Bubble-Studio-2.7.0-Setup.exe zawiera całą małą
   paczkę programu. Wybierz folder; instalator utworzy skrót na pulpicie i w menu Start.
 - **Paczka ZIP:** rozpakuj cały folder. INSTALUJ.bat kopiuje program do wybranego
   miejsca i tworzy skróty; START.bat uruchamia go bez instalowania skrótów.

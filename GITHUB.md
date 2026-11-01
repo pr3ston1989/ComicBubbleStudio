@@ -1,19 +1,19 @@
-# ComicBubbleStudio — Nokturn Bubble Studio 2.6.1
+# ComicBubbleStudio — Nokturn Bubble Studio 2.7.0
 
-Przygotowanie obrysów dymków i kolejności czytania dla Nokturna.
+Obrysy dymków i kolejność lektury dla Nokturna.
 
-- [Instalator Windows x64](https://github.com/pr3ston1989/ComicBubbleStudio/releases/download/v2.6.1/Nokturn-Bubble-Studio-2.6.1-Setup.exe)
-- [Paczka ZIP](https://github.com/pr3ston1989/ComicBubbleStudio/releases/download/v2.6.1/Nokturn-Bubble-Studio-2.6.1-windows-x64.zip)
+- [Instalator Windows](https://github.com/pr3ston1989/ComicBubbleStudio/releases/download/v2.7.0/Nokturn-Bubble-Studio-2.7.0-Setup.exe)
+- [Paczka ZIP](https://github.com/pr3ston1989/ComicBubbleStudio/releases/download/v2.7.0/Nokturn-Bubble-Studio-2.7.0-windows-x64.zip)
 
-Wynik łączny 97,51% na 316 stronach / 1975 oczekiwanych kwestiach.
-Na tych samych stronach 2.6.0: 97,47%.
-Dwa poprawione korpusy dymków, bez zmian liczby i kolejności kwestii.
-534 testy. Sześć nowych stron i cztery kontrole końcowej aplikacji w pełnym GPU.
-Zapis i ponowny odczyt pakietu czytnika, testy instalatora.
+Wynik łączny **97,75%** na wszystkich 334 stronach, poprzednio **97,58%**
+na identycznym zestawie i wzorcu. Błędne pary kolejności: 57 → 49.
+Poprawiono zachowanie kolejności skośnych kadrów, połączonych dymków i
+obrysów myśli bez obwiedni. Bez regresji w zachowanym korpusie. 555 testów.
 
-To ocena agenta na zachowanym korpusie, nie niezależny certyfikat.
-203/316 stron bez uwag; 66 pominięć, 61 nadmiarowych przystanków i 68 błędnych
-obrysów nadal pozostaje. Cel 98–99% nie został osiągnięty.
-Eksport OCR/PDF jest opcjonalny i domyślnie wyłączony.
+Ocena agenta, nie niezależny certyfikat. Strony bez uwag: 216/334.
+Pozostaje 70 pominiętych fizycznych przystanków i 62 nadmiarowe; nie wszystkie
+pominięcia przystanku oznaczają brak tekstu. Cel 98–99% pozostaje przed nami.
+Nowe 18 stron zachowano wraz z błędami. Prywatne filmy i komiksy nie są publikowane.
+OCR/PDF pozostaje dodatkiem.
 
-[Opis metody i ograniczeń](JAKOSC.md).
+[Metoda, porównanie i ograniczenia](JAKOSC.md).
