@@ -1,4 +1,63 @@
-# Nokturn Bubble Studio 2.7.0
+# Nokturn Bubble Studio 2.8.0
+
+## Nowości 2.8.0 — dane końcówki ogonka i nowa próba (2026-11-01)
+
+**97,75% na wszystkich 350 stronach / 2203 przystankach.**
+Na identycznym zestawie wersja 2.7.0 uzyskuje dokładnie ten sam wynik.
+Na wcześniejszych 334 wynik pozostaje 97,75%. Ta iteracja rozszerza eksport
+danych dymków; nie zmienia sposobu powiększania ani animacji w Nokturnie.
+
+Opcjonalne pole tail_tip zapisuje koniec widocznego obrysu we współrzędnych
+całej strony. Nie zmienia żadnego obrysu, tekstu, podziału ani kolejności.
+Zapisano 258 punktów na 121 stronach. Przy niepewnym, ciemnym, złożonym lub
+ramkowym kształcie punktu może nie być. Nie odtwarzamy niewidocznej końcówki
+ani pozycji ust. confidence opisuje dowody geometryczne, nie skalibrowane
+prawdopodobieństwo poprawności. Kontrola rozwojowej próby 77 punktów ujawniła
+jeden błąd przy krawędzi postaci. Ogólny warunek odrzucania prostych brzegów
+ramki wykluczył go i dziewięć innych niepewnych przypadków; pozostałe 67
+obejrzano. Nie jest to niezależny pomiar trafności wszystkich 258 punktów.
+
+Bubble Studio przygotowuje dane. Decyzję o skali, położeniu, powiększaniu
+i animacji podejmuje oddzielnie Nokturn. Testową integrację czytnika cofnięto;
+jego źródła przywrócono bajt po bajcie. Prototyp pozostał wyłącznie prywatnym
+eksperymentem i nie jest częścią wydania. Opis pola i przeliczania współrzędnych:
+docs/NOKTURN_TAIL_TIP.md. Starszy czytnik może pominąć nieznane pole.
+
+Nowe 16 losowych stron: po trzy z dwóch dotąd nietestowanych serii, osiem
+z czterech komiksów zachodnich i dwie z Azumangi. Wzorzec treści i kolejności
+zapisano przed przewidywaniami. Zachowano okładkę i milczącą ilustrację.
+Wynik: **97,90%**, TP89/91, FP7, FN2, jeden błędny obrys i jedna błędna
+para kolejności; 13/16 stron bez uwag. Pozostały m.in. cztery fałszywe dymki
+na przyciskach, pominięte ACK, rozbity zielony korpus, region SFX i zamieniona
+ramka narratora. Jedną błędną etykietę grupującą dwa oddzielne korpusy
+poprawiono na nieoznaczonym oryginale. Zachowano pierwotny wzorzec90 i oba
+pomiary; korekta jest wspólna dla obu wersji i nie jest poprawą z kodu.
+
+| Miara — wszystkie 350, identyczna w 2.7.0 i 2.8.0 | Wynik |
+|---|---:|
+| Wykrywanie F1 | 96,80% |
+| Akceptacja obrysów | 97,04% |
+| Poprawne pary kolejności dopasowanych przystanków | 99,43% |
+| Nadmiarowe / pominięte fizyczne przystanki | 69 / 72 |
+| Odrzucone obrysy / błędne pary | 63 / 50 |
+| Strony bez uwag | 229/350 (65,43%) |
+
+Korpus obejmuje 103 archiwa i 102 rodziny tytułów oraz cztery strony z nagrań.
+Kierunki: 164 LTR i 186 RTL. Jest szeroki dla sprawdzonych wydań angielskich,
+ale nierówny: jedna seria 4koma, mało starych skanów, komiksy zachodnie
+skupione w 12 tytułach. Nie potwierdza takiego wyniku dla oryginalnego
+japońskiego zapisu pionowego, chińskiego/koreańskiego, webtoonów, europejskiego
+BD, fotografowanych stron, zniszczonych skanów i innych stylów 4koma.
+
+**577 testów Studio**, dwie pełne kontrole silnika GPU, 16 nowych stron pełnym
+GPU, zgodność starszego walidatora na 350 dokumentach, zapis/odczyt pakietu
+i testy instalatora. 62 wcześniejsze moduły wnioskowania zachowano bajt po
+bajcie. Ocena agenta nie oznacza procentu idealnych stron ani dokładności
+transkrypcji OCR. Fizyczne przystanki nie mierzą pełnego przeplotu kwestii
+wewnątrz połączonych korpusów. Cel 98–99% nadal przed nami.
+OCR/PDF jest dodatkiem; główną funkcją są dymki dla Nokturna.
+
+Raport: PRACA/quality-2.8.0/PODSUMOWANIE.html.
 
 ## Nowości 2.7.0 — kolejność kadrów i zachowanie tekstu (2026-11-01)
 
@@ -360,7 +419,7 @@ Oryginalne strony pozostają niezmienione. Webtoony pomijamy.
 ## Uruchomienie i instalacja
 
 - **Na tym komputerze:** START.bat albo skrót „Nokturn Bubble Studio”.
-- **Instalator EXE:** Nokturn-Bubble-Studio-2.7.0-Setup.exe zawiera całą małą
+- **Instalator EXE:** Nokturn-Bubble-Studio-2.8.0-Setup.exe zawiera całą małą
   paczkę programu. Wybierz folder; instalator utworzy skrót na pulpicie i w menu Start.
 - **Paczka ZIP:** rozpakuj cały folder. INSTALUJ.bat kopiuje program do wybranego
   miejsca i tworzy skróty; START.bat uruchamia go bez instalowania skrótów.

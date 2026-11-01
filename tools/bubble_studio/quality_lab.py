@@ -102,7 +102,7 @@ def run(images, output, split='all', recovery=False):
               'native_enclosures','thin_bridges','color_stroke_guard','tail_continuation',
                 'finish243','enclosure_repair','lobe_order','thought_dots',
                 'finish251','native_body','exact_duplicates','editorial_audit','promotion_audit','panel_gutters',
-                'finish252','nonstory_mask','finish253','short_text','panel_background','finish260','scene_objects','scene_model','scene_gutters','retail_promotion','native_margin','closed_body','native_ink','native_ink_graph','native_ink_evidence','native_panel_order')]
+                'finish252','nonstory_mask','finish253','short_text','panel_background','finish260','scene_objects','scene_model','scene_gutters','retail_promotion','native_margin','closed_body','native_ink','native_ink_graph','native_ink_evidence','native_panel_order','tail_tip')]
     sources+=[Path(__file__).resolve().parents[2]/'assets/context-model.json',Path(__file__).resolve().parents[2]/'assets/scene-model.json']
     sources+=[Path(__file__).resolve().parents[2]/'web'/'backend'/'comic_smartview_layout.py']
     signature=hashlib.sha256(b''.join(p.name.encode()+p.read_bytes() for p in sources)).hexdigest()

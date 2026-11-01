@@ -1,19 +1,17 @@
-# ComicBubbleStudio — Nokturn Bubble Studio 2.7.0
+# ComicBubbleStudio — Nokturn Bubble Studio 2.8.0
 
-Obrysy dymków i kolejność lektury dla Nokturna.
+Dane dymków i kolejność lektury dla Nokturna, z opcjonalnym końcem ogonka.
 
-- [Instalator Windows](https://github.com/pr3ston1989/ComicBubbleStudio/releases/download/v2.7.0/Nokturn-Bubble-Studio-2.7.0-Setup.exe)
-- [Paczka ZIP](https://github.com/pr3ston1989/ComicBubbleStudio/releases/download/v2.7.0/Nokturn-Bubble-Studio-2.7.0-windows-x64.zip)
+- [Instalator Windows](https://github.com/pr3ston1989/ComicBubbleStudio/releases/download/v2.8.0/Nokturn-Bubble-Studio-2.8.0-Setup.exe)
+- [Paczka ZIP](https://github.com/pr3ston1989/ComicBubbleStudio/releases/download/v2.8.0/Nokturn-Bubble-Studio-2.8.0-windows-x64.zip)
 
-Wynik łączny **97,75%** na wszystkich 334 stronach, poprzednio **97,58%**
-na identycznym zestawie i wzorcu. Błędne pary kolejności: 57 → 49.
-Poprawiono zachowanie kolejności skośnych kadrów, połączonych dymków i
-obrysów myśli bez obwiedni. Bez regresji w zachowanym korpusie. 555 testów.
+Wynik **97,75% na 350 stronach**, identyczny dla 2.7.0 i 2.8.0.
+Nowe 16 stron: 97,90%; dwie wcześniej nietestowane serie.
+258 opcjonalnych punktów końca ogonka, bez zmiany wykrytych obrysów, tekstu
+i kolejności. Powiększanie oraz animacje należą do Nokturna; Studio zapisuje dane.
 
-Ocena agenta, nie niezależny certyfikat. Strony bez uwag: 216/334.
-Pozostaje 70 pominiętych fizycznych przystanków i 62 nadmiarowe; nie wszystkie
-pominięcia przystanku oznaczają brak tekstu. Cel 98–99% pozostaje przed nami.
-Nowe 18 stron zachowano wraz z błędami. Prywatne filmy i komiksy nie są publikowane.
-OCR/PDF pozostaje dodatkiem.
+577 testów Studio. 229/350 stron bez uwag. To ocena agenta, nie niezależny
+certyfikat. Zestaw nie reprezentuje wszystkich języków, webtoonów,
+stylów europejskich i 4koma. Cel 98–99% nadal przed nami.
 
-[Metoda, porównanie i ograniczenia](JAKOSC.md).
+[Format dodatkowego pola](docs/NOKTURN_TAIL_TIP.md) · [Metoda i ograniczenia](JAKOSC.md).

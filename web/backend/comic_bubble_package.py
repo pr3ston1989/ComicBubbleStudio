@@ -79,6 +79,28 @@ def _rectangle(item: dict) -> dict:
     return result
 
 
+
+def _tail_tip(item, box, width, height):
+    """Ignore invalid optional metadata without rejecting readable geometry."""
+    raw = item.get("tail_tip")
+    polygons = box.get("polygons", [])
+    if (not isinstance(raw, dict) or raw.get("kind") != "visible-outline"
+            or box.get("type") != "bubble" or item.get("group") or len(polygons) != 1):
+        return None
+    try:
+        x, y, confidence = (_finite(raw.get(k)) for k in ("x", "y", "confidence"))
+    except BubblePackageError:
+        return None
+    if confidence < .9 or not (box["x"] <= x <= box["x"] + box["w"]
+                              and box["y"] <= y <= box["y"] + box["h"]):
+        return None
+    if not any(math.hypot((box["x"] + p["x"] * box["w"] - x) * width,
+                          (box["y"] + p["y"] * box["h"] - y) * height) <= 2
+               for p in polygons[0]):
+        return None
+    return dict(x=x, y=y, confidence=confidence, kind="visible-outline")
+
+
 def validate_result(raw: dict) -> dict:
     """Whitelist geometry and bound contour complexity before exposing it to SVG."""
     if not isinstance(raw, dict):
@@ -130,6 +152,9 @@ def validate_result(raw: dict) -> dict:
                     box["polarity"] = item["polarity"]
                 if item.get("group"):
                     box["group"] = {**_rectangle(item["group"]), **outlines(item["group"])}
+                tip = _tail_tip(item, box, width, height)
+                if tip is not None:
+                    box["tail_tip"] = tip
             normalized.append(box)
         collections[name] = normalized
     return {

@@ -18,6 +18,7 @@ def build():
     files+=[ROOT/'web'/'backend'/name for name in
             ['__init__.py','comic_archive.py','comic_bubble_package.py','comic_smartview_layout.py']]
     files+=list((ROOT/'assets').glob('*'))
+    files+=[p for p in (ROOT/'docs').iterdir() if p.suffix=='.md']
     files+=[p for p in (ROOT/'scripts').iterdir() if p.suffix in {'.py','.ps1','.cs','.cjs'}]
     files+=list((ROOT/'tests').glob('test_*.py'))
     files+=list((ROOT/'tests').glob('*.json'))

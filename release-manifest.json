@@ -1,6 +1,6 @@
 {
   "format": "nokturn-bubble-studio-release-v1",
-  "version": "2.7.0",
+  "version": "2.8.0",
   "files": [
     {
       "path": "assets/bubble-studio.ico",
@@ -27,6 +27,10 @@
       "sha256": "99df620df2d8f461dd28cb4b202c46751ad5f86bb91814f98c9ec7df32e8984b"
     },
     {
+      "path": "docs/NOKTURN_TAIL_TIP.md",
+      "sha256": "95a3f25f8d5adb52b533bae66ea4b9de3983dae41e201426067e5c332f06b8b7"
+    },
+    {
       "path": "INSTALUJ.bat",
       "sha256": "a8b6cf9a94009f9a3741c7f508fd85058c1f035b0f8955ed169c586892311c57"
     },
@@ -36,7 +40,7 @@
     },
     {
       "path": "JAKOSC.md",
-      "sha256": "daf4726242a739dbb8e5eec3dbfbfb0e9da42be500d718bdbea1170c9c718c33"
+      "sha256": "fab8961e5822cb2b552f94b7be58dab96c4ad062b02bcd3783bb7e0530c261a2"
     },
     {
       "path": "PRZETWORZ.bat",
@@ -44,15 +48,15 @@
     },
     {
       "path": "README.md",
-      "sha256": "f28ce00249545ca2fe34041916808264f32e396351313699c2a552df18103bae"
+      "sha256": "2569917916e139afcc27d45512cb3131b0c2d5d1b5df0b64f3180894c28d5f3b"
     },
     {
       "path": "RESEARCH.md",
-      "sha256": "b87172ad1d3033ddfcff9220c8587e47e330361256c892d057ed0d5b2ba9b112"
+      "sha256": "407104204373e4771c5a1b785bab88530fef4e9316d82f279aaf5e6114b7c999"
     },
     {
       "path": "scripts/build_release.py",
-      "sha256": "01069248c423040541561df9da33561a681cbf5d8383d39243c732c6c960b2c9"
+      "sha256": "dd877520bad7ec480843857da40f0988111c6b5ef324cbcaff61c79cc7cd5a6d"
     },
     {
       "path": "scripts/build_setup.ps1",
@@ -303,6 +307,10 @@
       "sha256": "6229f38bda0ebd86b24147e91cd01b080b91d93174e48fa2d93a0ee42147e88f"
     },
     {
+      "path": "tests/test_tail_tip.py",
+      "sha256": "b4b9678614116413dcb911b5b2e70477e6e52dc54b9bdeec7a17c73ab4c5d9ec"
+    },
+    {
       "path": "tests/test_text_addition_gate.py",
       "sha256": "c42bea659a3a6945f1aec9c675a30f3e11ba363343b9f093b4119a6139c64ab8"
     },
@@ -352,7 +360,7 @@
     },
     {
       "path": "tools/bubble_studio/config.py",
-      "sha256": "8301ef9a18b279e2a89aa1e49e417922acdbe47e0fbb80525b2a8505c4674deb"
+      "sha256": "3acb000a7d5f97bd976470fcd849d24524b78f5da8094988ce24050272499158"
     },
     {
       "path": "tools/bubble_studio/content_filter.py",
@@ -432,7 +440,7 @@
     },
     {
       "path": "tools/bubble_studio/models.py",
-      "sha256": "187b84eab7915554303fa94d6396d2cfaa5a56f5408494e3f3eb019652154cad"
+      "sha256": "06108591139018aa99c523146c846204f8de68db1a522f8e6e8b6dfafc37c386"
     },
     {
       "path": "tools/bubble_studio/native_body.py",
@@ -508,7 +516,7 @@
     },
     {
       "path": "tools/bubble_studio/quality_lab.py",
-      "sha256": "7836a699f50b626713dfd8e64429517138d3324e1f1202034bf223da4238ca08"
+      "sha256": "5ec9b14e71f7eab342ca02cff9adc6761d0e70d3a7d9cbd6fbd30aec097c72f1"
     },
     {
       "path": "tools/bubble_studio/quality_metrics.py",
@@ -528,7 +536,7 @@
     },
     {
       "path": "tools/bubble_studio/README.md",
-      "sha256": "f28ce00249545ca2fe34041916808264f32e396351313699c2a552df18103bae"
+      "sha256": "2569917916e139afcc27d45512cb3131b0c2d5d1b5df0b64f3180894c28d5f3b"
     },
     {
       "path": "tools/bubble_studio/refinement.py",
@@ -544,7 +552,7 @@
     },
     {
       "path": "tools/bubble_studio/RESEARCH.md",
-      "sha256": "b87172ad1d3033ddfcff9220c8587e47e330361256c892d057ed0d5b2ba9b112"
+      "sha256": "407104204373e4771c5a1b785bab88530fef4e9316d82f279aaf5e6114b7c999"
     },
     {
       "path": "tools/bubble_studio/retail_promotion.py",
@@ -603,6 +611,10 @@
       "sha256": "3f7d22c185386a8f8c91cb1da2fab980dbfdb1070ac2cd5f7b8c065c435c55cf"
     },
     {
+      "path": "tools/bubble_studio/tail_tip.py",
+      "sha256": "d7c75ac46a362032eff76892c50d397fc034621117bc75265cb851f62e725cd9"
+    },
+    {
       "path": "tools/bubble_studio/text_export.py",
       "sha256": "6eae173376b3347fafb6caf2e7a752c344c5618953c23ddac9d6c12c5d38298f"
     },
@@ -628,7 +640,7 @@
     },
     {
       "path": "web/backend/comic_bubble_package.py",
-      "sha256": "6a329a27590d657fd3e10d4a161d619c93e36a84da964ad3843a503227fd0d51"
+      "sha256": "d9f4835b01660c412d4491272c8ea7931901c283b68a3053e5150774f5faa814"
     },
     {
       "path": "web/backend/comic_smartview_layout.py",
