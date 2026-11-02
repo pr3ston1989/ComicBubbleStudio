@@ -1,5 +1,57 @@
 # Bubble Studio 2 — research i decyzje (2026-10-03)
 
+## Nowości 2.11.0 — 4koma dla wybranego tytułu i siedem nowych serii
+
+**97,74% na wszystkich 498 stronach / 3252 przystankach**.
+Wersja 2.10.1 na identycznych 498 stronach: **97,57%**.
+Zysk z kodu: 0,166 punktu procentowego. Starszy wynik 97,79% dotyczył mniejszego
+zbioru 470 stron; nie jest bezpośrednim punktem odniesienia dla rozszerzonej próby.
+
+- Dodano **„Układ tytułu…”**: dla konkretnego pliku komiksu/PDF albo folderu jednej
+  serii można wybrać Automatyczny lub **4koma — całe pionowe historyjki**, a także
+  kierunek czytania. Osobny wybór tytułu nie zmienia sąsiednich archiwów.
+  Zmiana ustawienia przelicza niesprawdzone strony; zatwierdzone korekty zachowuje.
+- Tryb 4koma porządkuje całe kolumny przy czterech rozpoznanych kadrach oraz
+  wariancie z ramką tytułu. Zachowuje kolejność wewnątrz kadru. Nie nadaje
+  arbitralnej kolejności stronom o niezgodnej lub niejednoznacznej geometrii.
+  Domyślnie pozostaje automatyczne rozpoznawanie; deklaracja użytkownika nie jest
+  wynikiem uwzględnionym w podanych procentach automatu.
+- Automat rozpoznaje także małą ramkę tytułu nad czterema kadrami.
+  Wymagane zgodne kolumny, jednoznaczne przypisanie wszystkich wykrytych tekstów
+  i potwierdzenie osobnych historyjek przez model. Usunięto **70 błędnych par
+  kolejności** na dwóch stronach Sunshine Sketch. Pozostałe 496 wyników bez zmian.
+  Zachowano wszystkie wykrycia, obrysy, teksty, kadry i dane końcówek ogonków.
+- Nowe tytuły: Sunshine Sketch, Kimi ni Todoke, The Sandman, Promethea,
+  Watchmen, Uzumaki i Here. Losowa próba: **28 stron, 19 archiwów**, w tym nieme
+  strony, materiał redakcyjny i rozkładówki. Kod 2.10.1 zamrożono przed losowaniem;
+  wzorce każdej partii zapisano przed predykcjami odpowiadających jej stron.
+  Wszystkie strony zachowano, wzorca nie poprawiano po predykcjach.
+  Zamrożony automat: **96,18%**. Po poprawce na tych samych stronach: **97,26%**.
+  Ponieważ błędy tej próby posłużyły do poprawki, drugi wynik jest wynikiem
+  rozwojowym, nie niezależnym sprawdzianem nieznanych stron.
+- Wszystkie 498: F1 **96,31%**, kolejność **99,20%**, wizualna akceptacja
+  obrysów **97,73%**. Błędne pary 181 → 111 z 13832. **306/498 stron bez uwag**;
+  w nowej próbie 8/28. Łączny wskaźnik nie oznacza odsetka idealnych stron
+  ani dokładności przepisywania OCR. Ocena agenta, nie niezależny audyt.
+  Dla eksperymentalnych kompozycji Here i Promethei możliwe są inne interpretacje
+  kolejności; zastosowaną interpretację zapisano przed predykcjami.
+- Rozbudowana historia analizy jest zachowywana w osobnym elemencie paczki
+  z kontrolą SHA-256. Standardowy dokument strony nadal spełnia limit 2 MB
+  czytnika. Studio odczytuje pełną historię; obrysy, teksty i możliwość kontroli
+  pozostają zachowane. Nie trzeba zmieniać czytnika Nokturn.
+- 682 testy, 7 pełnych analiz kontrolnych GPU oraz 2 dodatkowe z zadeklarowanym
+  4koma; walidacja i przenośny zapis wszystkich 498 dokumentów. Nowe okno
+  sprawdzono wizualnie, zapis ustawienia wykonano przez rzeczywisty interfejs.
+
+Użycie: **Układ tytułu… → Wybierz komiks… / Wybierz folder serii… →
+4koma — całe pionowe historyjki → kierunek → Zapisz ustawienia tytułu**.
+Potem uruchom „Przygotuj / wznów”. Dla pliku ustawienie jest zapisywane obok
+niego jako `nazwa.cbz.bubble-studio.json`; dla folderu jako `bubble-studio.json`.
+Folder powinien obejmować jedną serię. Wrócenie do „Automatyczny” usuwa deklarację
+4koma dla tego tytułu. Pliki oryginalnego komiksu pozostają nietknięte.
+Webtoony są poza zakresem; stronicowe 4koma pozostaje w zakresie.
+Prywatne komiksy, nagrania, obrazy testowe i modele nie są publikowane.
+
 ## Nowości 2.10.1 — nagłówki 4koma przy swoich historyjkach
 
 **97,79% na wszystkich 470 stronach / 2950 przystankach**;

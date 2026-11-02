@@ -16,7 +16,7 @@ PANELS = ('ShadowB/Manga109-panel-balloon-text-yolov26-segmentation', '3a860269e
 PANEL_SHA256 = '0b4376e426fa96af3976afa6a2602421dacf2dec96ef87b4a44f5e8d4971cb6f'
 WESTERN = ('Jzahrani/yolov8m_seg-speech-bubble', '3d6da7def774c927d56b03cfc37f982204c138db')
 WESTERN_SHA256 = '200141c44d4153662050531905ec3354d1d6302c28939dbbb019c037250ed610'
-PIPELINE_VERSION = 'bubble-studio-2.10.1'
+PIPELINE_VERSION = 'bubble-studio-2.11.0'
 
 
 def _load_detector(device='cuda'):
@@ -235,8 +235,10 @@ class GPUModels:
                                     'color_stability':candidate['stability'], **metrics}
         return None, None
 
-    def analyze(self, image, direction='ltr', layout='auto', webtoon=False, include_free_text=False):
+    def analyze(self, image, direction='ltr', layout='auto', webtoon=False, include_free_text=False, reading_mode='auto'):
         """Use page, overlapping strip tiles, and panel crops before local contour refinement."""
+        if reading_mode not in {'auto', 'four_panel_strips'}:
+            raise ValueError('Nieprawidłowy układ czytania')
         context=getattr(self,'page_context',None)
         if context is not None:
             context.park()
@@ -431,4 +433,13 @@ class GPUModels:
             document=refine_native_framed_order(image,document)
             from .strip_heading_order import refine as refine_strip_heading_order
             document=refine_strip_heading_order(image,document)
+            from .framed_strip_order import refine as refine_framed_strip_order
+            try:
+                document=refine_framed_strip_order(image,document,context,declared=reading_mode=='four_panel_strips')
+            finally:
+                if context is not None:context.park()
+        if reading_mode=='four_panel_strips':
+            from .framed_strip_order import refine as refine_declared_strips
+            document=refine_declared_strips(image,document,None,declared=True)
+            document['analysis']['reading_mode']='four_panel_strips'
         return document

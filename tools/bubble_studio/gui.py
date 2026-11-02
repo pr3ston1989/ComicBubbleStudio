@@ -97,6 +97,7 @@ class Studio:
         ttk.Button(actions, text='Edytor konturów', command=self.review).pack(side='left')
         ttk.Button(actions, text='Raport', command=self.report).pack(side='left', padx=8)
         ttk.Button(actions, text='Wyniki', command=self.open_output).pack(side='left')
+        ttk.Button(actions, text='Układ tytułu…', command=self.reading_settings).pack(side='left', padx=8)
         self.lab_button=ttk.Button(actions,text='Losuj i testuj strony…',command=self.start_lab)
         self.lab_button.pack(side='left',padx=8)
         ttk.Label(frame, textvariable=self.state, wraplength=900).pack(anchor='w', pady=6)
@@ -107,6 +108,53 @@ class Studio:
         self.log.pack(fill='both', expand=True)
         root.protocol('WM_DELETE_WINDOW', self.close)
         root.after(100, self.poll)
+
+    def reading_settings(self):
+        if self.process and self.process.poll() is None:
+            messagebox.showinfo('Praca trwa', 'Zmień układ po zakończeniu bieżącego przetwarzania.')
+            return
+        from .config import reading_settings_path, save_reading_mode
+        window=tk.Toplevel(self.root)
+        window.title('Układ wybranego tytułu')
+        window.resizable(False,False)
+        frame=ttk.Frame(window,padding=18);frame.pack(fill='both',expand=True)
+        selected=tk.StringVar()
+        mode=tk.StringVar(value='Automatyczny')
+        direction=tk.StringVar(value='Zachowaj obecny')
+        ttk.Label(frame,text='Wybierz jeden komiks albo folder jednej serii.',wraplength=570).pack(anchor='w')
+        ttk.Entry(frame,textvariable=selected,width=78).pack(fill='x',pady=8)
+        buttons=ttk.Frame(frame);buttons.pack(fill='x')
+        def choose(folder=False):
+            path=(filedialog.askdirectory(title='Folder jednej serii',initialdir=self.input.get(),parent=window) if folder else
+                  filedialog.askopenfilename(title='Komiks',initialdir=self.input.get(),parent=window,
+                      filetypes=[('Komiksy','*.cbz *.cbr *.zip *.rar *.pdf'),('Wszystkie pliki','*.*')]))
+            if not path:return
+            selected.set(path)
+            try:
+                settings=reading_settings_path(Path(path))
+                values=json.loads(settings.read_text(encoding='utf-8-sig')) if settings.exists() else {}
+                mode.set('4koma — całe pionowe historyjki' if values.get('reading_mode')=='four_panel_strips' else 'Automatyczny')
+                direction.set({'rtl':'Od prawej do lewej (manga)','ltr':'Od lewej do prawej'}.get(values.get('direction'),'Zachowaj obecny'))
+            except (OSError,ValueError,AttributeError) as error:
+                messagebox.showerror('Nie udało się odczytać ustawień',str(error),parent=window)
+        ttk.Button(buttons,text='Wybierz komiks…',command=choose).pack(side='left')
+        ttk.Button(buttons,text='Wybierz folder serii…',command=lambda:choose(True)).pack(side='left',padx=8)
+        ttk.Label(frame,text='Układ stron').pack(anchor='w',pady=(14,3))
+        ttk.Combobox(frame,state='readonly',textvariable=mode,values=['Automatyczny','4koma — całe pionowe historyjki'],width=46).pack(anchor='w')
+        ttk.Label(frame,text='Kierunek czytania').pack(anchor='w',pady=(10,3))
+        ttk.Combobox(frame,state='readonly',textvariable=direction,values=['Zachowaj obecny','Od prawej do lewej (manga)','Od lewej do prawej'],width=46).pack(anchor='w')
+        ttk.Label(frame,text='4koma: najpierw cała pionowa historyjka, potem następna. Strony o innym układzie nadal wymagają rozpoznania kadrów. Wybór dotyczy tego tytułu; pozostałe komiksy zachowują swoje ustawienia.',wraplength=570).pack(anchor='w',pady=12)
+        def save():
+            try:
+                if not selected.get().strip():raise ValueError('Najpierw wybierz komiks albo folder jednej serii.')
+                save_reading_mode(Path(selected.get()),'four_panel_strips' if mode.get().startswith('4koma') else 'auto',
+                    {'Od prawej do lewej (manga)':'rtl','Od lewej do prawej':'ltr'}.get(direction.get()))
+            except (OSError,ValueError,TypeError) as error:
+                messagebox.showerror('Nie udało się zapisać',str(error),parent=window);return
+            self.state.set('Zapisano układ tytułu. Użyj „Przygotuj / wznów”; zmieniony układ przeliczy niesprawdzone strony, zachowując zatwierdzone korekty.')
+            window.destroy()
+        ttk.Button(frame,text='Zapisz ustawienia tytułu',command=save).pack(anchor='e')
+        return window
 
     def choose(self, variable):
         selected = filedialog.askdirectory(initialdir=variable.get())

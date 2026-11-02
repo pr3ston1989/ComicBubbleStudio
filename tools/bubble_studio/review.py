@@ -5,7 +5,6 @@ from __future__ import annotations
 import copy
 import argparse
 import io
-import json
 import zipfile
 from pathlib import Path
 import tkinter as tk
@@ -16,6 +15,7 @@ from web.backend.comic_archive import read_entry
 from web.backend.comic_bubble_package import load_package, PACKAGE_SUFFIX, validate_result
 from .runner import write_package, ROOT
 from .editing import polygon_box
+from .package_audit import read_document
 
 
 class Reviewer:
@@ -29,7 +29,7 @@ class Reviewer:
         self.documents = []
         with zipfile.ZipFile(package.sidecar) as archive:
             for page in package.manifest['pages']:
-                self.documents.append(json.loads(archive.read(page['data'])))
+                self.documents.append(read_document(archive, page['data']))
         self.saved_documents = copy.deepcopy(self.documents)
         root.title('Nokturn Bubble Studio — kontrola i korekty')
         root.geometry('1250x900')

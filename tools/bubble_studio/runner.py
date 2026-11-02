@@ -20,6 +20,7 @@ from PIL import Image, ImageOps
 from web.backend.comic_archive import ARCHIVE_EXTENSIONS, IMAGE_EXTENSIONS, list_image_entries, read_entry
 from web.backend.comic_bubble_package import BubblePackageError, file_sha256, source_sha256, package_path, is_bubble_package, read_manifest, validate_result
 from .config import ENGINE_VERSION, series_settings
+from .package_audit import read_document, write_document
 
 ROOT = Path(__file__).resolve().parents[2]
 STUDIO = Path(__file__).resolve().parent
@@ -63,7 +64,7 @@ def write_package(path: Path, manifest: dict, documents: list[dict]):
         archive.writestr('manifest.json', json.dumps(manifest, ensure_ascii=False, allow_nan=False))
         for index, document in enumerate(documents):
             document['result'] = validate_result(document['result'])
-            archive.writestr(f'pages/{index:05}.json', json.dumps(document, ensure_ascii=False, allow_nan=False))
+            write_document(archive, f'pages/{index:05}.json', document)
     read_manifest(temporary)
     os.replace(temporary, path)
 
@@ -137,7 +138,7 @@ Brak ostrzeżeń nie gwarantuje poprawnego rozpoznania. Sprawdź kolejność i k
 
 def process_comic(source: Path, relative: Path, output: Path, work: Path, analyzer, direction='ltr', layout='auto', webtoon=False,
                   include_free_text=False, quality='precise', force=False, discard_verified=False,
-                  text_export='off', export_all_text=False, native_layers=None):
+                  text_export='off', export_all_text=False, native_layers=None, reading_mode='auto'):
     """Checkpoint each native page, then verify and publish the exact source edition."""
     entries = list_image_entries(source)
     if not entries:
@@ -148,6 +149,8 @@ def process_comic(source: Path, relative: Path, output: Path, work: Path, analyz
               'models': getattr(analyzer, 'provenance', {}),
               'text_guard': getattr(analyzer, 'text_guard', 'off'),
               'recover_dialogue': getattr(analyzer, 'recover_dialogue', False)}
+    if reading_mode != 'auto':
+        config['reading_mode'] = reading_mode
     config = json.loads(json.dumps(config))
     destination = output / relative
     sidecar = package_path(destination)
@@ -167,7 +170,7 @@ def process_comic(source: Path, relative: Path, output: Path, work: Path, analyz
         if existing['source']['sha256'] == initial_checksum and not discard_verified:
             with zipfile.ZipFile(sidecar) as archive:
                 for page in existing['pages']:
-                    document = json.loads(archive.read(page['data']))
+                    document = read_document(archive, page['data'])
                     if document.get('review', {}).get('verified'):
                         validate_result(document['result'])
                         preserved[page['sha256']] = document
@@ -201,7 +204,8 @@ def process_comic(source: Path, relative: Path, output: Path, work: Path, analyz
             if hasattr(analyzer, 'quality'):
                 analyzer.quality = quality
             document = analyzer.analyze(image, direction=direction, layout=layout, webtoon=webtoon,
-                                        include_free_text=include_free_text)
+                                        include_free_text=include_free_text,
+                                        **({'reading_mode': reading_mode} if reading_mode != 'auto' else {}))
             document['result'] = validate_result(document['result'])
             atomic_json(stored, {'sha256': page_hash, 'document': document})
         pages.append({'index': index, 'name': name, 'size': size, 'sha256': page_hash, 'data': f'pages/{index:05}.json'})
@@ -292,6 +296,7 @@ def main(argv=None):
     parser.add_argument('--work', type=Path, default=ROOT / 'PRACA')
     parser.add_argument('--diagnostic', action='store_true')
     parser.add_argument('--offline', action='store_true', help='Bez pobierania modeli: wymagany istniejący cache')
+    parser.add_argument('--reading-mode', choices=['auto', 'four_panel_strips'], default='auto', help='Układ historyjek: automatyczny albo pionowe 4koma')
     parser.add_argument('--quality', choices=['precise', 'fast'], default='precise')
     parser.add_argument('--extra-segmenter', dest='extra_segmenter', action='store_true', default=True,
                         help='Dodatkowy model masek (domyślnie włączony; GPL-3.0)')
@@ -360,7 +365,7 @@ def main(argv=None):
         for source in sources:
             relative = source.relative_to(source_root)
             try:
-                settings = series_settings(source, source_root, {'quality': args.quality, 'include_free_text': args.include_free_text})
+                settings = series_settings(source, source_root, {'quality': args.quality, 'include_free_text': args.include_free_text, 'reading_mode': args.reading_mode})
                 if settings.pop('skip'):
                     outcomes.append({'comic': str(relative), 'status': 'excluded'})
                 else:
