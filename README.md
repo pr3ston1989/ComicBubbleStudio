@@ -1,4 +1,38 @@
-# Nokturn Bubble Studio 2.11.0
+# Nokturn Bubble Studio 2.11.1
+
+## Nowości 2.11.1 — dodatkowe zabezpieczenia kolejności
+
+**97,75% na tych samych 498 stronach / 3252 przystankach**.
+Wersja 2.11.0: **97,74%**. Zysk wynosi **0,014 punktu procentowego**;
+nie jest to duży skok jakości ani wynik nowej niezależnej próby.
+
+- Usunięto **6 błędnych par kolejności na trzech stronach**: Pop Kill,
+  Class of Brains i Sunshine Sketch. Pozostałe 495 wyników bez zmian.
+  Wszystkie obrysy, wykryte teksty, kadry i dane końcówek ogonków zachowano.
+- Dwa sąsiednie dymki w tej samej kolumnie można uporządkować od góry tylko
+  wtedy, gdy pełne obrysy i tekst potwierdzają rozdzielenie pionowe, oba należą
+  do tego samego kadru i nie ma między nimi innego rozmówcy. Reguła działa
+  w komiksie LTR i mandze RTL; nie zmienia kolejności obok siebie.
+- Gdy detektor nie znalazł kadrów, ale wcześniejsze grupowanie scen wymieszało
+  ich dialogi, dwie stabilne szerokie ramki mogą potwierdzić relację nad/pod.
+  Potrzebne są zgodne granice przy dwóch progach obrazu, pełne przypisanie
+  tekstu i obrysu oraz brak nakładania ramek. Zachowano lokalną kolejność
+  dialogów. Przy niejednoznaczności pozostaje wcześniejszy wynik.
+- Okno „Układ tytułu…” pokazuje teraz również ustawienia odziedziczone
+  z folderu serii. Zmiana samego kierunku nie wyłącza już odziedziczonego 4koma.
+  Dla tytułu spoza folderu wejściowego okno wyjaśnia zakres odczytanych ustawień.
+- Wykrywanie F1 **96,31%**, zgodność par kolejności **99,24%**, obrysy **97,73%**.
+  Błędne pary: **111 → 105 z 13832**. Strony bez wszystkich badanych uwag:
+  **306 → 308 z 498 (61,85%)**. Wzorców ani kryteriów tolerancji nie zmieniano.
+  Wskaźnik łączny nie oznacza procentu idealnych stron ani dokładności OCR;
+  ocena agenta, nie niezależny audyt ekspercki.
+- Pełne testy aplikacji, porównanie każdej strony, kontrole bieżącego GPU,
+  test rzeczywistego okna z odziedziczonym 4koma oraz kontrola instalatora
+  i zapisu paczek. Jawne układy, ręczne i zatwierdzone poprawki chronione.
+  Brak nowych wywołań modeli w dodanych etapach kolejności.
+
+Webtoony poza zakresem. Animacje powiększania pozostają w Nokturnie.
+Prywatne komiksy, modele, obrazy testowe i wzorce nie są publikowane.
 
 ## Nowości 2.11.0 — 4koma dla wybranego tytułu i siedem nowych serii
 
