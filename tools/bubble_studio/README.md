@@ -1,4 +1,4 @@
-# Nokturn Bubble Studio 2.11.2
+# Nokturn Bubble Studio 2.11.3
 
 **[Instrukcja obsługi i zalecane ustawienia](INSTRUKCJA.html)**. W aplikacji otworzysz ją przyciskiem **Instrukcja**.
 

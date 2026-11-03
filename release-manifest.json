@@ -1,6 +1,6 @@
 {
   "format": "nokturn-bubble-studio-release-v1",
-  "version": "2.11.2",
+  "version": "2.11.3",
   "files": [
     {
       "path": "assets/bubble-studio.ico",
@@ -48,7 +48,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "5011ec1b3ed584ba63139dea30071ba957b4f0845f3dbd0b42ddd1bf0a7435cc"
+      "sha256": "20274e93035e90049befb35638bbf38db982347448626d1339ef8a5a23fd3824"
     },
     {
       "path": "RESEARCH.md",
@@ -251,6 +251,10 @@
       "sha256": "ed55915db0751d3716c27be37f3f9c33310e3c4dffa1fb81abfadcd6d65437fc"
     },
     {
+      "path": "tests/test_page_pipeline.py",
+      "sha256": "2b3202a9d15b369b91c5caee394883aecf62e72677760f4a130de3c5460f2d37"
+    },
+    {
       "path": "tests/test_panel_background253.py",
       "sha256": "348a44ad6b30d27c63d1918f81648d7db69ead8a372800a4cd959337aa1a331d"
     },
@@ -396,7 +400,7 @@
     },
     {
       "path": "tools/bubble_studio/config.py",
-      "sha256": "308a2e27154d3436b7f1113fdab81ade31a19f6828e076ede83123980bbd68d1"
+      "sha256": "9f92f4b53e0aea8973dfba36b0f98939c9b07a81b5f511101eb32579f4624aa6"
     },
     {
       "path": "tools/bubble_studio/content_filter.py",
@@ -476,7 +480,7 @@
     },
     {
       "path": "tools/bubble_studio/INSTRUKCJA.html",
-      "sha256": "17589c5736a77f7dd37a8b24e15e6f376d0b07988b6fdd9f26430bcd3feb4cd4"
+      "sha256": "7f656d7a316929e54f6b9f01a809192db2a940c902181ef595866d4e07913e0d"
     },
     {
       "path": "tools/bubble_studio/launch-ui.ps1",
@@ -488,7 +492,7 @@
     },
     {
       "path": "tools/bubble_studio/models.py",
-      "sha256": "0805c490d4cd6592151edad07c7b85b53a6ac806f9cf4a133b52a58bf2102bab"
+      "sha256": "66a245fb22ed98433297b2927e5fd1b8ddd087c1af5dd7e20eaf7e73a9199e03"
     },
     {
       "path": "tools/bubble_studio/native_body.py",
@@ -596,7 +600,7 @@
     },
     {
       "path": "tools/bubble_studio/README.md",
-      "sha256": "18af908c85643ca8acc9efe722c8722ef67b2f342743f34bb1098cb5b248ea2f"
+      "sha256": "567c17d966bcbdecf4089cab42fcdd1ff3bf1e277cfe34c4ad22348ea06d6f75"
     },
     {
       "path": "tools/bubble_studio/refinement.py",
@@ -624,7 +628,7 @@
     },
     {
       "path": "tools/bubble_studio/runner.py",
-      "sha256": "d84ed6cfd95ec17cdeac97ff5db81e7c45522c501c3ac57bd02ae652b671d321"
+      "sha256": "3ee624729d3d34ffdd119422a7bbb97da679a06e0f88df8485e7ce447dfc03c0"
     },
     {
       "path": "tools/bubble_studio/scene_gutters.py",
@@ -684,7 +688,7 @@
     },
     {
       "path": "tools/bubble_studio/textcheck.py",
-      "sha256": "8475efe820a37013def9ae2b54fd467332c1cb65240f599f5c37f41131400781"
+      "sha256": "43d36d7483819b5580be411e45d280196c9cd15f1d8f4599fc5070d3454acddf"
     },
     {
       "path": "tools/bubble_studio/thin_bridges.py",

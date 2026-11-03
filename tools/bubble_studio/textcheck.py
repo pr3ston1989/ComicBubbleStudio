@@ -43,6 +43,7 @@ class TextCheck:
                            'weights': hashes}
         self._cache = {}
         self._cache_lock = Lock()
+        self._engine_lock = Lock()
         self._workers = local()
         # Each RapidOCR instance has mutable preprocessing state. Share only
         # the immutable weights on disk, never an inference instance.
@@ -52,7 +53,8 @@ class TextCheck:
         )
 
     def read(self, image):
-        return self._read(image, self.engine)
+        with self._engine_lock:
+            return self._read(image, self.engine)
 
     def _read(self, image, engine):
         crop = image.copy()

@@ -236,6 +236,10 @@ class GPUModels:
         return None, None
 
     def analyze(self, image, direction='ltr', layout='auto', webtoon=False, include_free_text=False, reading_mode='auto'):
+        return self.start_page(image, direction, layout, webtoon, include_free_text, reading_mode)
+
+    def start_page(self, image, direction='ltr', layout='auto', webtoon=False,
+                   include_free_text=False, reading_mode='auto', finish_later=None):
         """Use page, overlapping strip tiles, and panel crops before local contour refinement."""
         if reading_mode not in {'auto', 'four_panel_strips'}:
             raise ValueError('Nieprawidłowy układ czytania')
@@ -404,7 +408,8 @@ class GPUModels:
             finally:context.park()
         if not refined:
             document=recover_page_outlines(image,document)
-        if self.quality=='precise' and checker and getattr(self,'recover_dialogue',False) and not include_free_text:
+        refine_native = self.quality == 'precise' and checker is not None and self.recover_dialogue and not include_free_text
+        if refine_native:
             from .page_finish import refine_native_page
             document=refine_native_page(image,document,checker)
             from .finish243 import refine_additional_page
@@ -419,6 +424,21 @@ class GPUModels:
             if scene is not None:
                 from .finish260 import refine_page as refine_scene_page
                 document=refine_scene_page(image,document,checker,context,scene)
+        # Framed 4koma can still ask the GPU model at the end. Keep pages
+        # eligible for that call on the GPU owner's thread.
+        if (finish_later is not None and refine_native and reading_mode == 'auto'
+                and (context is None or len(document['result']['panels']) not in {10, 15})
+                and width * height <= 12_000_000):
+            if context is not None:
+                context.park()
+            return finish_later(self._finish_page, image, document, checker, None,
+                                self.quality, reading_mode, refine_native)
+        return self._finish_page(image, document, checker, context, self.quality,
+                                 reading_mode, refine_native)
+
+    @staticmethod
+    def _finish_page(image, document, checker, context, quality, reading_mode, refine_native):
+        if refine_native:
             from .closed_body import refine as refine_closed_body
             document=refine_closed_body(image,document,checker)
             from .native_ink import refine as refine_native_ink
@@ -442,7 +462,7 @@ class GPUModels:
             from .framed_strip_order import refine as refine_declared_strips
             document=refine_declared_strips(image,document,None,declared=True)
             document['analysis']['reading_mode']='four_panel_strips'
-        if self.quality=='precise':
+        if quality == 'precise':
             from .native_wide_frame_order import refine as refine_native_wide_frame_order
             document=refine_native_wide_frame_order(image,document)
             from .vertical_body_order import refine as refine_vertical_body_order

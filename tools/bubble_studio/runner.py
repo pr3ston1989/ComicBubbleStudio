@@ -13,6 +13,8 @@ import shutil
 import sys
 import time
 import zipfile
+from concurrent.futures import Future, ThreadPoolExecutor
+from contextlib import closing, nullcontext
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -138,7 +140,8 @@ Brak ostrzeżeń nie gwarantuje poprawnego rozpoznania. Sprawdź kolejność i k
 
 def process_comic(source: Path, relative: Path, output: Path, work: Path, analyzer, direction='ltr', layout='auto', webtoon=False,
                   include_free_text=False, quality='precise', force=False, discard_verified=False,
-                  text_export='off', export_all_text=False, native_layers=None, reading_mode='auto'):
+                  text_export='off', export_all_text=False, native_layers=None, reading_mode='auto',
+                  parallel_pages=True):
     """Checkpoint each native page, then verify and publish the exact source edition."""
     entries = list_image_entries(source)
     if not entries:
@@ -181,37 +184,78 @@ def process_comic(source: Path, relative: Path, output: Path, work: Path, analyz
     report.mkdir(parents=True, exist_ok=True)
     documents, pages, sections = [], [], []
     started = time.monotonic()
-    for index, (name, size) in enumerate(entries):
-        print(f'  {relative} · strona {index + 1}/{len(entries)}', flush=True)
-        progress(kind='page', comic=str(relative), page=index+1, pages=len(entries))
-        data = read_entry(source, name)
-        page_hash = hashlib.sha256(data).hexdigest()
-        stored = checkpoint / f'{index:05}.json'
-        document = preserved.get(page_hash)
-        if document is None and stored.is_file() and not force:
-            try:
-                cached = json.loads(stored.read_text(encoding='utf-8'))
-                if cached['sha256'] == page_hash:
-                    validate_result(cached['document']['result'])
-                    document = cached['document']
-            except (ValueError, KeyError, TypeError):
-                pass
-        with Image.open(io.BytesIO(data)) as raw:
-            if raw.width * raw.height > 120_000_000:
-                raise ValueError('Strona przekracza 120 megapikseli; podziel długi pasek')
-            image = ImageOps.exif_transpose(raw).convert('RGB')
-        if document is None:
-            if hasattr(analyzer, 'quality'):
-                analyzer.quality = quality
-            document = analyzer.analyze(image, direction=direction, layout=layout, webtoon=webtoon,
-                                        include_free_text=include_free_text,
-                                        **({'reading_mode': reading_mode} if reading_mode != 'auto' else {}))
-            document['result'] = validate_result(document['result'])
-            atomic_json(stored, {'sha256': page_hash, 'document': document})
-        pages.append({'index': index, 'name': name, 'size': size, 'sha256': page_hash, 'data': f'pages/{index:05}.json'})
-        documents.append(document)
-        sections.append(report_page(report, index, image, document))
-        image.close()
+    def save_page(document, page_hash, stored):
+        document['result'] = validate_result(document['result'])
+        atomic_json(stored, {'sha256': page_hash, 'document': document})
+        return document
+
+    def finish_and_save(finish, args, page_hash, stored):
+        return save_page(finish(*args), page_hash, stored)
+
+    def publish_page(record):
+        index, name, size, page_hash, image, document = record
+        with closing(image):
+            if isinstance(document, Future):
+                document = document.result()
+            pages.append({'index': index, 'name': name, 'size': size, 'sha256': page_hash,
+                          'data': f'pages/{index:05}.json'})
+            documents.append(document)
+            sections.append(report_page(report, index, image, document))
+
+    start_page = getattr(analyzer, 'start_page', None)
+    use_pipeline = parallel_pages and start_page is not None and (os.cpu_count() or 1) >= 8
+    executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix='studio-page') if use_pipeline else nullcontext()
+    pending = None
+    with executor as worker:
+        for index, (name, size) in enumerate(entries):
+            print(f'  {relative} · strona {index + 1}/{len(entries)}', flush=True)
+            progress(kind='page', comic=str(relative), page=index+1, pages=len(entries))
+            data = read_entry(source, name)
+            page_hash = hashlib.sha256(data).hexdigest()
+            stored = checkpoint / f'{index:05}.json'
+            document = preserved.get(page_hash)
+            if document is None and stored.is_file() and not force:
+                try:
+                    cached = json.loads(stored.read_text(encoding='utf-8'))
+                    if cached['sha256'] == page_hash:
+                        validate_result(cached['document']['result'])
+                        document = cached['document']
+                except (ValueError, KeyError, TypeError):
+                    pass
+            with Image.open(io.BytesIO(data)) as raw:
+                if raw.width * raw.height > 120_000_000:
+                    raise ValueError('Strona przekracza 120 megapikseli; podziel długi pasek')
+                # Drain the previous page before decoding a very large scan.
+                if pending is not None and raw.width * raw.height > 12_000_000:
+                    publish_page(pending)
+                    pending = None
+                image = ImageOps.exif_transpose(raw).convert('RGB')
+            if document is None:
+                if hasattr(analyzer, 'quality'):
+                    analyzer.quality = quality
+                options = dict(direction=direction, layout=layout, webtoon=webtoon,
+                               include_free_text=include_free_text)
+                if reading_mode != 'auto':
+                    options['reading_mode'] = reading_mode
+                if worker is None:
+                    document = analyzer.analyze(image, **options)
+                else:
+                    def finish_later(finish, *args):
+                        return worker.submit(finish_and_save, finish, args, page_hash, stored)
+
+                    document = start_page(image, **options, finish_later=finish_later)
+                if not isinstance(document, Future):
+                    document = save_page(document, page_hash, stored)
+            record = (index, name, size, page_hash, image, document)
+            if pending is not None:
+                publish_page(pending)
+            if isinstance(document, Future):
+                pending = record
+            else:
+                publish_page(record)
+                pending = None
+        if pending is not None:
+            publish_page(pending)
     if source_sha256(source) != initial_checksum:
         raise ValueError('Komiks zmienił się podczas pracy. Uruchom ponownie po zakończeniu kopiowania.')
     manifest = {'format': 'nokturn-bubbles', 'version': 1, 'source': {'sha256': initial_checksum},
@@ -306,6 +350,7 @@ def main(argv=None):
                         help='Kontrola OCR: review wskazuje podejrzane regiony bez zmiany obrysów')
     parser.add_argument('--recover-dialogue', action='store_true',
                         help='Eksperymentalnie dodaj łacińskie wypowiedzi bez obramowania wewnątrz kadrów')
+    parser.add_argument('--serial-pages', action='store_true', help='Wyłącz nakładanie etapów dwóch stron')
     parser.add_argument('--force', action='store_true', help='Przelicz niesprawdzone strony mimo checkpointów')
     parser.add_argument('--discard-verified', action='store_true', help='Także przelicz zatwierdzone ręczne korekty; wymaga --force')
     parser.add_argument('--text-export',choices=['off','html','txt','md'],default='off',help='Dodatkowy eksport tekstu, domyślnie wyłączony; HTML tworzy także TXT')
@@ -377,7 +422,8 @@ def main(argv=None):
                         relative=relative.with_name(source.stem+' (PDF).cbz')
                     outcome=process_comic(input_source, relative, target_root, args.work, analyzer,
                                           **settings, force=args.force, discard_verified=args.discard_verified,
-                                          text_export=args.text_export,export_all_text=args.export_all_text,native_layers=native_layers)
+                                          text_export=args.text_export,export_all_text=args.export_all_text,native_layers=native_layers,
+                                          parallel_pages=not args.serial_pages)
                     if source.suffix.casefold()=='.pdf':outcome['pdf_source']=str(source)
                     outcomes.append(outcome)
             except Exception as exc:
