@@ -22,6 +22,9 @@ def recover_tail_continuation(image,bubble,texts):
   if np.dot(axis,center-root)<0:axis=-axis
   perp=np.array([-axis[1],axis[0]]);projection=(points-center)@axis;tip=points[np.argmax(projection)];maxreach=min(short*.95,max(short*.12,reach*2.5));along=(xx-tip[0])*axis[0]+(yy-tip[1])*axis[1];across=(xx-tip[0])*perp[0]+(yy-tip[1])*perp[1];halfwidth=max(3,short*.035)+np.maximum(0,along)*.12;cone=(along>=-max(3,short*.04))&(along<=maxreach)&(np.abs(across)<=halfwidth);contact=((xx-tip[0])**2+(yy-tip[1])**2<=max(4,short*.05)**2)&cone
   local=rgb[((xx-tip[0])**2+(yy-tip[1])**2<=max(6,short*.105)**2)&(cv2.dilate(old,np.ones((7,7),np.uint8))>0)];quant=local.astype(np.int32)//16;codes=quant[:,0]*256+quant[:,1]*16+quant[:,2];values,hits=np.unique(codes,return_counts=True)
+  if not len(hits):continue
+  paper=np.median(rgb[cv2.erode(old,np.ones((7,7),np.uint8))>0],axis=0)
+  distance=None
   for n in np.argsort(hits)[-5:][::-1]:
    if hits[n]<len(local)*.03:continue
    color=np.median(local[codes==values[n]],axis=0);stages=[]
@@ -35,7 +38,8 @@ def recover_tail_continuation(image,bubble,texts):
      if np.count_nonzero(forward)<5:continue
      if np.count_nonzero(piece&(old>0))<3:continue
      if np.any(forward[0]) or np.any(forward[-1]) or np.any(forward[:,0]) or np.any(forward[:,-1]):continue
-     end=float(along[forward].max());distance=cv2.distanceTransform(1-old,cv2.DIST_L2,5);extension=float(distance[added].max());thickness=float(cv2.distanceTransform(added.astype(np.uint8),cv2.DIST_L2,5).max())*2
+     if distance is None:distance=cv2.distanceTransform(1-old,cv2.DIST_L2,5)
+     end=float(along[forward].max());extension=float(distance[added].max());thickness=float(cv2.distanceTransform(added.astype(np.uint8),cv2.DIST_L2,5).max())*2
      if extension<7 or end>=maxreach-max(1,short*.018) or np.any(forward&(np.abs(across)>=halfwidth-max(1,short*.006))) or thickness>max(12,short*.08) or np.sum(added)>count*.12:continue
      widths=[]
      for step in range(max(1,int(end))):

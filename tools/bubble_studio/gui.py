@@ -75,7 +75,7 @@ class Studio:
         ttk.Combobox(row, state='readonly', textvariable=self.quality, values=['Dokładny', 'Szybszy'], width=20).pack(side='left')
         ttk.Checkbutton(frame, text='Dodatkowe modele obrysów: komiksy i wycinki dymków', variable=self.extra).pack(anchor='w')
         ttk.Checkbutton(frame, text='Uwzględniaj także tekst poza dymkami (może objąć okładki/reklamy)', variable=self.free_text).pack(anchor='w')
-        ttk.Checkbutton(frame, text='Sprawdzaj podejrzane dymki lokalnym OCR (tylko ostrzeżenia)', variable=self.text_review).pack(anchor='w')
+        ttk.Checkbutton(frame, text='Kontroluj tekst lokalnym OCR (wspiera analizę kontekstu)', variable=self.text_review).pack(anchor='w')
         ttk.Checkbutton(frame, text='Odzyskuj myśli i narrację; profil Dokładny analizuje też kontekst strony lokalnie', variable=self.dialogue).pack(anchor='w')
         ttk.Checkbutton(frame, text='Przelicz gotowe niesprawdzone strony (zatwierdzone korekty zachowaj)', variable=self.force).pack(anchor='w')
         export_frame=ttk.LabelFrame(frame,text='Dodatkowy eksport tekstu do tłumaczenia',padding=(8,4))
@@ -100,6 +100,7 @@ class Studio:
         ttk.Button(actions, text='Układ tytułu…', command=self.reading_settings).pack(side='left', padx=8)
         self.lab_button=ttk.Button(actions,text='Losuj i testuj strony…',command=self.start_lab)
         self.lab_button.pack(side='left',padx=8)
+        ttk.Button(actions, text='Instrukcja', command=self.instructions).pack(side='right')
         ttk.Label(frame, textvariable=self.state, wraplength=900).pack(anchor='w', pady=6)
         self.bar = ttk.Progressbar(frame, mode='determinate', maximum=100)
         self.bar.pack(fill='x', pady=6)
@@ -332,6 +333,11 @@ class Studio:
                                              cwd=ROOT, creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0))
         except OSError as exc:
             messagebox.showerror('Nie udało się uruchomić edytora', str(exc))
+
+    def instructions(self):
+        import webbrowser
+        path = Path(__file__).with_name('INSTRUKCJA.html')
+        webbrowser.open(path.resolve().as_uri())
 
     def report(self):
         path = Path(self.output.get()) / '.nokturn-bubble-review' / 'index.html'

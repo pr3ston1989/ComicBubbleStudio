@@ -3,9 +3,12 @@ from __future__ import annotations
 
 import hashlib
 import math
+import os
 import re
 import unicodedata
+from concurrent.futures import ThreadPoolExecutor, wait
 from pathlib import Path
+from threading import Lock, local
 import numpy as np
 from .geometry import rectangle, intersection, area, deduplicate
 
@@ -39,8 +42,19 @@ class TextCheck:
         self.provenance = {'package': 'rapidocr-onnxruntime==1.4.4',
                            'weights': hashes}
         self._cache = {}
+        self._cache_lock = Lock()
+        self._workers = local()
+        # Each RapidOCR instance has mutable preprocessing state. Share only
+        # the immutable weights on disk, never an inference instance.
+        self._executor = (
+            ThreadPoolExecutor(max_workers=2, thread_name_prefix='studio-ocr')
+            if (os.cpu_count() or 1) >= 8 else None
+        )
 
     def read(self, image):
+        return self._read(image, self.engine)
+
+    def _read(self, image, engine):
         crop = image.copy()
         crop.thumbnail((900, 900))
         if min(crop.size) < 40:
@@ -48,17 +62,40 @@ class TextCheck:
             crop = crop.resize((round(crop.width*scale), round(crop.height*scale)))
         rgb = np.asarray(crop)
         key = hashlib.sha256(rgb.tobytes() + str(rgb.shape).encode()).digest()
-        if key not in self._cache:
-            result, _ = self.engine(rgb[..., ::-1].copy(), use_cls=False)
-            self._cache[key] = [{'text': str(r[1]), 'score': float(r[2]),
-                                 'box': [float(min(p[0] for p in r[0]))/crop.width,
-                                         float(min(p[1] for p in r[0]))/crop.height,
-                                         float(max(p[0] for p in r[0]))/crop.width,
-                                         float(max(p[1] for p in r[0]))/crop.height]}
-                                for r in result or []]
-            if len(self._cache) > 1024:
-                self._cache = {key: self._cache[key]}
-        return self._cache[key]
+        with self._cache_lock:
+            if key in self._cache:
+                return self._cache[key]
+        result, _ = engine(rgb[..., ::-1].copy(), use_cls=False)
+        rows = [{'text': str(r[1]), 'score': float(r[2]),
+                 'box': [float(min(p[0] for p in r[0]))/crop.width,
+                         float(min(p[1] for p in r[0]))/crop.height,
+                         float(max(p[0] for p in r[0]))/crop.width,
+                         float(max(p[1] for p in r[0]))/crop.height]}
+                for r in result or []]
+        with self._cache_lock:
+            if len(self._cache) >= 1024:
+                self._cache.clear()
+            return self._cache.setdefault(key, rows)
+
+    def _read_regions(self, image, regions):
+        if self._executor is None or len(regions) < 2:
+            return [self.read(image.crop(box)) for box in regions]
+
+        image.load()
+
+        def read_region(box):
+            if not hasattr(self._workers, 'engine'):
+                from rapidocr_onnxruntime import RapidOCR
+                self._workers.engine = RapidOCR(intra_op_num_threads=4, inter_op_num_threads=1)
+            return self._read(image.crop(box), self._workers.engine)
+
+        # Keep page and region order deterministic even when workers finish
+        # out of order. Drain the batch before returning or propagating errors.
+        jobs = [self._executor.submit(read_region, box) for box in regions]
+        try:
+            return [job.result() for job in jobs]
+        finally:
+            wait(jobs)
 
     def locate(self, image):
         """Independent OCR sweep: RT-DETR misses must not be invisible to recovery.
@@ -70,19 +107,20 @@ class TextCheck:
         edge, stride = 1200, 960
         xs = sorted({0, max(0,image.width-edge), *range(0,max(1,image.width-edge),stride)})
         ys = sorted({0, max(0,image.height-edge), *range(0,max(1,image.height-edge),stride)})
-        for y in ys:
-            for x in xs:
-                region = (x,y,min(image.width,x+edge),min(image.height,y+edge))
-                crop = image.crop(region)
-                for row in self.read(crop):
-                    if row['score'] < .85:
-                        continue
-                    a,b,c,d = row['box']
-                    if ((x and a < .005) or (y and b < .005)
-                            or (region[2]<image.width and c>.995) or (region[3]<image.height and d>.995)):
-                        continue
-                    output.append({'box':[x+a*crop.width,y+b*crop.height,x+c*crop.width,y+d*crop.height],
-                                   'score':row['score'], 'text':row['text'], 'label':2, 'origin':'ocr'})
+        regions = [(x, y, min(image.width, x+edge), min(image.height, y+edge))
+                   for y in ys for x in xs]
+        for region, rows in zip(regions, self._read_regions(image, regions)):
+            x, y, right, bottom = region
+            width, height = right-x, bottom-y
+            for row in rows:
+                if row['score'] < .85:
+                    continue
+                a, b, c, d = row['box']
+                if ((x and a < .005) or (y and b < .005)
+                        or (right < image.width and c > .995) or (bottom < image.height and d > .995)):
+                    continue
+                output.append({'box':[x+a*width,y+b*height,x+c*width,y+d*height],
+                               'score':row['score'], 'text':row['text'], 'label':2, 'origin':'ocr'})
         return deduplicate(output, .7)
 
     def locate_context(self, image):
@@ -117,10 +155,9 @@ class TextCheck:
             raise ValueError('Nieznany tryb kontroli tekstu')
         result = document['result']
         checks = []
-        for bubble in result['bubbles']:
-            box = pixel_box(bubble, image.size)
-            crop = image.crop(box)
-            rows = self.read(crop)
+        bubbles = result['bubbles']
+        boxes = [pixel_box(bubble, image.size) for bubble in bubbles]
+        for bubble, box, rows in zip(bubbles, boxes, self._read_regions(image, boxes)):
             readable = self.readable(rows)
             uncertain = not readable
             if uncertain:

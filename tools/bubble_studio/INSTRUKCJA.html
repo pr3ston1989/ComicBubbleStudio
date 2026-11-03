@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pl">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instrukcja obsługi · Nokturn Bubble Studio</title>
+<style>
+:root{color-scheme:dark;background:#14101c;color:#eeeaf2;font:16px/1.6 system-ui}
+main{max-width:900px;margin:3rem auto;padding:0 1rem}
+h1,h2{line-height:1.2;color:#f5d8a1}h2{margin-top:2rem}strong{color:#fff}
+.tip{padding:1rem 1.25rem;background:#252035;border-left:4px solid #9ce5d2}
+.scroll{overflow:auto}table{border-collapse:collapse;width:100%;min-width:540px}
+td,th{padding:.7rem;text-align:left;vertical-align:top;border-bottom:1px solid #433851}
+th{background:#252035}code{overflow-wrap:anywhere;color:#b6e9dd}
+</style>
+<main>
+<h1>Nokturn Bubble Studio</h1>
+<p>Przygotowanie dymków do czytania w Nokturnie</p>
+<div class="tip"><strong>Zalecane ustawienia.</strong> Wybierz <b>Dokładny</b>. Zostaw zaznaczone dodatkowe modele obrysów, kontrolę OCR i odzyskiwanie myśli. Pozostałe pola zostaw odznaczone, chyba że potrzebujesz dodatkowego tekstu lub ponownego przeliczenia.</div>
+<h2>Przygotuj pierwszy tom</h2>
+<ol>
+<li>Umieść CBZ, CBR, PDF lub folder stron w <code>WEJSCIE</code> albo wskaż folder wejściowy. Najłatwiej zacząć od jednego tomu.</li>
+<li>Folder <code>Manga</code> domyślnie oznacza czytanie od prawej do lewej, a <code>Komiksy</code> i <code>Manhua</code> od lewej do prawej. Jeśli potrzebujesz innego kierunku lub pionowych historyjek 4koma, użyj <b>Układ tytułu…</b>, wybierz plik lub folder jednej serii i zapisz.</li>
+<li>Kliknij <b>Przygotuj / wznów</b>. Pierwszy przebieg pobiera modele. Możesz przerwać pracę i wznowić ją później z tymi samymi ustawieniami. Program wykorzysta zapisane ukończone strony.</li>
+<li>W <b>Raporcie</b> obejrzyj numerację i obrysy. Jeśli chcesz coś poprawić, użyj <b>Edytora konturów</b>. Po sprawdzeniu strony możesz ją oznaczyć jako <b>Sprawdzona ✓</b>. Zapisz pakiet.</li>
+<li>Z folderu <code>GOTOWE</code> przenieś do biblioteki Nokturna komiks razem z plikiem <code>nazwa.cbz.nokturn-bubbles.zip</code>. Dla folderu obrazów przenieś cały folder. PDF daje pochodny CBZ i jego pakiet. W czytniku wybierz układ stronicowany i włącz SmartView oraz czytanie dymków.</li>
+</ol>
+<h2>Co robią opcje</h2>
+<div class="scroll"><table>
+<thead><tr><th>Opcja</th><th>Zwykle</th><th>Kiedy zmienić</th></tr></thead>
+<tbody>
+<tr><td>Profil jakości</td><td><strong>Dokładny</strong></td><td><b>Szybszy</b> nadaje się do próby lub prostych stron. Wykonuje mniej kontroli masek i pomija analizę kontekstu przez modele językowo-wizyjne. Sprawdź kolejność, luźny tekst i trudne obrysy.</td></tr>
+<tr><td>Dodatkowe modele obrysów</td><td><strong>Włączone</strong></td><td>Wyłącz na próbę, jeśli liczy się czas lub pamięć GPU. Porównaj obrysy na kilku stronach, zwłaszcza komiksu zachodniego.</td></tr>
+<tr><td>Uwzględniaj także tekst poza dymkami</td><td><strong>Wyłączone</strong></td><td>Przydatne, gdy potrzebujesz szerszego zbioru napisów. Może dołączyć szyldy, efekty lub reklamy. Włączenie pomija dopracowanie kontekstu, które wspiera zwykłe odzyskiwanie wypowiedzi.</td></tr>
+<tr><td>Kontroluj tekst lokalnym OCR</td><td><strong>Włączone</strong></td><td>OCR oznacza trudne miejsca. Razem z odzyskiwaniem myśli uruchamia też analizę kontekstu w profilu Dokładny. Wyłączenie zmienia zakres analizy.</td></tr>
+<tr><td>Odzyskuj myśli i narrację</td><td><strong>Włączone</strong></td><td>Pomaga wykrywać wypowiedzi bez ramki, szczególnie w mandze. Wyłącz wyłącznie do szybkiej próby, jeśli wystarczą typowe dymki.</td></tr>
+<tr><td>Przelicz gotowe niesprawdzone strony</td><td><strong>Wyłączone</strong></td><td>Użyj, gdy celowo chcesz ponowić analizę przy tych samych ustawieniach. Przy zwykłym wznawianiu odznacz. Zatwierdzone korekty są chronione.</td></tr>
+<tr><td>Dodatkowy eksport tekstu</td><td><strong>Wyłączony</strong></td><td>Włącz do tłumaczenia. HTML tworzy też TXT. Możesz później wybrać <b>Tekst z gotowych pakietów…</b> i wykonać sam eksport. Opcja pozostałych napisów poszerza ten eksport o tekst poza listą dymków.</td></tr>
+</tbody></table></div>
+<h2>Gdy przetwarzanie trwa długo</h2>
+<p>Profil Dokładny przeplata pracę GPU z lokalnym OCR, przygotowaniem wycinków, sprawdzaniem obrysów i analizą treści. Niskie średnie obciążenie GPU może wynikać z pracy tych etapów po kolei. Do prób wybierz jeden tom i porównaj kilka stron w obu profilach. Przy zwykłym wznowieniu zachowaj profil oraz pola wyboru i zostaw opcję przeliczania odznaczoną. Eksport tekstu możesz zrobić osobno po przygotowaniu dymków.</p>
+</main></html>

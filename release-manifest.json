@@ -1,6 +1,6 @@
 {
   "format": "nokturn-bubble-studio-release-v1",
-  "version": "2.11.1",
+  "version": "2.11.2",
   "files": [
     {
       "path": "assets/bubble-studio.ico",
@@ -48,7 +48,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "1168cbc38a3e5585caceebc0cec8c1d6d9ab9e2c34dca86f88b4b49558b1ab85"
+      "sha256": "5011ec1b3ed584ba63139dea30071ba957b4f0845f3dbd0b42ddd1bf0a7435cc"
     },
     {
       "path": "RESEARCH.md",
@@ -396,7 +396,7 @@
     },
     {
       "path": "tools/bubble_studio/config.py",
-      "sha256": "18351a4923fa911d94138362621d115f1c50fc73e47e485364f448ab9daf2d7e"
+      "sha256": "308a2e27154d3436b7f1113fdab81ade31a19f6828e076ede83123980bbd68d1"
     },
     {
       "path": "tools/bubble_studio/content_filter.py",
@@ -472,7 +472,11 @@
     },
     {
       "path": "tools/bubble_studio/gui.py",
-      "sha256": "9bfd62bba1a0c8fa01f53fad52f7720c8e76db0c8e185e98fddff04bb4cf0bf7"
+      "sha256": "2cd0b83a53f984b9e3a6c14a1b02535042006b798b5210e0815315da0e3705d9"
+    },
+    {
+      "path": "tools/bubble_studio/INSTRUKCJA.html",
+      "sha256": "17589c5736a77f7dd37a8b24e15e6f376d0b07988b6fdd9f26430bcd3feb4cd4"
     },
     {
       "path": "tools/bubble_studio/launch-ui.ps1",
@@ -592,11 +596,11 @@
     },
     {
       "path": "tools/bubble_studio/README.md",
-      "sha256": "1168cbc38a3e5585caceebc0cec8c1d6d9ab9e2c34dca86f88b4b49558b1ab85"
+      "sha256": "18af908c85643ca8acc9efe722c8722ef67b2f342743f34bb1098cb5b248ea2f"
     },
     {
       "path": "tools/bubble_studio/refinement.py",
-      "sha256": "b74d7fb2f16ab5dfc7c25886a583cd49c4c40c91653414d9b284333daca780da"
+      "sha256": "0ca73cfd9059d04c48281b26ecd0bf6d3497c10b2091dfce964177ef78d27bbc"
     },
     {
       "path": "tools/bubble_studio/regression_gate.py",
@@ -664,7 +668,7 @@
     },
     {
       "path": "tools/bubble_studio/tail_continuation.py",
-      "sha256": "cf59ec0d6398dff71c28fb9b3234898b3c613eaac578e7f014b7e23b4f1895fc"
+      "sha256": "1e0303b6d30d5a4a3cc9333e2b01c22ad68b48c514b9b76789683746e205b2b7"
     },
     {
       "path": "tools/bubble_studio/tail_guard.py",
@@ -680,7 +684,7 @@
     },
     {
       "path": "tools/bubble_studio/textcheck.py",
-      "sha256": "29d171d5068cb7fc39625ee5f6241deeefd78e3a0c860ad7e0440cc44036a165"
+      "sha256": "8475efe820a37013def9ae2b54fd467332c1cb65240f599f5c37f41131400781"
     },
     {
       "path": "tools/bubble_studio/thin_bridges.py",

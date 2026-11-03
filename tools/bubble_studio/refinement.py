@@ -11,15 +11,22 @@ import numpy as np
 from .geometry import _fill, area
 
 
-def boundary_support(mask, image):
-    """Fraction of contour pixels near a contrast edge (not model confidence)."""
+def _near_edges(image):
     rgb = np.asarray(image)
     gray = cv2.cvtColor(rgb, cv2.COLOR_RGB2GRAY)
     edges = cv2.Canny(gray, 50, 120)
     # Include chromatic borders with little luminance contrast.
     for channel in cv2.split(rgb):
         edges |= cv2.Canny(channel, 50, 120)
-    near = cv2.dilate(edges, np.ones((7, 7), np.uint8)) > 0
+    return cv2.dilate(edges, np.ones((7, 7), np.uint8)) > 0
+
+
+def boundary_support(mask, image):
+    """Fraction of contour pixels near a contrast edge (not model confidence)."""
+    return _boundary_support(mask, _near_edges(image))
+
+
+def _boundary_support(mask, near):
     binary = (mask > 0).astype(np.uint8)
     boundary = binary - cv2.erode(binary, np.ones((3, 3), np.uint8))
     return float(np.count_nonzero(near & (boundary > 0)) / max(1, np.count_nonzero(boundary)))
@@ -55,8 +62,12 @@ def enclosed_candidates(image, detection, texts, region, page_size=None, opening
         color = np.median(lab[y1:y2, x1:x2][matching], axis=0)
         samples.append((color, (x1, y1, x2, y2)))
     output = []
+    near = None
     for color, text_region in samples:
-        distance = np.max(np.abs(lab-color), axis=2)
+        # Reduce three planar channels directly instead of materializing a
+        # full float RGB difference and then reducing its short last axis.
+        distance = np.maximum(np.abs(lab[..., 0]-color[0]), np.abs(lab[..., 1]-color[1]))
+        np.maximum(distance, np.abs(lab[..., 2]-color[2]), out=distance)
         previous = None
         for tolerance in (12, 24):
             binary = (distance <= tolerance).astype(np.uint8)
@@ -85,7 +96,9 @@ def enclosed_candidates(image, detection, texts, region, page_size=None, opening
             if previous is not None:
                 a, b = previous > 0, mask > 0
                 stability = np.count_nonzero(a & b)/max(1, np.count_nonzero(a | b))
-                support = boundary_support(mask, image)
+                if near is None:
+                    near = _near_edges(image)
+                support = _boundary_support(mask, near)
                 if stability >= .96 and support >= .70:
                     if not any(np.count_nonzero((mask > 0) ^ (item['mask'] > 0)) < np.count_nonzero(mask)*.02 for item in output):
                         output.append({'mask': mask, 'origin': region[:2], 'method': 'screened-enclosure' if opening else 'enclosed-color',

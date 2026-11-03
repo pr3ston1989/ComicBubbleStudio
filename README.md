@@ -1,4 +1,6 @@
-# Nokturn Bubble Studio 2.11.1
+# Nokturn Bubble Studio 2.11.2
+
+**[Instrukcja obsługi i zalecane ustawienia](tools/bubble_studio/INSTRUKCJA.html)**. W aplikacji otworzysz ją przyciskiem **Instrukcja**.
 
 ## Nowości 2.11.1 — dodatkowe zabezpieczenia kolejności
 
